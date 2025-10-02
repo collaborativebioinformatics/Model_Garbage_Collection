@@ -62,6 +62,9 @@ runs/
 data/subgraphs_db
 *.lmdb
 *.mdb
+src/gnn/lcilp/data/AlzheimersKG/focused/
+src/gnn/lcilp/data/subgraphs_db/
+data/hitl/
 
 # Large video files
 *.gif
