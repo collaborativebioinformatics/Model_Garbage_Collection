@@ -24,10 +24,17 @@ Generating KGs at scale requires use of LLMs which can introduce errors. In biom
 
 ### Data Preparation
 (download.py) For purposes of the hackathon, we needed a workable test set. We queried a knowledge graph to retrieve an extended network of entities associated with Alzheimer's disease, including related genes, phenotypes, and neurodegenerative conditions. The query captures first- and second-degree connections to generate a subgraph containing approximately 3,000 to 8,000 edges, which is then saved as a JSON file for further analysis. This approach enables comprehensive exploration of the molecular and phenotypic landscape surrounding Alzheimer's disease.
-- Queried the Monarch Knowledge Graph for entities related to Alzheimer’s disease, including genes, phenotypes, and neurodegenerative conditions.  
-- Extracted first- and second-degree neighbors to build a subgraph of ~3,000–8,000 edges.  
+- Queried the Monarch Knowledge Graph for entities related to Alzheimer’s disease, including genes, phenotypes, and neurodegenerative conditions. Query: "What genes, phenotypes, and related conditions are associated with Alzheimer's disease?"
+- Extracted first- and second-degree neighbors to build a subgraph of ~3,000–8,000 edges.
+-  Returns an extended network around Alzheimer's disease:
+   - Core Alzheimer's disease entity
+   - Associated genes and variants
+   - Phenotypic manifestations
+   - Related neurodegenerative condition
 - Randomly removed a percentage of edges to create “ground-truth missing links” for evaluation.  
 - Saved the resulting graph as JSON for downstream tasks.
+
+Expected: ~3K-8K edges
 
 ### Parsing edges
 A custom function `parse_edges_to_csv()` extracts `subject`, `predicate`, and `object` fields from the raw `edges.jsonl` file into a clean CSV format.  
