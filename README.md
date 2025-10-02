@@ -16,6 +16,10 @@ Generating KGs at scale requires use of LLMs which can introduce errors. In biom
 
 <img width="792" height="399" alt="Screenshot 2025-10-02 at 10 54 14 AM" src="https://github.com/user-attachments/assets/b4793693-0d6c-4d3a-9e5d-cb699410ac00" />
 
+
+<img width="4000" height="1848" alt="20251002_110612" src="https://github.com/user-attachments/assets/72498ccc-b6a9-438c-8483-753fcc324fcc" />
+
+
 ### Test data
 (download.py) For purposes of the hackathon, we needed a workable test set. We queried a knowledge graph to retrieve an extended network of entities associated with Alzheimer's disease, including related genes, phenotypes, and neurodegenerative conditions. The query captures first- and second-degree connections to generate a subgraph containing approximately 3,000 to 8,000 edges, which is then saved as a JSON file for further analysis. This approach enables comprehensive exploration of the molecular and phenotypic landscape surrounding Alzheimer's disease.
 
