@@ -1,0 +1,4 @@
+# proper gitignore to not invlude venv ang gene2pubtator3 and its .gz
+gene2pubtator3
+gene2pubtator3.gz
+./venv
