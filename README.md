@@ -25,31 +25,61 @@ Generating KGs at scale requires use of LLMs which can introduce errors. In biom
 
 ## Methods
 
-### Data Preparation
+## Methods
+### 1. Data Preparation
 - Queried the Monarch Knowledge Graph for entities related to Alzheimer’s disease, including genes, phenotypes, and neurodegenerative conditions.  
 - Extracted first- and second-degree neighbors to build a subgraph of ~3,000–8,000 edges.  
 - Randomly removed a percentage of edges to create “ground-truth missing links” for evaluation.  
-- Saved the resulting graph as JSON for downstream tasks.  
+- Saved the resulting graph as JSON for downstream tasks.
 
-### Edge Reconstruction Strategies
+### 2. Parsing edges
+A custom function `parse_edges_to_csv()` extracts `subject`, `predicate`, and `object` fields from the raw `edges.jsonl` file into a clean CSV format.  
+   - Invalid JSON lines are skipped, ensuring robust parsing.  
+
+```
+python
+   parse_edges_to_csv("./data/example_edges.jsonl", "edges_output.csv")
+```
+#### 3. Simulating missing links
+Random chunks of the graph are selected with select_chunk_and_remove_predicates().
+
+A user-defined percentage of predicates (e.g., 50%) are removed per predicate type to create “masked” graphs for edge reconstruction experiments.
+
+Both the original and modified chunks are saved for later comparison.
+
+This produces paired datasets: one with full edges (ground truth) and one with missing predicates (test set).
+
+```
+original, modified = select_chunk_and_remove_predicates(
+    "edges_output.csv",
+    chunk_size=100,
+    predicate_removal_percent=50,
+    output_file="modified_chunk.csv"
+)
+```
+
+### 4. Edge Reconstruction Strategies (planned)
+
 We compared three strategies for predicting missing edges:  
-1. **Random Guessing** – Uniformly sampled possible edges as a naive baseline.  
-2. **General LLM** – Queried a large language model without external grounding.  
-3. **LLM + RAG** – Queried a large language model augmented with retrieval from the Monarch KG subset.  
+1. **Random Guessing** – Uniformly sampling possible edges as a naive baseline.
+3. **General LLM** – Using a large language model (Google Gemini API) without external grounding.
+4. **LLM + RAG (PubTator3)** – Querying the same LLM augmented with retrieval from PubTator3, which mines biomedical entities and relations from PubMed abstracts.
 
-### Human-in-the-Loop Validation
-- Developed a lightweight web interface where subject-matter experts (SMEs) reviewed candidate edges.  
-- Collected validation labels (true/false/uncertain) to assess accuracy of each reconstruction method.  
-- Curator feedback was stored for training downstream models.  
+### 5. Human-in-the-Loop Validation (planned)
+- SMEs will review predicted edges via a simple web interface.
+- Responses (true / false / uncertain) will be logged.
+- These validated labels will provide supervision for training the GNN.
 
-### Graph Neural Network Training
-- Labeled edges from SME validation were used to train a **graph neural network (GNN)**.  
-- Objective: classify edges as “trustworthy” or “questionable.”  
-- Features included graph topology (degree, connectivity) and LLM prediction signals.  
-- The GNN was evaluated against the original trusted KG (Monarch) for precision, recall, and F1.  
+
+### Graph Neural Network Training (planned)
+Train a GNN classifier using:
+- Topological features (degree, connectivity, edge type frequency).
+- Edge prediction scores from Random, LLM, and LLM+PubTator3 approaches.
+- Objective: flag questionable edges for curator review.
+- Evaluation will compare predictions against the original trusted KG (Monarch)..  
 
 ### Evaluation
-- Compared each edge reconstruction method (random, LLM, LLM+RAG) against the ground-truth KG.  
-- Measured **precision/recall/F1** to quantify how close predictions came to the true graph.  
-- Tested whether the GNN could generalize curator judgments and flag bad edges at scale.  
+- Metrics: precision, recall, F1 for each reconstruction strategy.
+- Compare baseline (random) vs LLM vs LLM+PubTator3.
+- Assess GNN’s ability to generalize SME judgments to unseen edges.
 
