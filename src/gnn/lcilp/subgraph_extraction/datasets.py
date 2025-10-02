@@ -223,7 +223,7 @@ class SubgraphDataset(Dataset):
             r_label * np.ones(subgraph.edata["type"].shape), dtype=torch.long
         )
 
-        edges_btw_roots = subgraph.edge_id(0, 1)
+        edges_btw_roots = subgraph.edge_ids(0, 1)
         rel_link = np.nonzero(subgraph.edata["type"][edges_btw_roots] == r_label)
         if rel_link.squeeze().nelement() == 0:
             subgraph.add_edge(0, 1)

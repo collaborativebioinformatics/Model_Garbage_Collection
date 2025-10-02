@@ -468,7 +468,7 @@ def get_subgraphs(
             rel * np.ones(subgraph.edata["type"].shape), dtype=torch.long
         )
 
-        edges_btw_roots = subgraph.edge_id(0, 1, return_array=True)
+        edges_btw_roots = subgraph.edge_ids(0, 1)
         rel_link = np.nonzero(subgraph.edata["type"][edges_btw_roots] == rel)
 
         if rel_link.squeeze().nelement() == 0:
