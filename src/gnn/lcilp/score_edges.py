@@ -108,7 +108,8 @@ def main(params):
     )
 
     # Create custom file_paths for validation pool
-    pool_file_paths = {"validation_pool": params.pool_file}
+    # Must be set on params object, not passed as argument
+    params.file_paths = {"validation_pool": params.pool_file}
 
     # Generate subgraphs for validation pool
     generate_subgraph_datasets(
@@ -116,7 +117,6 @@ def main(params):
         splits=["validation_pool"],
         saved_relation2id=graph_classifier.relation2id,
         max_label_value=graph_classifier.gnn.max_label_value,
-        file_paths=pool_file_paths,
     )
     print(f"  ✓ Subgraphs extracted to {params.db_path}")
 
