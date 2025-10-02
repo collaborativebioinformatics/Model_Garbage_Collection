@@ -1,4 +1,4 @@
-# Model_Garbage_Collection
+# Model Garbage Collection
 
 ![KG-LLM/Model Garbage Collection](logo.svg)
 
