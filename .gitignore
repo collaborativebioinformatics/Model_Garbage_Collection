@@ -72,8 +72,10 @@ data/
 .env
 .env.local
 
-# Claude Code
+# Claude Code and Internal Docs
 CLAUDE.md
+internal/
+.claude/
 
 # Misc
 *.log
