@@ -22,14 +22,14 @@ Generating KGs at scale requires use of LLMs which can introduce errors. In biom
 
 ## Methods
 
-### 1. Data Preparation
+### Data Preparation
 (download.py) For purposes of the hackathon, we needed a workable test set. We queried a knowledge graph to retrieve an extended network of entities associated with Alzheimer's disease, including related genes, phenotypes, and neurodegenerative conditions. The query captures first- and second-degree connections to generate a subgraph containing approximately 3,000 to 8,000 edges, which is then saved as a JSON file for further analysis. This approach enables comprehensive exploration of the molecular and phenotypic landscape surrounding Alzheimer's disease.
 - Queried the Monarch Knowledge Graph for entities related to Alzheimer’s disease, including genes, phenotypes, and neurodegenerative conditions.  
 - Extracted first- and second-degree neighbors to build a subgraph of ~3,000–8,000 edges.  
 - Randomly removed a percentage of edges to create “ground-truth missing links” for evaluation.  
 - Saved the resulting graph as JSON for downstream tasks.
 
-### 2. Parsing edges
+### Parsing edges
 A custom function `parse_edges_to_csv()` extracts `subject`, `predicate`, and `object` fields from the raw `edges.jsonl` file into a clean CSV format.  
    - Invalid JSON lines are skipped, ensuring robust parsing.  
 
@@ -37,7 +37,8 @@ A custom function `parse_edges_to_csv()` extracts `subject`, `predicate`, and `o
 python
    parse_edges_to_csv("./data/example_edges.jsonl", "edges_output.csv")
 ```
-#### 3. Simulating missing links
+
+### Simulating missing links
 Random chunks of the graph are selected with select_chunk_and_remove_predicates().
 
 A user-defined percentage of predicates (e.g., 50%) are removed per predicate type to create “masked” graphs for edge reconstruction experiments.
@@ -52,11 +53,8 @@ original, modified = select_chunk_and_remove_predicates(
     chunk_size=100,
     predicate_removal_percent=50,
     output_file="modified_chunk.csv"
-)
-```
 
-### 4. Edge Reconstruction Strategies (planned)
-
+### Edge Reconstruction Strategies (planned)
 We compared three strategies for predicting missing edges:  
 1. **Random Guessing** – Uniformly sampling possible edges as a naive baseline.
 3. **General LLM** – Using a large language model (Google Gemini API) without external grounding.
