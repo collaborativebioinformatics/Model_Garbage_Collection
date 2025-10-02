@@ -53,6 +53,7 @@ original, modified = select_chunk_and_remove_predicates(
     chunk_size=100,
     predicate_removal_percent=50,
     output_file="modified_chunk.csv"
+```
 
 ### Edge Reconstruction Strategies (planned)
 We compared three strategies for predicting missing edges:  
