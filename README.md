@@ -1,4 +1,6 @@
-# Model_Garbage_Collection
+# Model Garbage Collection
+
+![KG-LLM/Model Garbage Collection](logo.svg)
 
 Biomedical knowledge graphs are powerful tools for linking genes, diseases, and phenotypes — but when AI models generate new edges, they often hallucinate or introduce errors. Our project focuses on pruning these errors. The Model Garbage Collection Tool is a proof-of-concept for how a combination of human review, grounded AI, and graph learning can work together to keep biomedical knowledge graphs accurate and trustworthy.
 

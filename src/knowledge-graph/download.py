@@ -1,15 +1,13 @@
 """
 Download Source Knowledge Graph
 
-Query: "What genes, phenotypes, and related conditions are associated with Alzheimer's disease?"
+Query: "What information is associated with Alzheimer's disease?"
 
 Returns an extended network around Alzheimer's disease:
 - Core Alzheimer's disease entity
-- Associated genes and variants
-- Phenotypic manifestations
-- Related neurodegenerative conditions
+- Associated nodes within 1-2 hops
 
-Expected: ~3K-8K edges
+Expected: ~1700 edges
 """
 
 import requests
