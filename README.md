@@ -23,8 +23,7 @@ The Model Garbage Collection Tool is a PoC allowing curators to probe a KG using
 For purposes of the hackathon, we needed a workable test set. We queried the Monarch Knowledge Graph to retrieve an extended network of entities associated with Alzheimer's disease, including related genes, phenotypes, and neurodegenerative conditions. We then extracted first- and second-degree connections to generate a subgraph containing approximately 1,700 edges, which is then saved as a JSON file for further analysis. This approach enables comprehensive exploration of the molecular and phenotypic landscape surrounding Alzheimer's disease. 
 
 #### JSON to CSV conversion
-A custom function `parse_edges_to_csv()` extracts `subject`, `predicate`, and `object` fields from the raw `edges.jsonl` file into a clean CSV format.  
-   -Script  Invalid JSON lines are skipped, ensuring robust parsing.  
+A custom function `parse_edges_to_csv()` extracts `subject`, `predicate`, and `object` fields from the raw `edges.jsonl` file into a clean CSV format. Invalid JSON lines are skipped, ensuring robust parsing.  
 
 ```
 python
@@ -32,14 +31,7 @@ python
 ```
 
 #### Simulating missing links
-Randomly removed a percentage of edges to create “ground-truth missing links” for evaluation.  
-
-Random chunks of the graph are selected with select_chunk_and_remove_predicates().
-
-A user-defined percentage of predicates (e.g., 50%) are removed per predicate type to create “masked” graphs for edge reconstruction experiments.
-
-Both the original and modified chunks are saved for later comparison.
-
+We then randomly removed a percentage of edges to create “ground-truth missing links” for evaluation with select_chunk_and_remove_predicates(). 50% of predicates were removed per predicate type to create “masked” graphs for edge reconstruction experiments. Both the original and modified chunks were saved for later comparison.
 This produces paired datasets: one with full edges (ground truth) and one with missing predicates (test set).
 
 ```
