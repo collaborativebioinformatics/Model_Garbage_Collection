@@ -70,3 +70,5 @@ Edges ranked lowest by the discriminator were flagged for human review. Expert c
 - Compare baseline (random) vs LLM vs LLM+PubTator3.
 - Assess GNN’s ability to generalize SME judgments to unseen edges.
 
+## Data Sources
+The Model Garbage Collection tool uses and displays data and algorithms from the Monarch Initiative. The Monarch Initiative (https://monarchinitiative.org) makes biomedical knowledge exploration more efficient and effective by providing tools for genotype-phenotype analysis, genomic diagnostics, and precision medicine across broad areas of disease.
