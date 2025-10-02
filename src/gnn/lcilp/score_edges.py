@@ -206,6 +206,12 @@ if __name__ == "__main__":
 
     # Graph construction params
     parser.add_argument(
+        "--max_links",
+        type=int,
+        default=1000000,
+        help="Maximum number of links to process",
+    )
+    parser.add_argument(
         "--enclosing_sub_graph",
         "-en",
         type=bool,
