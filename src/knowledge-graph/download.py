@@ -21,11 +21,9 @@ url = "https://robokop-automat.apps.renci.org/monarch-kg/cypher"
 data_dir = "data"
 
 query = """
-// Start with Alzheimer's and related conditions
+// Get Alzheimer's disease and 1st/2nd degree network with all edges between them
 MATCH (alzheimer)
-WHERE alzheimer.id = 'MONDO:0004975'  // Alzheimer disease
-OR alzheimer.name =~ '(?i).*alzheimer.*'
-OR alzheimer.id IN ['MONDO:0007088', 'MONDO:0007089']  // AD type 1, type 2
+WHERE alzheimer.id = 'MONDO:0004975'  // Main Alzheimer disease
 
 // Get first-degree connections
 MATCH (alzheimer)-[r1]-(connected1)
@@ -34,17 +32,29 @@ WHERE connected1.id IS NOT NULL
 // Get second-degree connections to expand the network
 OPTIONAL MATCH (connected1)-[r2]-(connected2)
 WHERE connected2.id IS NOT NULL
-AND connected2 <> alzheimer
-AND (connected2.id STARTS WITH "HP:" OR
-     connected2.id STARTS WITH "MONDO:" OR
-     connected2.id STARTS WITH "HGNC:")
+  AND connected2 <> alzheimer
+  AND (connected2.id STARTS WITH "HP:" OR
+       connected2.id STARTS WITH "MONDO:" OR  
+       connected2.id STARTS WITH "HGNC:" OR
+       connected2.id STARTS WITH "CHEBI:" OR
+       connected2.id STARTS WITH "GO:")
 
-WITH COLLECT(DISTINCT alzheimer) + COLLECT(DISTINCT connected1) + COLLECT(DISTINCT connected2) as nodes,
-     COLLECT(DISTINCT r1) + COLLECT(DISTINCT r2) as edges
+// Collect all nodes in the subgraph
+WITH COLLECT(DISTINCT alzheimer) + COLLECT(DISTINCT connected1) + COLLECT(DISTINCT connected2) AS all_nodes
 
-RETURN nodes[0..1500] as nodes,
-       edges[0..6000] as edges,
-       SIZE(edges) as edge_count
+// Find all edges between any nodes in our subgraph
+UNWIND all_nodes AS node1
+UNWIND all_nodes AS node2
+MATCH (node1)-[edge]->(node2)
+WHERE node1 <> node2
+  AND node1.id IS NOT NULL 
+  AND node2.id IS NOT NULL
+
+RETURN DISTINCT 
+  node1.id as subject,
+  type(edge) as predicate, 
+  node2.id as object
+LIMIT 15000
 """
 
 payload = json.dumps({"query": query})
