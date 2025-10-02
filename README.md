@@ -19,4 +19,33 @@ Generating KGs at scale requires use of LLMs which can introduce errors. In biom
 ### Test data
 (download.py) For purposes of the hackathon, we needed a workable test set. We queried a knowledge graph to retrieve an extended network of entities associated with Alzheimer's disease, including related genes, phenotypes, and neurodegenerative conditions. The query captures first- and second-degree connections to generate a subgraph containing approximately 3,000 to 8,000 edges, which is then saved as a JSON file for further analysis. This approach enables comprehensive exploration of the molecular and phenotypic landscape surrounding Alzheimer's disease.
 
+## Methods
+
+### Data Preparation
+- Queried the Monarch Knowledge Graph for entities related to Alzheimer’s disease, including genes, phenotypes, and neurodegenerative conditions.  
+- Extracted first- and second-degree neighbors to build a subgraph of ~3,000–8,000 edges.  
+- Randomly removed a percentage of edges to create “ground-truth missing links” for evaluation.  
+- Saved the resulting graph as JSON for downstream tasks.  
+
+### Edge Reconstruction Strategies
+We compared three strategies for predicting missing edges:  
+1. **Random Guessing** – Uniformly sampled possible edges as a naive baseline.  
+2. **General LLM** – Queried a large language model without external grounding.  
+3. **LLM + RAG** – Queried a large language model augmented with retrieval from the Monarch KG subset.  
+
+### Human-in-the-Loop Validation
+- Developed a lightweight web interface where subject-matter experts (SMEs) reviewed candidate edges.  
+- Collected validation labels (true/false/uncertain) to assess accuracy of each reconstruction method.  
+- Curator feedback was stored for training downstream models.  
+
+### Graph Neural Network Training
+- Labeled edges from SME validation were used to train a **graph neural network (GNN)**.  
+- Objective: classify edges as “trustworthy” or “questionable.”  
+- Features included graph topology (degree, connectivity) and LLM prediction signals.  
+- The GNN was evaluated against the original trusted KG (Monarch) for precision, recall, and F1.  
+
+### Evaluation
+- Compared each edge reconstruction method (random, LLM, LLM+RAG) against the ground-truth KG.  
+- Measured **precision/recall/F1** to quantify how close predictions came to the true graph.  
+- Tested whether the GNN could generalize curator judgments and flag bad edges at scale.  
 
