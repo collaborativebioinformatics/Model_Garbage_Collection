@@ -223,9 +223,20 @@ class SubgraphDataset(Dataset):
             r_label * np.ones(subgraph.edata["type"].shape), dtype=torch.long
         )
 
-        edges_btw_roots = subgraph.edge_ids(0, 1)
-        rel_link = np.nonzero(subgraph.edata["type"][edges_btw_roots] == r_label)
-        if rel_link.squeeze().nelement() == 0:
+        # Check if edge exists before calling edge_ids (DGL 1.x throws error if not)
+        if subgraph.has_edges_between(0, 1):
+            edges_btw_roots = subgraph.edge_ids(0, 1)
+            rel_link = np.nonzero(subgraph.edata["type"][edges_btw_roots] == r_label)
+            if rel_link.squeeze().nelement() == 0:
+                subgraph.add_edges(0, 1)
+                subgraph.edata["type"][-1] = torch.tensor(r_label).type(
+                    torch.LongTensor
+                )
+                subgraph.edata["label"][-1] = torch.tensor(r_label).type(
+                    torch.LongTensor
+                )
+        else:
+            # Edge doesn't exist, add it
             subgraph.add_edges(0, 1)
             subgraph.edata["type"][-1] = torch.tensor(r_label).type(torch.LongTensor)
             subgraph.edata["label"][-1] = torch.tensor(r_label).type(torch.LongTensor)
