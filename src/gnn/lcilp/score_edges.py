@@ -130,7 +130,7 @@ def main(params):
         params.db_path,
         "validation_pool_pos",
         "validation_pool_neg",  # Will be empty
-        pool_file_paths,
+        params.file_paths,
         graph_classifier.relation2id,
         add_traspose_rels=params.add_traspose_rels,
         num_neg_samples_per_link=0,  # No negative samples
@@ -193,6 +193,13 @@ if __name__ == "__main__":
     # Model params (should match training)
     parser.add_argument(
         "--hop", type=int, default=3, help="Enclosing subgraph hop number"
+    )
+    parser.add_argument(
+        "--max_nodes_per_hop",
+        "-max_h",
+        type=int,
+        default=None,
+        help="if > 0, upper bound the # nodes per hop by subsampling",
     )
     parser.add_argument(
         "--gpu", type=int, default=0, help="Which GPU to use (-1 for CPU)"
