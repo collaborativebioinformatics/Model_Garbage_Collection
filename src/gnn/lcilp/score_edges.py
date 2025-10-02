@@ -109,7 +109,11 @@ def main(params):
 
     # Create custom file_paths for validation pool
     # Must be set on params object, not passed as argument
-    params.file_paths = {"validation_pool": params.pool_file}
+    # Note: 'train' is required by process_files() to build adjacency list
+    params.file_paths = {
+        "train": os.path.join(params.main_dir, f"data/{params.dataset}/train.txt"),
+        "validation_pool": params.pool_file,
+    }
 
     # Generate subgraphs for validation pool
     generate_subgraph_datasets(
