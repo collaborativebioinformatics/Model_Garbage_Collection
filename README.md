@@ -23,29 +23,21 @@ Generating KGs at scale requires use of LLMs which can introduce errors. In biom
 ## Methods
 
 ### Data Preparation
-(download.py) For purposes of the hackathon, we needed a workable test set. We queried a knowledge graph to retrieve an extended network of entities associated with Alzheimer's disease, including related genes, phenotypes, and neurodegenerative conditions. The query captures first- and second-degree connections to generate a subgraph containing approximately 3,000 to 8,000 edges, which is then saved as a JSON file for further analysis. This approach enables comprehensive exploration of the molecular and phenotypic landscape surrounding Alzheimer's disease.
-- Queried the Monarch Knowledge Graph for entities related to Alzheimer’s disease, including genes, phenotypes, and neurodegenerative conditions. Query: "What genes, phenotypes, and related conditions are associated with Alzheimer's disease?"
-- Extracted first- and second-degree neighbors to build a subgraph of ~3,000–8,000 edges.
--  Returns an extended network around Alzheimer's disease:
-   - Core Alzheimer's disease entity
-   - Associated genes and variants
-   - Phenotypic manifestations
-   - Related neurodegenerative condition
-- Randomly removed a percentage of edges to create “ground-truth missing links” for evaluation.  
-- Saved the resulting graph as JSON for downstream tasks.
+#### Subgraph creation
+For purposes of the hackathon, we needed a workable test set. We queried the Monarch Knowledge Graph to retrieve an extended network of entities associated with Alzheimer's disease, including related genes, phenotypes, and neurodegenerative conditions. We then extracted first- and second-degree connections to generate a subgraph containing approximately 1,700 edges, which is then saved as a JSON file for further analysis. This approach enables comprehensive exploration of the molecular and phenotypic landscape surrounding Alzheimer's disease. 
 
-Expected: ~3K-8K edges
-
-### Parsing edges
+#### JSON to CSV conversion
 A custom function `parse_edges_to_csv()` extracts `subject`, `predicate`, and `object` fields from the raw `edges.jsonl` file into a clean CSV format.  
-   - Invalid JSON lines are skipped, ensuring robust parsing.  
+   -Script  Invalid JSON lines are skipped, ensuring robust parsing.  
 
 ```
 python
    parse_edges_to_csv("./data/example_edges.jsonl", "edges_output.csv")
 ```
 
-### Simulating missing links
+#### Simulating missing links
+Randomly removed a percentage of edges to create “ground-truth missing links” for evaluation.  
+
 Random chunks of the graph are selected with select_chunk_and_remove_predicates().
 
 A user-defined percentage of predicates (e.g., 50%) are removed per predicate type to create “masked” graphs for edge reconstruction experiments.
@@ -62,14 +54,14 @@ original, modified = select_chunk_and_remove_predicates(
     output_file="modified_chunk.csv"
 ```
 
-### Edge Reconstruction Strategies (planned)
+#### Edge Reconstruction Strategies (planned)
 We compared three strategies for predicting missing edges:  
 1. **Random Guessing** – Uniformly sampling possible edges as a naive baseline.
 3. **General LLM** – Using a large language model (Google Gemini API) without external grounding.
 4. **LLM + RAG (PubTator3)** – Querying the same LLM augmented with retrieval from PubTator3, which mines biomedical entities and relations from PubMed abstracts.
 
-### Human Contextual Dataset Generation (planned)
-To create even smaller graphs with contextual utility, reconstructed subgraphs were converted into queryable datasets. Human users interrogated the subgraphs through LLM-mediated queries. For each edge-assignment strategy, the output was reduced to smaller “tiny graphs” (lowest, median, and highest quality) that formed the basis of a contextual dataset for benchmarking.
+#### Backbone graph generation (planned)
+We took the reconstructed subgraphs into even smaller graphs of 10-30 edges to form the basis of a contextual dataset for benchmarking in the time available during a hackathon.
 
 ### Edge Scoring (planned)
 To identify potentially spurious connections, we computed edge scores using personalized PageRank (PPR) combined with a Conductor-based scoring function. The resulting locality-informed subgraphs were passed to a graph neural network (GNN) trained as a discriminator. The GNN assigned likelihood scores to edges, producing a ranked list of candidate edges for pruning.
