@@ -20,13 +20,10 @@ Generating KGs at scale requires use of LLMs which can introduce errors. In biom
 <img width="4000" height="1848" alt="20251002_110612" src="https://github.com/user-attachments/assets/72498ccc-b6a9-438c-8483-753fcc324fcc" />
 
 
-### Test data
-(download.py) For purposes of the hackathon, we needed a workable test set. We queried a knowledge graph to retrieve an extended network of entities associated with Alzheimer's disease, including related genes, phenotypes, and neurodegenerative conditions. The query captures first- and second-degree connections to generate a subgraph containing approximately 3,000 to 8,000 edges, which is then saved as a JSON file for further analysis. This approach enables comprehensive exploration of the molecular and phenotypic landscape surrounding Alzheimer's disease.
-
 ## Methods
 
-## Methods
 ### 1. Data Preparation
+(download.py) For purposes of the hackathon, we needed a workable test set. We queried a knowledge graph to retrieve an extended network of entities associated with Alzheimer's disease, including related genes, phenotypes, and neurodegenerative conditions. The query captures first- and second-degree connections to generate a subgraph containing approximately 3,000 to 8,000 edges, which is then saved as a JSON file for further analysis. This approach enables comprehensive exploration of the molecular and phenotypic landscape surrounding Alzheimer's disease.
 - Queried the Monarch Knowledge Graph for entities related to Alzheimer’s disease, including genes, phenotypes, and neurodegenerative conditions.  
 - Extracted first- and second-degree neighbors to build a subgraph of ~3,000–8,000 edges.  
 - Randomly removed a percentage of edges to create “ground-truth missing links” for evaluation.  
@@ -65,20 +62,24 @@ We compared three strategies for predicting missing edges:
 3. **General LLM** – Using a large language model (Google Gemini API) without external grounding.
 4. **LLM + RAG (PubTator3)** – Querying the same LLM augmented with retrieval from PubTator3, which mines biomedical entities and relations from PubMed abstracts.
 
-### 5. Human-in-the-Loop Validation (planned)
-- SMEs will review predicted edges via a simple web interface.
-- Responses (true / false / uncertain) will be logged.
-- These validated labels will provide supervision for training the GNN.
+### Human Contextual Dataset Generation (planned)
+To create even smaller graphs with contextual utility, reconstructed subgraphs were converted into queryable datasets. Human users interrogated the subgraphs through LLM-mediated queries. For each edge-assignment strategy, the output was reduced to smaller “tiny graphs” (lowest, median, and highest quality) that formed the basis of a contextual dataset for benchmarking.
 
-
-### Graph Neural Network Training (planned)
+### Edge Scoring (planned)
+To identify potentially spurious connections, we computed edge scores using personalized PageRank (PPR) combined with a Conductor-based scoring function. The resulting locality-informed subgraphs were passed to a graph neural network (GNN) trained as a discriminator. The GNN assigned likelihood scores to edges, producing a ranked list of candidate edges for pruning.
 Train a GNN classifier using:
 - Topological features (degree, connectivity, edge type frequency).
 - Edge prediction scores from Random, LLM, and LLM+PubTator3 approaches.
 - Objective: flag questionable edges for curator review.
-- Evaluation will compare predictions against the original trusted KG (Monarch)..  
+- Evaluation will compare predictions against the original trusted KG (Monarch)..
 
-### Evaluation
+### Human-in-the-Loop Validation (planned)
+Edges ranked lowest by the discriminator were flagged for human review. Expert curation was used to refine pruning decisions and remove erroneous connections. The curated edge sets were then reintegrated into the training process, enabling iterative retraining of the GNN discriminator for improved performance.
+- SMEs will review predicted edges via a simple web interface.
+- Responses (true / false / uncertain) will be logged.
+- These validated labels will provide supervision for training the GNN.
+
+### Evaluation (planned)
 - Metrics: precision, recall, F1 for each reconstruction strategy.
 - Compare baseline (random) vs LLM vs LLM+PubTator3.
 - Assess GNN’s ability to generalize SME judgments to unseen edges.
