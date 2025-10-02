@@ -7,8 +7,8 @@ import numpy as np
 import json
 import pickle
 import dgl
-from src.gnn.lcilp.utils.graph_utils import ssp_multigraph_to_dgl, incidence_matrix
-from src.gnn.lcilp.utils.data_utils import process_files, save_to_file, plot_rel_dist
+from utils.graph_utils import ssp_multigraph_to_dgl, incidence_matrix
+from utils.data_utils import process_files, save_to_file, plot_rel_dist
 from .graph_sampler import *
 import pdb
 
