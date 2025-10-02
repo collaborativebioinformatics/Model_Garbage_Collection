@@ -101,7 +101,12 @@ def collate_dgl(samples):
     g_labels_neg = [item for sublist in g_labels_negs for item in sublist]
     r_labels_neg = [item for sublist in r_labels_negs for item in sublist]
 
-    batched_graph_neg = dgl.batch(graphs_neg)
+    # Handle case when there are no negative samples (e.g., during scoring)
+    if len(graphs_neg) > 0:
+        batched_graph_neg = dgl.batch(graphs_neg)
+    else:
+        batched_graph_neg = None
+
     return (
         (batched_graph_pos, r_labels_pos),
         g_labels_pos,
@@ -119,11 +124,16 @@ def move_batch_to_device_dgl(batch, device):
     targets_pos = torch.tensor(targets_pos, dtype=torch.long, device=device)
     r_labels_pos = torch.tensor(r_labels_pos, dtype=torch.long, device=device)
 
-    targets_neg = torch.tensor(targets_neg, dtype=torch.long, device=device)
-    r_labels_neg = torch.tensor(r_labels_neg, dtype=torch.long, device=device)
+    # Handle case when there are no negative samples
+    if g_dgl_neg is not None:
+        targets_neg = torch.tensor(targets_neg, dtype=torch.long, device=device)
+        r_labels_neg = torch.tensor(r_labels_neg, dtype=torch.long, device=device)
+        g_dgl_neg = send_graph_to_device(g_dgl_neg, device)
+    else:
+        targets_neg = torch.tensor([], dtype=torch.long, device=device)
+        r_labels_neg = torch.tensor([], dtype=torch.long, device=device)
 
     g_dgl_pos = send_graph_to_device(g_dgl_pos, device)
-    g_dgl_neg = send_graph_to_device(g_dgl_neg, device)
 
     return (
         (g_dgl_pos, r_labels_pos),
