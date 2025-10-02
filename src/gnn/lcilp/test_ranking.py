@@ -472,8 +472,8 @@ def get_subgraphs(
         rel_link = np.nonzero(subgraph.edata["type"][edges_btw_roots] == rel)
 
         if rel_link.squeeze().nelement() == 0:
-            # subgraph.add_edge(0, 1, {'type': torch.tensor([rel]), 'label': torch.tensor([rel])})
-            subgraph.add_edge(0, 1)
+            # subgraph.add_edges(0, 1, {'type': torch.tensor([rel]), 'label': torch.tensor([rel])})
+            subgraph.add_edges(0, 1)
             subgraph.edata["type"][-1] = torch.tensor(rel).type(torch.LongTensor)
             subgraph.edata["label"][-1] = torch.tensor(rel).type(torch.LongTensor)
 

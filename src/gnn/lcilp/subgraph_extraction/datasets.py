@@ -226,7 +226,7 @@ class SubgraphDataset(Dataset):
         edges_btw_roots = subgraph.edge_ids(0, 1)
         rel_link = np.nonzero(subgraph.edata["type"][edges_btw_roots] == r_label)
         if rel_link.squeeze().nelement() == 0:
-            subgraph.add_edge(0, 1)
+            subgraph.add_edges(0, 1)
             subgraph.edata["type"][-1] = torch.tensor(r_label).type(torch.LongTensor)
             subgraph.edata["label"][-1] = torch.tensor(r_label).type(torch.LongTensor)
 
