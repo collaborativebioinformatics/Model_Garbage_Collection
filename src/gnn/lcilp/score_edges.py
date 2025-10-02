@@ -219,6 +219,12 @@ if __name__ == "__main__":
         help="Whether to use enclosing subgraph",
     )
     parser.add_argument(
+        "--map_size_multiplier",
+        type=int,
+        default=10,
+        help="LMDB map size multiplier for subgraph database",
+    )
+    parser.add_argument(
         "--add_traspose_rels",
         "-tr",
         type=bool,
