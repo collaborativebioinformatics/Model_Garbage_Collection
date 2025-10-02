@@ -1,3 +1,0 @@
-'''
-Download Source Knowledge Graph
-'''
