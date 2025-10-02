@@ -14,8 +14,8 @@ import scipy.sparse as ssp
 import sys
 import torch
 from scipy.special import softmax
-from utils.dgl_utils import _bfs_relational
-from utils.graph_utils import incidence_matrix, remove_nodes, ssp_to_torch, serialize, deserialize, get_edge_count, diameter, radius
+from src.gnn.lcilp.utils.dgl_utils import _bfs_relational
+from src.gnn.lcilp.utils.graph_utils import incidence_matrix, remove_nodes, ssp_to_torch, serialize, deserialize, get_edge_count, diameter, radius
 import networkx as nx
 from .multicom import approximate_ppr, conductance_sweep_cut
 from .multicom import multicom
@@ -71,16 +71,17 @@ def links2subgraphs(A, graphs, params, max_label_value=None):
     '''
     extract enclosing subgraphs, write map mode + named dbs
     '''
-    max_n_label = {'value': np.array([0, 0, 0])}
+    max_n_label = {'value': np.array([0, 0])} # must be length 2 containint [distance_to_node_1, distance_to_node_2]
     subgraph_sizes = []
     enc_ratios = []
     num_pruned_nodes = []
 
-    BYTES_PER_DATUM = get_average_subgraph_size(100, list(graphs.values())[0]['pos'], A, params) * 1.5
+    _multiplier = params.map_size_multiplier  if params.map_size_multiplier else 5
+    BYTES_PER_DATUM = get_average_subgraph_size(100, list(graphs.values())[0]['pos'], A, params) * _multiplier
     links_length = 0
     for split_name, split in graphs.items():
         links_length += (len(split['pos']) + len(split['neg'])) * 2
-    map_size = links_length * BYTES_PER_DATUM
+    map_size =  links_length * BYTES_PER_DATUM
 
     env = lmdb.open(params.db_path, map_size=map_size, max_dbs=6)
 

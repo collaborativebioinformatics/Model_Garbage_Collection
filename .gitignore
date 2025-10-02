@@ -59,7 +59,7 @@ logs/
 runs/
 
 # Data directories
-data/
+data/subgraphs_db
 *.lmdb
 *.mdb
 
@@ -83,3 +83,7 @@ internal/
 *.swp
 *.swo
 *~
+
+
+# uv
+uv.lock
