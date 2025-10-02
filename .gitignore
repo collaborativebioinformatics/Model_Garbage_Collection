@@ -36,6 +36,7 @@ ENV/
 # VS Code
 .vscode/
 
+.serena/
 # macOS
 .DS_Store
 .AppleDouble
