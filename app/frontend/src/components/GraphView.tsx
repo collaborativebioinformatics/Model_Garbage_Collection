@@ -1,35 +1,7 @@
 import { Box, useColorModeValue, Tooltip, VStack, HStack, Text } from '@chakra-ui/react'
 import { useEffect, useRef, useState, useMemo } from 'preact/hooks'
 import cytoscape, { Core, NodeSingular, EdgeCollection } from 'cytoscape'
-
-interface GraphData {
-  elements: {
-    nodes: Array<{
-      data: {
-        id: string
-        label: string
-        [key: string]: any
-      }
-      position?: {
-        x: number
-        y: number
-      }
-    }>
-    edges: Array<{
-      data: {
-        id: string
-        source: string
-        target: string
-        [key: string]: any
-      }
-    }>
-  }
-  data?: {
-    title?: string
-    description?: string
-    tags?: string[]
-  }
-}
+import { GraphData } from '../types/GraphInterface'
 
 interface GraphViewProps {
   graphData: GraphData

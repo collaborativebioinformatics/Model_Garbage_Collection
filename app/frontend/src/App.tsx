@@ -15,6 +15,8 @@ import { CounterCard } from './components/CounterCard'
 import { UserCard } from './components/UserCard'
 import { StatsCard } from './components/StatsCard'
 import { GraphView } from './components/GraphView'
+import { TriToggle } from './components/TriToggle'
+import { TableView } from './components/TableView'
 
 const sampleGraphData = {
   elements: {
@@ -25,8 +27,8 @@ const sampleGraphData = {
       { "data": { "id": "MONDO:0018908", "label": "label4", "description": "description3" } }
     ],
     edges: [
-      { "data": { "source": "MONDO:0005723", "target": "MONDO:0006764", "label": "biolink:subclass_of" } },
-      { "data": { "source": "CHEBI:35610", "target": "MONDO:0018908", "label": "biolink:treats_or_applied_or_studied_to_treat" } }
+      { "data": { "id": "edge1", "source": "MONDO:0005723", "target": "MONDO:0006764", "label": "biolink:subclass_of" } },
+      { "data": { "id": "edge2", "source": "CHEBI:35610", "target": "MONDO:0018908", "label": "biolink:treats_or_applied_or_studied_to_treat" } }
     ]
   },
   data: {
@@ -76,6 +78,22 @@ export function App() {
 
           {/* Stats Section */}
           <StatsCard />
+
+          {/* TriToggle Demo */}
+          <Box>
+            <Heading size="md" color="teal.300" mb={4}>
+              TriToggle Component
+            </Heading>
+            <TriToggle defaultState="neutral" onChange={(state) => console.log('TriToggle state:', state)} />
+          </Box>
+
+          {/* Table View */}
+          <Box>
+            <Heading size="md" color="teal.300" mb={4}>
+              Edge Table View
+            </Heading>
+            <TableView graphData={sampleGraphData} edgeLabel="label" />
+          </Box>
 
           {/* Graph Visualization */}
           <Box>
