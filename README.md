@@ -26,7 +26,7 @@ Large Language Models (LLMs) are increasingly used to scale up knowledge graphs,
 ## Solution
 The **KG Model Garbage Collection Tool** provides a proof-of-concept (PoC) framework allowing curators to probe a KG using real scientific questions, provide feedback, and use that feedback to train a GNN. This tool extends the impact of human curation by learning from expert human validation patterns.
 
-<img width="561" height="518" alt="Screenshot 2025-10-03 at 9 23 05 AM" src="https://github.com/user-attachments/assets/933c615e-d665-4841-a5d6-1bd89adf72d0" />
+<img width="auto" height="auto" alt="Screenshot 2025-10-03 at 9 23 05 AM" src="https://github.com/user-attachments/assets/933c615e-d665-4841-a5d6-1bd89adf72d0" />
 
 
 ## Quickstart Instructions
@@ -151,8 +151,6 @@ Model_Garbage_Collection/
 ## Detailed Explanation of Our Methods
 
 ### Data Processing Pipeline
-<img width="1761" height="617" alt="image" src="https://github.com/user-attachments/assets/0f4c9d81-b80a-4c75-b2f9-49c50b6d2382" />
-
 1. **Knowledge Graph Extraction**: Download subgraphs from the Monarch Knowledge Graph, including node metadata (identifiers, labels, descriptions) - *src/knowledge-graph/download.py*
 2. **Data Preprocessing**: Convert graph triples from JSON to structured CSV format for analysis - *src/knowledge-graph/triples_to_csv.py*
 4. **Edge Removal & Assignment Methodologies**: Systematically remove a percentage of edges from trusted graph data to create incomplete subgraphs. We used three strategies for creating our test KGs. - *Edge_Assignor.ipynb*. See [README-Edge_Assignor.md](README-Edge_Assignor.md) for details on RAG pipeline.
@@ -178,7 +176,6 @@ Model_Garbage_Collection/
 
 
 ### Graph Neural Network Training
-<img width="1767" height="516" alt="image" src="https://github.com/user-attachments/assets/5fa4f7eb-3304-4871-86c3-4f0333a92713" />
 
 1. **Extract Graph Backbone**:
 ```bash
@@ -194,7 +191,6 @@ python src/gnn/run_hitl_prep.sh
 ```bash
 python src/gnn/lcilp/train.py
 ```
-<img width="1843" height="809" alt="image" src="https://github.com/user-attachments/assets/078c0736-bc5b-4489-accf-fa3bfa8f6f79" />
 
 
 ### Validation and Evaluation
@@ -204,7 +200,6 @@ python src/gnn/lcilp/train.py
 - **Error Analysis**: Categorization of prediction errors and failure modes
 - **Human Validation Interface**: Prototype of an interactive web browser tool to collect expert review and feedback
 
-<img width="507" height="836" alt="image" src="https://github.com/user-attachments/assets/12d5a311-23ef-43cd-9efe-9d14c1f994d6" />
 
 ### Graphical User Interface
 We built a GUI!
