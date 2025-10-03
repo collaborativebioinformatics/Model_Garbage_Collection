@@ -12,7 +12,10 @@ The KG Model Garbage Collection Tool is a proof-of-concept (PoC) allowing curato
 
 <img width="561" height="518" alt="Screenshot 2025-10-03 at 9 23 05 AM" src="https://github.com/user-attachments/assets/933c615e-d665-4841-a5d6-1bd89adf72d0" />
 
-## Order of execution
+##Installation Instructions
+### Prerequisites
+
+### Order of execution
 1. **src/knowledge-graph/download.py** - download a subgraph from Monarch KG (and node data including id, label, & description)
 2. **src/knowledge-graph/triples_to_csv.py** - convert the downloaded triples from JSON to CSV file
 3. **Edge_Assignore.ipynb** - randomly remove some edges from the downloaded triples and use 3 strategies to rebuild the edges (random, LLM, LLM-RAG)
