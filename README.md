@@ -201,7 +201,7 @@ Here's an overview of our filetree in this repo.
 
 This repository implements a Retrieval-Augmented Generation (RAG) workflow that:
 1. Fetches abstracts from PubMed (via NCBI E-utilities)
-2. Cleans and embeds them using Sentence Transformers
+2. leans and embeds them using Sentence Transformers
 3. Stores embeddings in ChromaDB for efficient similarity search
 4. Queries domain knowledge to assist in filling missing predicates in biomedical knowledge graphs
 5. Uses AWS Bedrock LLMs with retrieved context to generate reasoning-based explanations
@@ -209,7 +209,7 @@ This repository implements a Retrieval-Augmented Generation (RAG) workflow that:
 
 ### RAG Usage
 
-#### 1. Retrieve and Store PubMed Abstracts
+#### Steps 1-3. Retrieve and Store PubMed Abstracts
 
 The pipeline automatically:
 - Retrieves PubMed abstracts (default: Alzheimer's disease)
@@ -227,7 +227,7 @@ collection = client.create_collection("pubtator_data")
 model = SentenceTransformer("all-MiniLM-L6-v2")
 ```
 
-#### 2. Query Domain Knowledge
+#### Step 4. Query Domain Knowledge
 
 ```python
 results = query_domain_knowledge(
@@ -239,7 +239,7 @@ results = query_domain_knowledge(
 print(results)
 ```
 
-#### 3. Fill Missing Predicates in Triples
+#### Step 5. Fill Missing Predicates in Triples
 
 ```python
 filled_df, metrics, responses = fill_missing_predicates_llm_with_domain_knowledge(
