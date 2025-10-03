@@ -51,8 +51,7 @@ Install Python dependencies:
 pip install -r requirements.txt
 ```
 
-Key dependencies include:
-- pandas, numpy, boto3 (AWS SDK), sentence-transformers, chromadb, langchain, requests
+Key dependencies include: pandas, numpy, boto3 (AWS SDK), sentence-transformers, chromadb, langchain, requests
 
 ### AWS Configuration
 
@@ -177,17 +176,18 @@ Here's an overview of our filetree in this repo.
 1. **Knowledge Graph Extraction**: Download subgraphs from the Monarch Knowledge Graph, including node metadata (identifiers, labels, descriptions)
 2. **Data Preprocessing**: Convert graph triples from JSON to structured CSV format for analysis
 3. **Edge Removal**: Systematically remove a percentage of edges from trusted graph data to create incomplete subgraphs
-4. **Edge Assignment Methodologies**:
-**Random Baseline**:
+4. **Edge Assignment Methodologies**: We used three strategies for creating our test KGs
+
+A. **Random Baseline**:
 - Randomly assigns predicates from the set of unique relationships in the dataset
 - Provides baseline performance metrics for comparison
 
-**LLM-Based Assignment**:
+B. **LLM-Based Assignment**:
 - Utilizes AWS Bedrock with OpenAI GPT models
 - Batch processing for efficiency
 - Context-aware predicate selection based on subject-object relationships
 
-**RAG-Enhanced Assignment**:
+C. **RAG-Enhanced Assignment**:
 - Integrates domain knowledge from PubMed abstracts
 - Uses ChromaDB for vector similarity search
 - Provides scientific context for relationship prediction
@@ -206,8 +206,7 @@ This repository implements a Retrieval-Augmented Generation (RAG) workflow that:
 4. Queries domain knowledge to assist in filling missing predicates in biomedical knowledge graphs
 5. Uses AWS Bedrock LLMs with retrieved context to generate reasoning-based explanations
 
-
-### RAG Usage
+We detail the RAG usage below: 
 
 #### Steps 1-3. Retrieve and Store PubMed Abstracts
 
