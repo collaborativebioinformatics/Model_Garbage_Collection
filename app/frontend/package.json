@@ -1,0 +1,28 @@
+{
+  "name": "model-garbage-collection-frontend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.2.4",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@preact/signals": "^1.2.2",
+    "@preact/signals-core": "^1.5.1",
+    "cytoscape": "^3.33.1",
+    "framer-motion": "^11.0.3",
+    "preact": "^10.19.3"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.8.1",
+    "@types/cytoscape": "^3.21.9",
+    "@types/node": "^20.11.5",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11"
+  }
+}

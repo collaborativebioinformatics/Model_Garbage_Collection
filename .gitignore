@@ -90,3 +90,8 @@ internal/
 
 # uv
 uv.lock
+# proper gitignore to not include venv ang gene2pubtator3 and its .gz
+gene2pubtator3
+gene2pubtator3.gz
+./venv
+.DS_Store

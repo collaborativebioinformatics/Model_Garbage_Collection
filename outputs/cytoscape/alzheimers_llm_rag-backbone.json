@@ -1,0 +1,400 @@
+{
+  "elements": {
+    "edges": [
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0004975"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0005044"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0005098"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0005129"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0021178"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:16796",
+          "target": "MONDO:0005266"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0004975"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0005044"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0005129"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0005148"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0005155"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0003004"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0004975"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005298"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005559"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0007739"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0001627"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0004975"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0005148"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0005298"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0008315"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "source": "CHEBI:50694",
+          "target": "MONDO:0006626"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:model_of",
+          "source": "MGI:5435319",
+          "target": "MONDO:0004975"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:model_of",
+          "source": "MGI:5435319",
+          "target": "MONDO:0005148"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:related_to",
+          "source": "MONDO:0000960",
+          "target": "MONDO:0005148"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:subclass_of",
+          "source": "MONDO:0005148",
+          "target": "MONDO:0005015"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:related_to",
+          "source": "MONDO:0005266",
+          "target": "MONDO:0005015"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:subclass_of",
+          "source": "MONDO:0005266",
+          "target": "MONDO:0005066"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:subclass_of",
+          "source": "MONDO:0005266",
+          "target": "MONDO:0005283"
+        }
+      },
+      {
+        "data": {
+          "label": "biolink:related_to",
+          "source": "MONDO:0006626",
+          "target": "MONDO:0005015"
+        }
+      }
+    ],
+    "nodes": [
+      {
+        "data": {
+          "description": "A pyridinemonocarboxylic acid that is pyridine in which the hydrogen at position 3 is replaced by a carboxy group.",
+          "id": "CHEBI:15940",
+          "label": "nicotinic acid"
+        }
+      },
+      {
+        "data": {
+          "description": "A member of the class of  acetamides that is acetamide in which one of the hydrogens attached to the nitrogen atom is replaced by a 2-(5-methoxy-1H-indol-3-yl)ethyl group. It is a hormone secreted by the pineal gland in humans.",
+          "id": "CHEBI:16796",
+          "label": "melatonin"
+        }
+      },
+      {
+        "data": {
+          "description": "An N-acyl-amino acid that is a form of the water-soluble vitamin B9. Its biologically active forms (tetrahydrofolate and others) are essential for nucleotide biosynthesis and homocysteine remethylation.",
+          "id": "CHEBI:27470",
+          "label": "folic acid"
+        }
+      },
+      {
+        "data": {
+          "description": "A stilbenol that is stilbene in which the phenyl groups are substituted at positions 3, 5, and 4' by hydroxy groups.",
+          "id": "CHEBI:27881",
+          "label": "resveratrol"
+        }
+      },
+      {
+        "data": {
+          "description": "A beta-diketone that is methane in which two of the hydrogens are substituted by feruloyl groups. A natural dyestuff found in the root of Curcuma longa.",
+          "id": "CHEBI:3962",
+          "label": "curcumin"
+        }
+      },
+      {
+        "data": {
+          "description": "A tetracycline analogue having a dimethylamino group at position 7 and lacking the methyl and hydroxy groups at position 5.",
+          "id": "CHEBI:50694",
+          "label": "minocycline"
+        }
+      },
+      {
+        "data": {
+          "description": "",
+          "id": "MGI:5435319",
+          "label": "Lepr<sup>db</sup>/Lepr<sup>+</sup> Tg(APPswe,PSEN1dE9)85Dbo/0  [background:] involves: C3H * C57BL/6 * C57BLKS/J"
+        }
+      },
+      {
+        "data": {
+          "description": "Diabetic angiopathy is a form of angiopathy associated with diabetic complications.",
+          "id": "MONDO:0000960",
+          "label": "diabetic peripheral angiopathy"
+        }
+      },
+      {
+        "data": {
+          "description": "Loss of intellectual abilities interfering with an individual's social and occupational functions. Causes include Alzheimer's disease, brain injuries, brain tumors, and vascular disorders.",
+          "id": "MONDO:0001627",
+          "label": "dementia"
+        }
+      },
+      {
+        "data": {
+          "description": "Loss of vision in the central portion of the retina (macula), secondary to retinal degeneration.",
+          "id": "MONDO:0003004",
+          "label": "macular degeneration"
+        }
+      },
+      {
+        "data": {
+          "description": "A progressive, neurodegenerative disease characterized by loss of function and death of nerve cells in several areas of the brain leading to loss of cognitive function such as memory and language.",
+          "id": "MONDO:0004975",
+          "label": "Alzheimer disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A metabolic disorder characterized by abnormally high blood sugar levels due to diminished production of insulin or insulin resistance/desensitization.",
+          "id": "MONDO:0005015",
+          "label": "diabetes mellitus"
+        }
+      },
+      {
+        "data": {
+          "description": "Persistently high systemic arterial blood pressure. Based on multiple readings (blood pressure determination), hypertension is currently defined as when systolic pressure is consistently greater than 140 mm Hg or when diastolic pressure is consistently 90 mm Hg or more.",
+          "id": "MONDO:0005044",
+          "label": "hypertensive disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A congenital disorder (due to inherited enzyme abnormality) or acquired (due to failure of a metabolically important organ) disorder resulting from an abnormal metabolic process.",
+          "id": "MONDO:0005066",
+          "label": "metabolic disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A sudden loss of neurological function secondary to hemorrhage or ischemia in the brain parenchyma due to a vascular event.",
+          "id": "MONDO:0005098",
+          "label": "stroke disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "Partial or complete opacity of the crystalline lens of one or both eyes that decreases visual acuity and eventually results in blindness. Some cataracts appear in infancy or in childhood, but most develop in older individuals. (Sternberg Diagnostic Surgical Pathology, 3rd ed.)",
+          "id": "MONDO:0005129",
+          "label": "cataract"
+        }
+      },
+      {
+        "data": {
+          "description": "A type of diabetes mellitus that is characterized by insulin resistance or desensitization and increased blood glucose levels. This is a chronic disease that can develop gradually over the life of a patient and can be linked to both environmental factors and heredity.",
+          "id": "MONDO:0005148",
+          "label": "type 2 diabetes mellitus"
+        }
+      },
+      {
+        "data": {
+          "description": "A disorder characterized by replacement of the liver parenchyma with fibrous tissue and regenerative nodules. It is usually caused by alcoholism, hepatitis B, and hepatitis C. Complications include the development of ascites, esophageal varices, bleeding, and hepatic encephalopathy.",
+          "id": "MONDO:0005155",
+          "label": "cirrhosis of liver"
+        }
+      },
+      {
+        "data": {
+          "description": "A chronic, pathological complication associated with diabetes mellitus, where retinal damages are incurred due to microaneurysms in the vasculature of the retina, progressively leading to abnormal blood vessel growth, and swelling and leaking of fluid from blood vessels, resulting in vision loss or blindness.",
+          "id": "MONDO:0005266",
+          "label": "diabetic retinopathy"
+        }
+      },
+      {
+        "data": {
+          "description": "Any disease or disorder of the retina.",
+          "id": "MONDO:0005283",
+          "label": "retinal disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A condition of reduced bone mass, with decreased cortical thickness and a decrease in the number and size of the trabeculae of cancellous bone (but normal chemical composition), resulting in increased fracture incidence. Osteoporosis is classified as primary (Type 1, postmenopausal osteoporosis; Type 2, age-associated osteoporosis; and idiopathic, which can affect juveniles, premenopausal women, and middle-aged men) and secondary osteoporosis (which results from an identifiable cause of bone mass loss).",
+          "id": "MONDO:0005298",
+          "label": "osteoporosis"
+        }
+      },
+      {
+        "data": {
+          "description": "A disorder of the central nervous system characterized by gradual and progressive loss of neural tissue and neurologic function.",
+          "id": "MONDO:0005559",
+          "label": "neurodegenerative disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A chronic, pathological complication associated with diabetes mellitus, where nerve damages are incurred due to diabetic microvascular injury involving small blood vessels that supply these nerves, resulting in peripheral and/or autonomic nerve dysfunction.",
+          "id": "MONDO:0006626",
+          "label": "diabetic neuropathy"
+        }
+      },
+      {
+        "data": {
+          "description": "Huntington disease (HD) is a rare neurodegenerative disorder of the central nervous system characterized by unwanted choreatic movements, behavioral and psychiatric disturbances and dementia.",
+          "id": "MONDO:0007739",
+          "label": "Huntington disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A primary or metastatic malignant tumor involving the prostate gland. The vast majority are carcinomas.",
+          "id": "MONDO:0008315",
+          "label": "prostate cancer"
+        }
+      },
+      {
+        "data": {
+          "description": "Damage inflicted on the body as the direct or indirect result of an external force, with or without disruption of structural continuity.",
+          "id": "MONDO:0021178",
+          "label": "injury"
+        }
+      }
+    ]
+  }
+}
