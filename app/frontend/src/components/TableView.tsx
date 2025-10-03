@@ -9,6 +9,7 @@ import {
   useColorModeValue,
   Button,
   Box,
+  Tooltip,
 } from '@chakra-ui/react'
 import { useState } from 'preact/hooks'
 import { TriToggle } from './TriToggle'
@@ -55,29 +56,54 @@ export function TableView({ graphData, edgeLabel = 'label' }: TableViewProps) {
         borderColor={borderColor}
         bg={bgColor}
         shadow="xl"
+        maxH="600px"
+        overflowY="auto"
       >
         <Table variant="simple" size="md">
-          <Thead bg={headerBg}>
+          <Thead bg={headerBg} position="sticky" top={0} zIndex={1}>
             <Tr>
-              <Th>Source</Th>
-              <Th>Label</Th>
-              <Th>Target</Th>
-              <Th>Score</Th>
-              <Th>Selection</Th>
+              <Th maxW="400px">Source</Th>
+              <Th maxW="400px">Label</Th>
+              <Th maxW="400px">Target</Th>
+              <Th maxW="400px">Score</Th>
+              <Th maxW="400px">Selection</Th>
             </Tr>
           </Thead>
           <Tbody>
-            {graphData.elements.edges.map((edge) => (
-              <Tr key={edge.data.id}>
-                <Td>{getNodeDisplay(edge.data.source)}</Td>
-                <Td>{edge.data[edgeLabel] || ''}</Td>
-                <Td>{getNodeDisplay(edge.data.target)}</Td>
-                <Td>{edge.data.score !== undefined ? edge.data.score : ''}</Td>
-                <Td>
-                  <TriToggle defaultState="neutral" />
-                </Td>
-              </Tr>
-            ))}
+            {graphData.elements.edges.map((edge) => {
+              const sourceDisplay = getNodeDisplay(edge.data.source)
+              const targetDisplay = getNodeDisplay(edge.data.target)
+              const labelDisplay = edge.data[edgeLabel] || ''
+              const scoreDisplay = edge.data.score !== undefined ? String(edge.data.score) : ''
+
+              return (
+                <Tr key={edge.data.id}>
+                  <Td maxW="400px" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">
+                    <Tooltip label={sourceDisplay} placement="top">
+                      <Box>{sourceDisplay}</Box>
+                    </Tooltip>
+                  </Td>
+                  <Td maxW="400px" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">
+                    <Tooltip label={labelDisplay} placement="top">
+                      <Box>{labelDisplay}</Box>
+                    </Tooltip>
+                  </Td>
+                  <Td maxW="400px" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">
+                    <Tooltip label={targetDisplay} placement="top">
+                      <Box>{targetDisplay}</Box>
+                    </Tooltip>
+                  </Td>
+                  <Td maxW="400px" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">
+                    <Tooltip label={scoreDisplay} placement="top">
+                      <Box>{scoreDisplay}</Box>
+                    </Tooltip>
+                  </Td>
+                  <Td maxW="400px">
+                    <TriToggle defaultState="neutral" />
+                  </Td>
+                </Tr>
+              )
+            })}
           </Tbody>
         </Table>
       </TableContainer>

@@ -17,26 +17,12 @@ import { StatsCard } from './components/StatsCard'
 import { GraphView } from './components/GraphView'
 import { TriToggle } from './components/TriToggle'
 import { TableView } from './components/TableView'
+import { GraphData } from './types/GraphInterface'
+import graphDataJson from './data/alzheimers_llm/graph.json'
+import backboneDataJson from './data/alzheimers_llm/backbone_graph.json'
 
-const sampleGraphData = {
-  elements: {
-    nodes: [
-      { "data": { "id": "MONDO:0005723", "label": "faked", "description": "text definition" } },
-      { "data": { "id": "MONDO:0006764", "label": "made_up", "description": "description2" } },
-      { "data": { "id": "CHEBI:35610", "label": "label3", "description": "" } },
-      { "data": { "id": "MONDO:0018908", "label": "label4", "description": "description3" } }
-    ],
-    edges: [
-      { "data": { "id": "edge1", "source": "MONDO:0005723", "target": "MONDO:0006764", "label": "biolink:subclass_of" } },
-      { "data": { "id": "edge2", "source": "CHEBI:35610", "target": "MONDO:0018908", "label": "biolink:treats_or_applied_or_studied_to_treat" } }
-    ]
-  },
-  data: {
-    title: "IT Infrastructure Network",
-    description: "A sample network showing the connection between IT components.",
-    tags: ["network", "example"]
-  }
-}
+const graphData: GraphData = graphDataJson as GraphData
+const backboneData: GraphData = backboneDataJson as GraphData
 
 export function App() {
   const { setColorMode } = useColorMode()
@@ -77,23 +63,17 @@ export function App() {
           <Divider borderColor="gray.700" />
 
           {/* Stats Section */}
-          <StatsCard />
+          {/* <StatsCard /> */}
 
           {/* TriToggle Demo */}
-          <Box>
+          {/* <Box>
             <Heading size="md" color="teal.300" mb={4}>
               TriToggle Component
             </Heading>
             <TriToggle defaultState="neutral" onChange={(state) => console.log('TriToggle state:', state)} />
-          </Box>
+          </Box> */}
 
-          {/* Table View */}
-          <Box>
-            <Heading size="md" color="teal.300" mb={4}>
-              Edge Table View
-            </Heading>
-            <TableView graphData={sampleGraphData} edgeLabel="label" />
-          </Box>
+          
 
           {/* Graph Visualization */}
           <Box>
@@ -101,33 +81,31 @@ export function App() {
               Network Graph Visualization
             </Heading>
             <GraphView
-              graphData={sampleGraphData}
+              graphData={graphData}
               highlightedEdges={highlightedEdges}
               edgeLabel="label"
             />
-            <HStack mt={4} spacing={3}>
-              <Button
-                size="sm"
-                colorScheme="red"
-                onClick={() => toggleEdgeHighlight('desktop-server')}
-              >
-                Toggle Desktop-Server Edge
-              </Button>
-              <Button
-                size="sm"
-                colorScheme="red"
-                onClick={() => toggleEdgeHighlight('server-database')}
-              >
-                Toggle Server-Database Edge
-              </Button>
-              <Button
-                size="sm"
-                colorScheme="gray"
-                onClick={() => setHighlightedEdges([])}
-              >
-                Clear Highlights
-              </Button>
-            </HStack>
+          </Box>
+
+
+          {/* Backbone Table View */}
+          <Box>
+            <Heading size="md" color="teal.300" mb={4}>
+              Edge Table View
+            </Heading>
+            <TableView graphData={backboneData} edgeLabel="label" />
+          </Box>
+
+          {/* Backbone Visualization */}
+          <Box>
+            <Heading size="md" color="teal.300" mb={4}>
+              Backbone Query Graph Visualization
+            </Heading>
+            <GraphView
+              graphData={backboneData}
+              highlightedEdges={[]}
+              edgeLabel="label"
+            />
           </Box>
 
           {/* Interactive Components Grid */}
