@@ -1,17 +1,31 @@
 #!/usr/bin/env python3
 """
-Score synthetic validation edges using trained GNN model.
+Score validation edges (original + synthetic) using trained GNN model.
 
 This script is part of the HITL (Human-in-the-Loop) pipeline. It scores
-synthetic edges from the validation set to identify uncertain edges for
-human review.
+ALL validation edges (both original Monarch KG and synthetic LLM-generated)
+to identify uncertain edges for human review.
+
+Key points:
+- Original edges: Trusted but not 100% perfect - can contain errors
+- Synthetic edges: AI-generated, more likely to contain errors
+- Both should be reviewed by domain experts
 
 Usage:
+    # Score both original and synthetic validation edges
     python score_edges.py \
         --experiment_name hitl_iter0 \
         --dataset AlzheimersKG \
-        --synthetic_files synthetic/valid_random.txt,synthetic/valid_llm.txt \
-        --output ../../data/hitl/iteration_1/synthetic_valid_scores.jsonl
+        --validation_files original/valid.txt,synthetic/valid_random.txt \
+        --output ../../data/hitl/iteration_1/validation_scores.jsonl
+
+    # Subsequent iterations only score unreviewed edges
+    python score_edges.py \
+        --experiment_name hitl_iter1 \
+        --dataset AlzheimersKG \
+        --validation_files original/valid.txt,synthetic/valid_random.txt \
+        --exclude_reviewed ../../data/hitl/iteration_1/edges_to_review.jsonl \
+        --output ../../data/hitl/iteration_2/validation_scores.jsonl
 """
 
 import os
@@ -94,12 +108,15 @@ def main(params):
     simplefilter(action="ignore", category=UserWarning)
     simplefilter(action="ignore", category=SparseEfficiencyWarning)
 
-    # Parse synthetic files to score
-    edge_files = [f.strip() for f in params.synthetic_files.split(",")]
+    # Parse validation files to score (both original and synthetic)
+    edge_files = [f.strip() for f in params.validation_files.split(",")]
     print("=" * 60)
-    print("Scoring Synthetic Validation Edges")
+    print("Scoring Validation Edges (Original + Synthetic)")
     print("=" * 60)
     print(f"Files to score: {', '.join(edge_files)}")
+    print(
+        "Note: Both original (trusted) and synthetic (AI-generated) edges are scored."
+    )
 
     # Load trained model
     print(f"\n[1/4] Loading model from {params.experiment_name}...")
@@ -113,15 +130,15 @@ def main(params):
             params.main_dir, f"data/{params.dataset}/original/train.txt"
         ),
     }
-    # Add all synthetic files as separate splits
+    # Add all validation files as separate splits
     for i, edge_file in enumerate(edge_files):
-        split_name = f"synthetic_valid_{i}"
+        split_name = f"validation_{i}"
         params.file_paths[split_name] = os.path.join(
             params.main_dir, f"data/{params.dataset}/{edge_file}"
         )
 
-    splits_to_score = [f"synthetic_valid_{i}" for i in range(len(edge_files))]
-    db_path_suffix = "synthetic_valid"
+    splits_to_score = [f"validation_{i}" for i in range(len(edge_files))]
+    db_path_suffix = "validation"
 
     # Generate subgraphs
     print(f"\n[2/4] Extracting subgraphs for edges...")
@@ -215,12 +232,18 @@ if __name__ == "__main__":
         help="Dataset name (e.g., AlzheimersKG)",
     )
 
-    # Synthetic validation files to score
+    # Validation files to score (both original and synthetic)
     parser.add_argument(
-        "--synthetic_files",
+        "--validation_files",
         type=str,
         required=True,
-        help="Comma-separated synthetic validation files, e.g., 'synthetic/valid_random.txt,synthetic/valid_llm.txt'",
+        help="Comma-separated validation files (original + synthetic), e.g., 'original/valid.txt,synthetic/valid_random.txt'",
+    )
+    parser.add_argument(
+        "--exclude_reviewed",
+        type=str,
+        default=None,
+        help="Path to edges_to_review.jsonl from previous iteration to exclude already-reviewed edges",
     )
     parser.add_argument(
         "--output", type=str, required=True, help="Output path for scores JSONL file"
