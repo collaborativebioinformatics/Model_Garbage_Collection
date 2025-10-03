@@ -384,6 +384,10 @@ Examples:
 
     args = parser.parse_args()
 
+    # Validate ratio is positive
+    if args.ratio <= 0:
+        parser.error(f"--ratio must be positive, got {args.ratio}")
+
     # Parse synthetic file paths
     synthetic_paths = [path.strip() for path in args.synthetic.split(",")]
 

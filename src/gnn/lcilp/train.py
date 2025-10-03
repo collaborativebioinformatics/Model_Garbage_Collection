@@ -35,6 +35,15 @@ def main(params):
             if key.startswith("synthetic_train"):
                 synthetic_train_file_paths.append(params.file_paths[key])
 
+        # Validate synthetic files are non-empty before training
+        for file_path in synthetic_train_file_paths:
+            if not os.path.exists(file_path):
+                raise FileNotFoundError(
+                    f"Synthetic training file not found: {file_path}"
+                )
+            if os.path.getsize(file_path) == 0:
+                raise ValueError(f"Synthetic training file is empty: {file_path}")
+
         # Call generate_subgraph_datasets with explicit mode
         generate_subgraph_datasets(
             params,

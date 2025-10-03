@@ -26,16 +26,20 @@ def load_synthetic_negatives(file_paths, entity2id, relation2id):
         numpy array of synthetic edges in format [head_id, tail_id, relation_id]
     """
     all_synthetic_edges = []
+    missing_files = []
+    files_loaded = 0
 
     for file_path in file_paths:
         if not os.path.exists(file_path):
             logging.warning(f"Synthetic file not found: {file_path}, skipping...")
+            missing_files.append(file_path)
             continue
 
         logging.info(f"Loading synthetic negatives from: {file_path}")
         with open(file_path) as f:
             file_data = [line.split() for line in f.read().split("\n")[:-1]]
 
+        edges_before = len(all_synthetic_edges)
         for triplet in file_data:
             # Only include edges where all entities and relations are known
             if (
@@ -50,12 +54,29 @@ def load_synthetic_negatives(file_paths, entity2id, relation2id):
                         relation2id[triplet[1]],
                     ]
                 )
+        edges_added = len(all_synthetic_edges) - edges_before
+        if edges_added > 0:
+            files_loaded += 1
 
     if len(all_synthetic_edges) == 0:
-        logging.warning("No synthetic edges loaded! Check file paths.")
+        if missing_files:
+            logging.warning(
+                f"No synthetic edges loaded! {len(missing_files)} file(s) not found: "
+                f"{', '.join(missing_files)}"
+            )
+        elif files_loaded == 0:
+            logging.warning(
+                "No synthetic edges loaded! All provided files exist but contain no valid edges."
+            )
+        else:
+            logging.warning(
+                "No synthetic edges loaded! Files exist but no edges matched entity/relation IDs."
+            )
         return np.array([])
 
-    logging.info(f"Loaded {len(all_synthetic_edges)} synthetic negative edges")
+    logging.info(
+        f"Loaded {len(all_synthetic_edges)} synthetic negative edges from {files_loaded} file(s)"
+    )
     return np.array(all_synthetic_edges)
 
 
@@ -116,6 +137,17 @@ def generate_subgraph_datasets(
             "valid": synthetic_valid_files or [],
             "test": synthetic_test_files or [],
         }
+
+        # Validate that synthetic files are provided for requested splits
+        for split_name in splits:
+            if (
+                split_name in synthetic_files_map
+                and not synthetic_files_map[split_name]
+            ):
+                logging.warning(
+                    f"No synthetic files provided for split '{split_name}' in explicit mode. "
+                    f"Negatives will be empty for this split."
+                )
 
         for split_name, split in graphs.items():
             # Positive edges: original edges from the split

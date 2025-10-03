@@ -234,7 +234,7 @@ def main(params):
         "inference_pos",
         "inference_neg",  # Will be empty (num_neg_samples_per_link=0)
         params.file_paths,
-        graph_classifier.relation2id,
+        included_relations=graph_classifier.relation2id,
         add_traspose_rels=params.add_traspose_rels,
         num_neg_samples_per_link=0,  # No negative samples for inference
         use_kge_embeddings=params.use_kge_embeddings,
