@@ -25,27 +25,66 @@ The KG Model Garbage Collection Tool provides a proof-of-concept (PoC) framework
 
 
 ## Quickstart Instructions
-## What can you do with KG Garbage Model Collector?
+### What can you do with KG Garbage Model Collector?
 * You can collaboratively find and remove problem edges.
 * Isolate part of a large knowledge graph to curate a smaller, workable data set
 * Teach a GNN to find problems and curate only the problems it identifies
 * Check the problems manually - iterate until agreement on what to prune
 
-### Prerequisites
-### AWS Bedrock Setup
+### System Requirements
 
-Configure AWS credentials in `~/.aws/credentials`:
+- Python 3.8 or higher
+- Node.js 14.x or higher (for frontend components)
+- AWS CLI configured with appropriate credentials
+- Access to PubMed E-utilities (for RAG functionality)
 
-```ini
-[default]
-aws_access_key_id=YOUR_KEY
-aws_secret_access_key=YOUR_SECRET
-region=us-east-1
+### Dependencies
+
+Install Python dependencies:
+
+```bash
+pip install -r requirements.txt
 ```
 
-The script uses:
-- **Model**: `openai.gpt-oss-120b-1:0`
-- **Parameters**: `temperature=0.2`, `top_p=0.9`, and high `max_tokens`
+Key dependencies include:
+- pandas
+- numpy
+- boto3 (AWS SDK)
+- sentence-transformers
+- chromadb
+- langchain
+- requests
+
+### AWS Configuration
+
+Configure AWS credentials for Bedrock access:
+
+```bash
+aws configure
+```
+
+Ensure access to the following AWS services:
+- Amazon Bedrock (for LLM inference)
+- Appropriate IAM permissions for model access
+
+### Environment Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/collaborativebioinformatics/Model_Garbage_Collection.git
+cd Model_Garbage_Collection
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+3. Configure environment variables:
+```bash
+export AWS_REGION=us-east-1
+export AWS_PROFILE=your-profile
+```
 
 ### Order of execution
 1. **src/knowledge-graph/download.py** - download a subgraph from Monarch KG (and node data including id, label, & description)
