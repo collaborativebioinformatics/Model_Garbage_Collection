@@ -153,9 +153,7 @@ Model_Garbage_Collection/
 ### Data Processing Pipeline
 1. **Knowledge Graph Extraction**: Download subgraphs from the Monarch Knowledge Graph, including node metadata (identifiers, labels, descriptions) - *src/knowledge-graph/download.py*
 2. **Data Preprocessing**: Convert graph triples from JSON to structured CSV format for analysis - *src/knowledge-graph/triples_to_csv.py*
-4. **Edge Removal & Assignment Methodologies**: Systematically remove a percentage of edges from trusted graph data to create incomplete subgraphs. We used three strategies for creating our test KGs. - *Edge_Assignor.ipynb*. See [README-Edge_Assignor.md](README-Edge_Assignor.md) for details on RAG pipeline.
-5. **Simulated Human Curation**: A Python script that simulates human review by comparing assigned edges against ground truth, generating curated datasets for GNN training - *src/human_simulator.py*
-6 **Prepare cytoscape visualization files**: Create files for visualization in Cytoscape with node & edge data for each rebuilt knowledge graph & associated backbones - *src/knowledge-graph/create_cytoscape_files.py*
+3. **Edge Removal & Assignment Methodologies**: Systematically remove a percentage of edges from trusted graph data to create incomplete subgraphs. We used three strategies for creating our test KGs. - *Edge_Assignor.ipynb*. See [README-Edge_Assignor.md](README-Edge_Assignor.md) for details on RAG pipeline.
 
 
 ### Model training & validation pipeline
@@ -182,15 +180,17 @@ python src/gnn/lcilp/train.py
 
 
 ### Validation and Evaluation
+**Simulated Human Curation**: A Python script that simulates human review by comparing assigned edges against ground truth, generating curated datasets for GNN training - *src/human_simulator.py*
 
 - **Ground Truth Comparison**: Systematic comparison against trusted Monarch KG data
 - **Accuracy Metrics**: Predicate matching rates, precision, and recall calculations
 - **Error Analysis**: Categorization of prediction errors and failure modes
 - **Human Validation Interface**: Prototype of an interactive web browser tool to collect expert review and feedback
 
-
 ### Graphical User Interface
-We built a GUI!
+**Prepare cytoscape visualization files**: Create files for visualization in Cytoscape with node & edge data for each rebuilt knowledge graph & associated backbones - *src/knowledge-graph/create_cytoscape_files.py*
+
+The GUI we built is a simulated example. 
 
 
 ## Future Directions
