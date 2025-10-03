@@ -11,15 +11,20 @@
 * Van Truong (University of Pennsylvania)
 
 ## Project Overview
-Biomedical knowledge graphs (KG) are powerful tools for linking genes, diseases, and phenotypes — but when AI models generate new edges, they often hallucinate or introduce errors. Our project focuses on pruning these errors. The KG Model Garbage Collection Tool is a proof-of-concept for how a combination of human review, grounded AI, and graph learning can work together to keep biomedical knowledge graphs accurate and trustworthy.
+Biomedical knowledge graphs (KGs) are powerful tools for linking genes, diseases, and phenotypes — but when AI models generate new edges, they often hallucinate or introduce errors. Our project focuses on pruning these errors. We show how combining human review, grounded AI, and graph learning can work together to keep biomedical knowledge graphs accurate and trustworthy.
 
-The KG Model Garbage Collection Tool uses a subset of a trusted graph (Monarch) and randomly removes some edges. Then, three strategies are used to fill the missing edges: random guessing, a general LLM, and an LLM using biomedical RAG. Participants (SMEs) validate (some of) these edges through a simple interface to evaluate how close each method comes to the truth. This data is used to train a graph neural network to see if it can automatically spot questionable edges and flag them for review and removal. The resulting knowledge graph is tested against the original, trusted knowledge graph. 
+The **KG Model Garbage Collection Tool** is a proof-of-concept that:
+* Starts with a trusted subset of the Monarch KG (with edges randomly removed).
+* Fills in missing edges using three approaches to simulate a real-world, messy knowledge graph: random assignment (control), a general LLM, and an LLM with biomedical RAG.
+* Participants, for example subject-matter experts (SMEs), are invited to click and validate (some of) these edges through a simple interface to evaluate how close each method comes to the truth.
+* This data is used to train a graph neural network (GNN) to see if it can automatically spot questionable edges and flag them for review and removal.
+* The resulting knowledge graph is tested against the original, trusted knowledge graph. 
 
 ## Problem
-Generating knowledge graphs at scale requires the use of Large Language Models (LLMs), which can introduce errors and hallucinations. In biomedicine, mistakes could lead to errors that cause harm to people. While Human-in-the-Loop (HITL) approaches can mitigate risks, they are not scalable solutions for large, complex knowledge graphs.
+Large Language Models (LLMs) are increasingly used to scale up knowledge graphs, but they introduce errors nad hallucinations. In biomedicine, these mistakes can have real-world consequences. While Human-in-the-Loop (HITL) approaches can mitigate risks, they are not scalable solutions for large, complex knowledge graphs.
 
 ## Solution
-The KG Model Garbage Collection Tool provides a proof-of-concept (PoC) framework allowing curators to probe a KG using real scientific questions, provide feedback, and use that feedback to train a GNN. This tool extends the impact of human curation by learning from expert human validation patterns.
+The **KG Model Garbage Collection Tool** provides a proof-of-concept (PoC) framework allowing curators to probe a KG using real scientific questions, provide feedback, and use that feedback to train a GNN. This tool extends the impact of human curation by learning from expert human validation patterns.
 
 <img width="561" height="518" alt="Screenshot 2025-10-03 at 9 23 05 AM" src="https://github.com/user-attachments/assets/933c615e-d665-4841-a5d6-1bd89adf72d0" />
 
