@@ -47,13 +47,7 @@ TODO update with filetree
 
 ---
 
-## Project Goals
-1. **Quality Assurance**: Develop automated methods to identify potentially erroneous edges in biomedical knowledge graphs
-2. **Human-in-the-Loop Validation**: Create dynamic, scalable frameworks for expert validation of AI-generated graph content
-3. **Comparative Analysis**: Evaluate different edge prediction strategies (random, LLM-based, RAG-enhanced) against ground truth
-4. **Graph Neural Network Training**: Train models to automatically detect questionable edges using human feedback
-5. **Validation Framework**: Establish robust methods for comparing reconstructed graphs against trusted knowledge bases
-
+## Methods
 
 ### Data Processing Pipeline
 1. **Knowledge Graph Extraction**: Download subgraphs from the Monarch Knowledge Graph, including node metadata (identifiers, labels, descriptions)
@@ -92,7 +86,7 @@ TODO update with filetree
 
 ---
 
-# RAG Pipeline for Biomedical Knowledge Graphs
+### RAG Pipeline for Biomedical Knowledge Graphs
 
 This repository implements a Retrieval-Augmented Generation (RAG) workflow that:
 1. Fetches abstracts from PubMed (via NCBI E-utilities)
@@ -103,7 +97,7 @@ This repository implements a Retrieval-Augmented Generation (RAG) workflow that:
 
 ---
 
-## AWS Bedrock Setup
+### AWS Bedrock Setup
 
 Configure AWS credentials in `~/.aws/credentials`:
 
@@ -120,7 +114,7 @@ The script uses:
 
 ---
 
-## Features
+### Features
 
 - **PubMed Retrieval** – fetch abstracts using `esearch` + `efetch`
 - **Abstract Cleaning** – removes affiliations and emails
