@@ -213,56 +213,65 @@ def main():
         "CHEBI:15365",
     ]
 
-    input_file = "data/alzheimers_triples.csv"
-    output_file = "data/backbone_triples.csv"
+    input_files = [
+        "outputs/antijoin_alzheimers_random.csv",
+        "outputs/antijoin_alzheimers_llm.csv",
+        "outputs/antijoin_alzheimers_llm_rag.csv",
+    ]
 
-    print(f"Reading triples from {input_file}")
-    triples = read_triples(input_file)
-    print(f"Total triples loaded: {len(triples)}")
+    for input_file in input_files:
+        output_file = input_file.replace(".csv", "-backbone.csv")
+        print(f"Reading triples from {input_file}")
+        triples = read_triples(input_file)
+        print(f"Total triples loaded: {len(triples)}")
 
-    print(f"Filtering for {len(target_subjects)} target subjects...")
-    filtered_triples = find_connected_subgraph(
-        triples, target_subjects, max_objects_per_subject=5, min_rows=10, max_rows=30
-    )
+        print(f"Filtering for {len(target_subjects)} target subjects...")
+        filtered_triples = find_connected_subgraph(
+            triples,
+            target_subjects,
+            max_objects_per_subject=5,
+            min_rows=10,
+            max_rows=30,
+        )
 
-    if not filtered_triples:
-        print("No suitable subgraph found!")
-        return
+        if not filtered_triples:
+            print("No suitable subgraph found!")
+            return
 
-    print(f"Final filtered triples: {len(filtered_triples)}")
+        print(f"Final filtered triples: {len(filtered_triples)}")
 
-    # Write filtered triples to output file
-    with open(output_file, "w", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow(["subject", "predicate", "object"])
-        for subject, predicate, obj in filtered_triples:
-            writer.writerow([subject, predicate, obj])
+        # Write filtered triples to output file
+        with open(output_file, "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["subject", "predicate", "object"])
+            for subject, predicate, obj in filtered_triples:
+                writer.writerow([subject, predicate, obj])
 
-    print(f"Filtered triples written to {output_file}")
+        print(f"Filtered triples written to {output_file}")
 
-    # Print summary statistics
-    subjects = set(s for s, p, o in filtered_triples)
-    objects = set(o for s, p, o in filtered_triples)
-    all_entities = subjects | objects
-    target_entities_found = set(target_subjects) & all_entities
+        # Print summary statistics
+        subjects = set(s for s, p, o in filtered_triples)
+        objects = set(o for s, p, o in filtered_triples)
+        all_entities = subjects | objects
+        target_entities_found = set(target_subjects) & all_entities
 
-    print(f"\nSummary:")
-    print(f"- Total triples: {len(filtered_triples)}")
-    print(f"- Unique subjects: {len(subjects)}")
-    print(f"- Unique objects: {len(objects)}")
-    print(f"- Total unique entities: {len(all_entities)}")
-    print(
-        f"- Target subjects found: {len(target_entities_found)} out of {len(target_subjects)}"
-    )
-    print(f"- Target subjects in graph: {sorted(target_entities_found)}")
+        print(f"\nSummary:")
+        print(f"- Total triples: {len(filtered_triples)}")
+        print(f"- Unique subjects: {len(subjects)}")
+        print(f"- Unique objects: {len(objects)}")
+        print(f"- Total unique entities: {len(all_entities)}")
+        print(
+            f"- Target subjects found: {len(target_entities_found)} out of {len(target_subjects)}"
+        )
+        print(f"- Target subjects in graph: {sorted(target_entities_found)}")
 
-    # Check connectivity
-    final_graph = build_graph_from_triples(filtered_triples)
-    if is_connected(final_graph):
-        print("- Graph is connected ✓")
-    else:
-        components = find_connected_components(final_graph)
-        print(f"- Graph has {len(components)} connected components")
+        # Check connectivity
+        final_graph = build_graph_from_triples(filtered_triples)
+        if is_connected(final_graph):
+            print("- Graph is connected ✓")
+        else:
+            components = find_connected_components(final_graph)
+            print(f"- Graph has {len(components)} connected components")
 
 
 if __name__ == "__main__":
