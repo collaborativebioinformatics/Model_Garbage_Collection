@@ -184,6 +184,22 @@ This produces:
 - `bedrock_rag_metrics_test.json` – run statistics
 - `bedrock_rag_responses_test.json` – detailed LLM responses
 
+### Graph Neural Network Training
+
+1. **Extract Graph Backbone**:
+```bash
+python src/knowledge-graph/extract.py
+```
+
+2. **Prepare Training Data**:
+```bash
+python src/gnn/run_hitl_prep.sh
+```
+
+3. **Train GNN Model**:
+```bash
+python src/gnn/lcilp/train.py
+```
 
 ### Validation and Evaluation
 
