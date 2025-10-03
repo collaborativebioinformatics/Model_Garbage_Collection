@@ -52,13 +52,7 @@ pip install -r requirements.txt
 ```
 
 Key dependencies include:
-- pandas
-- numpy
-- boto3 (AWS SDK)
-- sentence-transformers
-- chromadb
-- langchain
-- requests
+- pandas, numpy, boto3 (AWS SDK), sentence-transformers, chromadb, langchain, requests
 
 ### AWS Configuration
 
@@ -217,32 +211,30 @@ Belo is a quick logic flow behind each of our scripts.
 ## Detailed Explanation of Our Methods
 
 ### Data Processing Pipeline
+<img width="1761" height="617" alt="image" src="https://github.com/user-attachments/assets/0f4c9d81-b80a-4c75-b2f9-49c50b6d2382" />
+
 1. **Knowledge Graph Extraction**: Download subgraphs from the Monarch Knowledge Graph, including node metadata (identifiers, labels, descriptions)
 2. **Data Preprocessing**: Convert graph triples from JSON to structured CSV format for analysis
 3. **Edge Removal**: Systematically remove a percentage of edges from trusted graph data to create incomplete subgraphs
-4. **Edge Prediction Strategies**:
-   - **Random Assignment**: Baseline method using random selection from available predicates
-   - **LLM-Based Prediction**: AWS Bedrock API with GPT models for context-aware edge prediction
-   - **RAG-Enhanced Prediction**: Retrieval-Augmented Generation using PubMed abstracts and ChromaDB for domain-specific context
-5. **Validation Framework**: Compare predicted edges against ground truth using exact matching and validation scoring
-6. **Graph Neural Network Training**: Extract graph backbones for GNN input and training on validation patterns
-
-### Edge Assignment Methodologies
-
-A. **Random Baseline**:
+4. **Edge Assignment Methodologies**:
+**Random Baseline**:
 - Randomly assigns predicates from the set of unique relationships in the dataset
 - Provides baseline performance metrics for comparison
 
-B. **LLM-Based Assignment**:
+**LLM-Based Assignment**:
 - Utilizes AWS Bedrock with OpenAI GPT models
 - Batch processing for efficiency
 - Context-aware predicate selection based on subject-object relationships
 
-C. **RAG-Enhanced Assignment**:
+**RAG-Enhanced Assignment**:
 - Integrates domain knowledge from PubMed abstracts
 - Uses ChromaDB for vector similarity search
 - Provides scientific context for relationship prediction
 - Includes PMID citations for traceability
+
+6. **Validation Framework**: Compare predicted edges against ground truth using exact matching and validation scoring
+7. **Graph Neural Network Training**: Extract graph backbones for GNN input and training on validation patterns
+
 
 ### RAG Pipeline for Biomedical Knowledge Graphs
 
@@ -306,15 +298,8 @@ This produces:
 - `bedrock_rag_responses_test.json` – detailed LLM responses
 
 
-### Validation and Evaluation
-
-- **Ground Truth Comparison**: Systematic comparison against trusted Monarch KG data
-- **Accuracy Metrics**: Predicate matching rates, precision, and recall calculations
-- **Error Analysis**: Categorization of prediction errors and failure modes
-- **Human Validation Interface**: Web-based tools for expert review and feedback collection
-
-
 ### Graph Neural Network Training
+<img width="1767" height="516" alt="image" src="https://github.com/user-attachments/assets/5fa4f7eb-3304-4871-86c3-4f0333a92713" />
 
 1. **Extract Graph Backbone**:
 ```bash
@@ -330,6 +315,17 @@ python src/gnn/run_hitl_prep.sh
 ```bash
 python src/gnn/lcilp/train.py
 ```
+<img width="1843" height="809" alt="image" src="https://github.com/user-attachments/assets/078c0736-bc5b-4489-accf-fa3bfa8f6f79" />
+
+
+### Validation and Evaluation
+
+- **Ground Truth Comparison**: Systematic comparison against trusted Monarch KG data
+- **Accuracy Metrics**: Predicate matching rates, precision, and recall calculations
+- **Error Analysis**: Categorization of prediction errors and failure modes
+- **Human Validation Interface**: Prototype of an interactive web browser tool to collect expert review and feedback
+
+<img width="507" height="836" alt="image" src="https://github.com/user-attachments/assets/12d5a311-23ef-43cd-9efe-9d14c1f994d6" />
 
 ### Graphical User Interface
 We built a GUI!
@@ -372,10 +368,5 @@ We welcome contributions from the biomedical informatics and AI research communi
 ## License
 
 
-## Acknowledgments
-
-This project builds upon the foundational work of the Monarch Initiative and leverages data from multiple biomedical knowledge sources. We acknowledge the contributions of domain experts and the broader biomedical informatics community.
-
-
-## Data Sources
-The KG Model Garbage Collection tool uses and displays data and algorithms from the Monarch Initiative. The Monarch Initiative (https://monarchinitiative.org) makes biomedical knowledge exploration more efficient and effective by providing tools for genotype-phenotype analysis, genomic diagnostics, and precision medicine across broad areas of disease.
+## Acknowledgements
+The KG Model Garbage Collection tool uses and displays data and algorithms from the Monarch Initiative. The Monarch Initiative (https://monarchinitiative.org) makes biomedical knowledge exploration more efficient and effective by providing tools for genotype-phenotype analysis, genomic diagnostics, and precision medicine across broad areas of disease. We acknowledge the contributions of domain experts and the broader biomedical informatics community.
