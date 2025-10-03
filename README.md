@@ -32,10 +32,22 @@ The KG Model Garbage Collection Tool provides a proof-of-concept (PoC) framework
 * Check the problems manually - iterate until agreement on what to prune
 
 ### Prerequisites
-TODO
+### AWS Bedrock Setup
+
+Configure AWS credentials in `~/.aws/credentials`:
+
+```ini
+[default]
+aws_access_key_id=YOUR_KEY
+aws_secret_access_key=YOUR_SECRET
+region=us-east-1
+```
+
+The script uses:
+- **Model**: `openai.gpt-oss-120b-1:0`
+- **Parameters**: `temperature=0.2`, `top_p=0.9`, and high `max_tokens`
 
 ### Order of execution
-TODO update with filetree
 1. **src/knowledge-graph/download.py** - download a subgraph from Monarch KG (and node data including id, label, & description)
 2. **src/knowledge-graph/triples_to_csv.py** - convert the downloaded triples from JSON to CSV file
 3. **Edge_Assignore.ipynb** - randomly remove some edges from the downloaded triples and use 3 strategies to rebuild the edges (random, LLM, LLM-RAG)
@@ -73,14 +85,6 @@ TODO update with filetree
 - Provides scientific context for relationship prediction
 - Includes PMID citations for traceability
 
-### Validation and Evaluation
-
-- **Ground Truth Comparison**: Systematic comparison against trusted Monarch KG data
-- **Accuracy Metrics**: Predicate matching rates, precision, and recall calculations
-- **Error Analysis**: Categorization of prediction errors and failure modes
-- **Human Validation Interface**: Web-based tools for expert review and feedback collection
-
-
 ### RAG Pipeline for Biomedical Knowledge Graphs
 
 This repository implements a Retrieval-Augmented Generation (RAG) workflow that:
@@ -90,35 +94,7 @@ This repository implements a Retrieval-Augmented Generation (RAG) workflow that:
 4. Queries domain knowledge to assist in filling missing predicates in biomedical knowledge graphs
 5. Uses AWS Bedrock LLMs with retrieved context to generate reasoning-based explanations
 
-
-### AWS Bedrock Setup
-
-Configure AWS credentials in `~/.aws/credentials`:
-
-```ini
-[default]
-aws_access_key_id=YOUR_KEY
-aws_secret_access_key=YOUR_SECRET
-region=us-east-1
-```
-
-The script uses:
-- **Model**: `openai.gpt-oss-120b-1:0`
-- **Parameters**: `temperature=0.2`, `top_p=0.9`, and high `max_tokens`
-
-
-### Features
-
-- **PubMed Retrieval** – fetch abstracts using `esearch` + `efetch`
-- **Abstract Cleaning** – removes affiliations and emails
-- **Chunking and Embeddings** – uses `RecursiveCharacterTextSplitter` and `all-MiniLM-L6-v2`
-- **Vector Database** – stores and queries embeddings in ChromaDB
-- **RAG Querying** – retrieves top-k chunks for domain context
-- **Predicate Filling** – enhances triples with missing predicates using LLMs
-- **Evidence Generation** – produces reasoning sentences with PubMed IDs for traceability
-
-
-## RAG Usage
+### RAG Usage
 
 ### 1. Retrieve and Store PubMed Abstracts
 
@@ -168,6 +144,14 @@ This produces:
 - `bedrock_rag_filled_test.csv` – triples with filled predicates
 - `bedrock_rag_metrics_test.json` – run statistics
 - `bedrock_rag_responses_test.json` – detailed LLM responses
+
+
+### Validation and Evaluation
+
+- **Ground Truth Comparison**: Systematic comparison against trusted Monarch KG data
+- **Accuracy Metrics**: Predicate matching rates, precision, and recall calculations
+- **Error Analysis**: Categorization of prediction errors and failure modes
+- **Human Validation Interface**: Web-based tools for expert review and feedback collection
 
 
 ## Data Sources
