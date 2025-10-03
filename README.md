@@ -13,10 +13,11 @@ The KG Model Garbage Collection Tool is a proof-of-concept (PoC) allowing curato
 <img width="561" height="518" alt="Screenshot 2025-10-03 at 9 23 05 AM" src="https://github.com/user-attachments/assets/933c615e-d665-4841-a5d6-1bd89adf72d0" />
 
 ## Order of execution
-1. src/knowledge-graph/download.py - download a subgraph from Monarch KG (and node data including id, label, & description)
-2. src/knowledge-graph/triples_to_csv.py - convert the downloaded triples from JSON to CSV file
-3. Edge_Assignore.ipynb - randomly remove some edges from the downloaded triples and use 3 strategies to rebuild the edges (random, LLM, LLM-RAG)
-5. src/knowledge-graph/extract.py - extract the "backbone" of the graph for input to GNN
+1. **src/knowledge-graph/download.py** - download a subgraph from Monarch KG (and node data including id, label, & description)
+2. **src/knowledge-graph/triples_to_csv.py** - convert the downloaded triples from JSON to CSV file
+3. **Edge_Assignore.ipynb** - randomly remove some edges from the downloaded triples and use 3 strategies to rebuild the edges (random, LLM, LLM-RAG)
+4. **src/knowledge-graph/create_cytoscape_files.py** - create files for visualization in Cytoscape with node & edge data for each rebuilt knowledge graph
+5. **src/knowledge-graph/extract.py** - extract the "backbone" of the graph for input to GNN
 
 ## Data Sources
 The KG Model Garbage Collection tool uses and displays data and algorithms from the Monarch Initiative. The Monarch Initiative (https://monarchinitiative.org) makes biomedical knowledge exploration more efficient and effective by providing tools for genotype-phenotype analysis, genomic diagnostics, and precision medicine across broad areas of disease.
