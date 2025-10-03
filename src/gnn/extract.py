@@ -14,15 +14,14 @@ import lmdb
 import numpy as np
 import random
 
-# locate graph files associated with their name
-# NOTE: cannot change name of 'train'
-files = {
+# Default file paths for original dataset
+DEFAULT_FILES = {
     "train": "./lcilp/data/alzheimers_triples.txt",
     "query_backbone": "./lcilp/data/alzheimers_backbone_triples.txt",
 }
 
-# Output directory for focused dataset
-FOCUSED_OUTPUT_DIR = "./lcilp/data/AlzheimersKG/focused"
+# Output directory for original dataset
+ORIGINAL_OUTPUT_DIR = "./lcilp/data/AlzheimersKG/original"
 
 
 @dataclass
@@ -169,28 +168,30 @@ def load_triplets_from_file(file_path: str) -> List[Tuple[str, str, str]]:
     return triplets
 
 
-def prepare_focused_dataset(
+def prepare_original_dataset(
     merged_file: str,
-    backbone_file: str,
-    output_dir: str = FOCUSED_OUTPUT_DIR,
+    backbone_file: Optional[str] = None,
+    output_dir: str = ORIGINAL_OUTPUT_DIR,
     train_ratio: float = 0.70,
     valid_ratio: float = 0.15,
     test_ratio: float = 0.15,
     random_seed: int = 42,
 ) -> Dict[str, List[Tuple[str, str, str]]]:
     """
-    Prepare focused dataset with backbone isolation.
+    Prepare original dataset for Production Pipeline HITL workflow.
 
     This function:
-    1. Loads merged subgraphs and backbone edges
-    2. Removes backbone contamination (data leakage prevention)
-    3. Splits context edges into train/valid/test
-    4. Validates no overlap between splits
-    5. Exports files to output directory
+    1. Loads all merged subgraph edges (222 edges)
+    2. Splits into train/valid/test (70%/15%/15%)
+    3. Validates no overlap between splits
+    4. Exports to output directory
+
+    Note: ALL edges (including backbone) are split together.
+    The validation set (valid.txt) will be used for human review in HITL iterations.
 
     Args:
-        merged_file: Path to merged subgraphs file (222 edges)
-        backbone_file: Path to backbone edges file (29 edges)
+        merged_file: Path to merged subgraphs file (all 222 edges)
+        backbone_file: (Optional) Path to backbone edges for logging/validation
         output_dir: Directory to save split files
         train_ratio: Proportion for training set (default: 0.70)
         valid_ratio: Proportion for validation set (default: 0.15)
@@ -198,72 +199,69 @@ def prepare_focused_dataset(
         random_seed: Random seed for reproducibility
 
     Returns:
-        Dictionary with 'train', 'valid', 'test', 'validation_pool' edge lists
+        Dictionary with 'train', 'valid', 'test' edge lists
     """
     print("=" * 60)
-    print("Preparing Focused Dataset for HITL Training")
+    print("Preparing Original Dataset for Production Pipeline")
     print("=" * 60)
 
-    # Step 1: Load files
-    print("\n[1/5] Loading files...")
-    merged_edges = load_triplets_from_file(merged_file)
-    backbone_edges = set(load_triplets_from_file(backbone_file))
+    # Step 1: Load all edges
+    print("\n[1/4] Loading merged edges...")
+    all_edges = load_triplets_from_file(merged_file)
+    print(f"  - Total edges: {len(all_edges)} edges")
 
-    print(f"  - Merged file: {len(merged_edges)} edges")
-    print(f"  - Backbone file: {len(backbone_edges)} edges")
+    # Optional: Log backbone info (but don't isolate)
+    if backbone_file:
+        backbone_edges = set(load_triplets_from_file(backbone_file))
+        print(f"  - Backbone edges: {len(backbone_edges)} edges (included in split)")
 
-    # Step 2: Remove backbone contamination
-    print("\n[2/5] Removing backbone contamination...")
-    context_edges = [e for e in merged_edges if e not in backbone_edges]
+        # Validation: Check if backbone edges are in merged file
+        backbone_in_merged = sum(1 for e in backbone_edges if e in all_edges)
+        print(
+            f"  - Backbone edges found in merged: {backbone_in_merged} / {len(backbone_edges)}"
+        )
 
-    print(f"  - Context edges (merged - backbone): {len(context_edges)} edges")
-    print(f"  - Backbone edges isolated for human review: {len(backbone_edges)} edges")
+        if backbone_in_merged != len(backbone_edges):
+            print(f"  ⚠️  WARNING: Not all backbone edges found in merged file!")
 
-    # Validation: Check if all backbone edges were in merged file
-    backbone_in_merged = sum(1 for e in backbone_edges if e in merged_edges)
-    print(
-        f"  - Backbone edges found in merged: {backbone_in_merged} / {len(backbone_edges)}"
-    )
-
-    if backbone_in_merged != len(backbone_edges):
-        print(f"  ⚠️  WARNING: Not all backbone edges found in merged file!")
-
-    # Step 3: Split context edges
-    print("\n[3/5] Splitting context edges...")
+    # Step 2: Split ALL edges (no contamination removal)
+    print("\n[2/4] Splitting all edges...")
     random.seed(random_seed)
-    context_edges_shuffled = context_edges.copy()
-    random.shuffle(context_edges_shuffled)
+    all_edges_shuffled = all_edges.copy()
+    random.shuffle(all_edges_shuffled)
 
-    n_train = int(len(context_edges_shuffled) * train_ratio)
-    n_valid = int(len(context_edges_shuffled) * valid_ratio)
+    n_train = int(len(all_edges_shuffled) * train_ratio)
+    n_valid = int(len(all_edges_shuffled) * valid_ratio)
 
-    train_edges = context_edges_shuffled[:n_train]
-    valid_edges = context_edges_shuffled[n_train : n_train + n_valid]
-    test_edges = context_edges_shuffled[n_train + n_valid :]
+    train_edges = all_edges_shuffled[:n_train]
+    valid_edges = all_edges_shuffled[n_train : n_train + n_valid]
+    test_edges = all_edges_shuffled[n_train + n_valid :]
 
     print(f"  - Train: {len(train_edges)} edges ({train_ratio * 100:.0f}%)")
     print(f"  - Valid: {len(valid_edges)} edges ({valid_ratio * 100:.0f}%)")
     print(f"  - Test: {len(test_edges)} edges ({test_ratio * 100:.0f}%)")
+    print(f"  - Total: {len(train_edges) + len(valid_edges) + len(test_edges)} edges")
 
-    # Step 4: Save files
-    print("\n[4/5] Saving files...")
+    # Step 3: Save files
+    print("\n[3/4] Saving files...")
     os.makedirs(output_dir, exist_ok=True)
 
     export_triples(train_edges, f"{output_dir}/train.txt")
     export_triples(valid_edges, f"{output_dir}/valid.txt")
     export_triples(test_edges, f"{output_dir}/test.txt")
-    export_triples(list(backbone_edges), f"{output_dir}/validation_pool.txt")
 
     print(f"  ✓ Saved to {output_dir}/")
+    print(f"    - {output_dir}/train.txt")
+    print(f"    - {output_dir}/valid.txt")
+    print(f"    - {output_dir}/test.txt")
 
-    # Step 5: Validation checks
-    print("\n[5/5] Running validation checks...")
+    # Step 4: Validation checks
+    print("\n[4/4] Running validation checks...")
 
     # Check for overlap between splits
     train_set = set(train_edges)
     valid_set = set(valid_edges)
     test_set = set(test_edges)
-    backbone_set = set(backbone_edges)
 
     overlaps = []
     if train_set & valid_set:
@@ -272,12 +270,6 @@ def prepare_focused_dataset(
         overlaps.append(f"train-test: {len(train_set & test_set)}")
     if valid_set & test_set:
         overlaps.append(f"valid-test: {len(valid_set & test_set)}")
-    if train_set & backbone_set:
-        overlaps.append(f"train-backbone: {len(train_set & backbone_set)}")
-    if valid_set & backbone_set:
-        overlaps.append(f"valid-backbone: {len(valid_set & backbone_set)}")
-    if test_set & backbone_set:
-        overlaps.append(f"test-backbone: {len(test_set & backbone_set)}")
 
     if overlaps:
         print(f"  ❌ FAILED: Overlaps detected: {', '.join(overlaps)}")
@@ -293,7 +285,6 @@ def prepare_focused_dataset(
         "train": train_edges,
         "valid": valid_edges,
         "test": test_edges,
-        "validation_pool": list(backbone_edges),
     }
 
 
@@ -344,6 +335,45 @@ def merge_and_export_subgraphs(
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Extract subgraphs and prepare dataset for GNN training"
+    )
+    parser.add_argument(
+        "--train-file",
+        default=DEFAULT_FILES["train"],
+        help="Path to training data file (tab-delimited triplets)",
+    )
+    parser.add_argument(
+        "--query-file",
+        default=DEFAULT_FILES["query_backbone"],
+        help="Path to query/backbone file (tab-delimited triplets)",
+    )
+    parser.add_argument(
+        "--output-dir",
+        default=ORIGINAL_OUTPUT_DIR,
+        help="Output directory for dataset splits",
+    )
+    parser.add_argument(
+        "--dataset-name",
+        default="original",
+        help="Dataset name (used for db_path and merged file naming)",
+    )
+    parser.add_argument(
+        "--hop", type=int, default=3, help="Number of hops for subgraph extraction"
+    )
+    parser.add_argument(
+        "--skip-backbone",
+        action="store_true",
+        help="Skip backbone processing (for synthetic datasets without backbone)",
+    )
+
+    args = parser.parse_args()
+
+    # Build files dict from arguments
+    files = {"train": args.train_file}
+    if not args.skip_backbone:
+        files["query_backbone"] = args.query_file
+
     # read the whole graph (big G) and the backbone edges (E^{q}_{b})
     adj_list, triplets, entity2id, relation2id, id2entity, id2relation = process_files(
         files
@@ -354,9 +384,10 @@ if __name__ == "__main__":
     # Note: adj_list is built only from 'train' data (see data_utils.py:60)
 
     # Setup parameters for subgraph extraction
+    db_path = f"./lcilp/data/subgraphs_db_{args.dataset_name}"
     params = Params(
-        db_path="./lcilp/data/subgraphs_db",
-        hop=3,
+        db_path=db_path,
+        hop=args.hop,
         enclosing_sub_graph=True,
         max_nodes_per_hop=None,
         map_size_multiplier=10,
@@ -365,40 +396,82 @@ if __name__ == "__main__":
     # Create output directory for LMDB database
     os.makedirs(params.db_path, exist_ok=True)
 
-    # Prepare graphs dict for links2subgraphs
-    # For query_backbone edges, we treat them all as positive samples
-    graphs = {
-        "query": {
-            "pos": triplets["query_backbone"],  # Backbone edges as positive
-            "neg": [],  # No negative samples for now
+    if not args.skip_backbone:
+        # Prepare graphs dict for links2subgraphs
+        # For query_backbone edges, we treat them all as positive samples
+        graphs = {
+            "query": {
+                "pos": triplets["query_backbone"],  # Backbone edges as positive
+                "neg": [],  # No negative samples for now
+            }
         }
-    }
 
-    # Extract subgraphs for query_backbone edges
-    print(
-        f"Extracting subgraphs for {len(triplets['query_backbone'])} backbone edges..."
-    )
-    links2subgraphs(adj_list, graphs, params, max_label_value=None)
-    print(f"Subgraphs saved to {params.db_path}")
-
-    # Merge and export subgraphs
-    output_file = "./lcilp/data/alzheimers_merged_subgraphs.txt"
-    num_edges = merge_and_export_subgraphs(
-        params, adj_list, entity2id, relation2id, id2entity, id2relation, output_file
-    )
-
-    # Prepare focused dataset with backbone isolation
-    print("\n" + "=" * 60)
-    print("Creating train/valid/test splits for HITL training")
-    print("=" * 60)
-
-    try:
-        prepare_focused_dataset(
-            merged_file=output_file,
-            backbone_file=files["query_backbone"],
-            output_dir=FOCUSED_OUTPUT_DIR,
+        # Extract subgraphs for query_backbone edges
+        print(
+            f"Extracting subgraphs for {len(triplets['query_backbone'])} backbone edges..."
         )
-    except ValueError as e:
-        print(f"\n❌ ERROR: {e}")
-        print("Dataset preparation failed. Please check input files.")
-        exit(1)
+        links2subgraphs(adj_list, graphs, params, max_label_value=None)
+        print(f"Subgraphs saved to {params.db_path}")
+
+        # Merge and export subgraphs
+        output_file = (
+            f"./lcilp/data/alzheimers_merged_subgraphs_{args.dataset_name}.txt"
+        )
+        num_edges = merge_and_export_subgraphs(
+            params,
+            adj_list,
+            entity2id,
+            relation2id,
+            id2entity,
+            id2relation,
+            output_file,
+        )
+
+        # Prepare dataset with backbone isolation
+        print("\n" + "=" * 60)
+        print("Creating train/valid/test splits for HITL training")
+        print("=" * 60)
+
+        try:
+            prepare_original_dataset(
+                merged_file=output_file,
+                backbone_file=files["query_backbone"],
+                output_dir=args.output_dir,
+            )
+        except ValueError as e:
+            print(f"\n❌ ERROR: {e}")
+            print("Dataset preparation failed. Please check input files.")
+            exit(1)
+    else:
+        # For synthetic datasets without backbone, just prepare splits directly
+        print("\n" + "=" * 60)
+        print("Creating train/valid/test splits for synthetic dataset")
+        print("=" * 60)
+
+        # Load all edges from train file
+        all_edges = load_triplets_from_file(args.train_file)
+        print(f"Loaded {len(all_edges)} edges from {args.train_file}")
+
+        # Split into train/valid/test
+        random.seed(42)
+        edges_shuffled = all_edges.copy()
+        random.shuffle(edges_shuffled)
+
+        n_train = int(len(edges_shuffled) * 0.70)
+        n_valid = int(len(edges_shuffled) * 0.15)
+
+        train_edges = edges_shuffled[:n_train]
+        valid_edges = edges_shuffled[n_train : n_train + n_valid]
+        test_edges = edges_shuffled[n_train + n_valid :]
+
+        # Save splits
+        os.makedirs(args.output_dir, exist_ok=True)
+        export_triples(train_edges, f"{args.output_dir}/train.txt")
+        export_triples(valid_edges, f"{args.output_dir}/valid.txt")
+        export_triples(test_edges, f"{args.output_dir}/test.txt")
+
+        print(f"  - Train: {len(train_edges)} edges")
+        print(f"  - Valid: {len(valid_edges)} edges")
+        print(f"  - Test: {len(test_edges)} edges")
+        print(f"  ✓ Saved to {args.output_dir}/")
+        print("=" * 60)

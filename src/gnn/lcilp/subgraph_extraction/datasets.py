@@ -13,9 +13,98 @@ from .graph_sampler import *
 import pdb
 
 
+def load_synthetic_negatives(file_paths, entity2id, relation2id):
+    """
+    Load synthetic edges from files to use as explicit negative examples.
+
+    Args:
+        file_paths: List of paths to synthetic edge files
+        entity2id: Dictionary mapping entity names to IDs
+        relation2id: Dictionary mapping relation names to IDs
+
+    Returns:
+        numpy array of synthetic edges in format [head_id, tail_id, relation_id]
+    """
+    all_synthetic_edges = []
+    missing_files = []
+    files_loaded = 0
+
+    for file_path in file_paths:
+        if not os.path.exists(file_path):
+            logging.warning(f"Synthetic file not found: {file_path}, skipping...")
+            missing_files.append(file_path)
+            continue
+
+        logging.info(f"Loading synthetic negatives from: {file_path}")
+        with open(file_path) as f:
+            file_data = [line.split() for line in f.read().split("\n")[:-1]]
+
+        edges_before = len(all_synthetic_edges)
+        for triplet in file_data:
+            # Only include edges where all entities and relations are known
+            if (
+                triplet[0] in entity2id
+                and triplet[2] in entity2id
+                and triplet[1] in relation2id
+            ):
+                all_synthetic_edges.append(
+                    [
+                        entity2id[triplet[0]],
+                        entity2id[triplet[2]],
+                        relation2id[triplet[1]],
+                    ]
+                )
+        edges_added = len(all_synthetic_edges) - edges_before
+        if edges_added > 0:
+            files_loaded += 1
+
+    if len(all_synthetic_edges) == 0:
+        if missing_files:
+            logging.warning(
+                f"No synthetic edges loaded! {len(missing_files)} file(s) not found: "
+                f"{', '.join(missing_files)}"
+            )
+        elif files_loaded == 0:
+            logging.warning(
+                "No synthetic edges loaded! All provided files exist but contain no valid edges."
+            )
+        else:
+            logging.warning(
+                "No synthetic edges loaded! Files exist but no edges matched entity/relation IDs."
+            )
+        return np.array([])
+
+    logging.info(
+        f"Loaded {len(all_synthetic_edges)} synthetic negative edges from {files_loaded} file(s)"
+    )
+    return np.array(all_synthetic_edges)
+
+
 def generate_subgraph_datasets(
-    params, splits=["train", "valid"], saved_relation2id=None, max_label_value=None
+    params,
+    splits=["train", "valid"],
+    saved_relation2id=None,
+    max_label_value=None,
+    neg_sampling_mode="corruption",
+    synthetic_train_files=None,
+    synthetic_valid_files=None,
+    synthetic_test_files=None,
 ):
+    """
+    Generate subgraph datasets for link prediction.
+
+    Args:
+        params: Parameter object containing configuration
+        splits: List of splits to process (e.g., ['train', 'valid', 'test'])
+        saved_relation2id: Pre-saved relation2id mapping
+        max_label_value: Maximum label value for node labeling
+        neg_sampling_mode: 'corruption' (default) or 'explicit'
+            - 'corruption': Generate negatives via random corruption (original behavior)
+            - 'explicit': Load pre-generated synthetic edges as negatives
+        synthetic_train_files: List of paths to synthetic training edge files (for 'explicit' mode)
+        synthetic_valid_files: List of paths to synthetic validation edge files (for 'explicit' mode)
+        synthetic_test_files: List of paths to synthetic test edge files (for 'explicit' mode)
+    """
     testing = "test" in splits
     adj_list, triplets, entity2id, relation2id, id2entity, id2relation = process_files(
         params.file_paths, saved_relation2id
@@ -36,16 +125,66 @@ def generate_subgraph_datasets(
             "max_size": params.max_links,
         }
 
-    # Sample train and valid/test links
-    for split_name, split in graphs.items():
-        logging.info(f"Sampling negative links for {split_name}")
-        split["pos"], split["neg"] = sample_neg(
-            adj_list,
-            split["triplets"],
-            params.num_neg_samples_per_link,
-            max_size=split["max_size"],
-            constrained_neg_prob=params.constrained_neg_prob,
+    # Determine negative sampling strategy
+    if neg_sampling_mode == "explicit":
+        logging.info(
+            "Using EXPLICIT negative sampling mode (synthetic edges as negatives)"
         )
+
+        # Map split names to synthetic file lists
+        synthetic_files_map = {
+            "train": synthetic_train_files or [],
+            "valid": synthetic_valid_files or [],
+            "test": synthetic_test_files or [],
+        }
+
+        # Validate that synthetic files are provided for requested splits
+        for split_name in splits:
+            if (
+                split_name in synthetic_files_map
+                and not synthetic_files_map[split_name]
+            ):
+                logging.warning(
+                    f"No synthetic files provided for split '{split_name}' in explicit mode. "
+                    f"Negatives will be empty for this split."
+                )
+
+        for split_name, split in graphs.items():
+            # Positive edges: original edges from the split
+            split["pos"] = split["triplets"]
+            if params.max_links < len(split["pos"]):
+                perm = np.random.permutation(len(split["pos"]))[: params.max_links]
+                split["pos"] = split["pos"][perm]
+
+            # Negative edges: load from synthetic files
+            synthetic_files = synthetic_files_map.get(split_name, [])
+            if synthetic_files:
+                split["neg"] = load_synthetic_negatives(
+                    synthetic_files, entity2id, relation2id
+                )
+            else:
+                logging.warning(
+                    f"No synthetic files provided for {split_name}, using empty negatives"
+                )
+                split["neg"] = np.array([])
+
+            logging.info(
+                f"{split_name}: {len(split['pos'])} positives, {len(split['neg'])} negatives"
+            )
+
+    else:  # neg_sampling_mode == 'corruption' (default, backward compatible)
+        logging.info("Using CORRUPTION negative sampling mode (random corruption)")
+
+        # Sample train and valid/test links (original behavior)
+        for split_name, split in graphs.items():
+            logging.info(f"Sampling negative links for {split_name}")
+            split["pos"], split["neg"] = sample_neg(
+                adj_list,
+                split["triplets"],
+                params.num_neg_samples_per_link,
+                max_size=split["max_size"],
+                constrained_neg_prob=params.constrained_neg_prob,
+            )
 
     if testing:
         directory = os.path.join(params.main_dir, "data/{}/".format(params.dataset))

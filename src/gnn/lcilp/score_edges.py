@@ -1,14 +1,31 @@
 #!/usr/bin/env python3
 """
-Score edges from validation pool using trained GNN model.
+Score validation edges (original + synthetic) using trained GNN model.
+
+This script is part of the HITL (Human-in-the-Loop) pipeline. It scores
+ALL validation edges (both original Monarch KG and synthetic LLM-generated)
+to identify uncertain edges for human review.
+
+Key points:
+- Original edges: Trusted but not 100% perfect - can contain errors
+- Synthetic edges: AI-generated, more likely to contain errors
+- Both should be reviewed by domain experts
 
 Usage:
+    # Score both original and synthetic validation edges
     python score_edges.py \
-        --model experiments/hitl_iter0/best_graph_classifier.pth \
-        --dataset AlzheimersKG/focused \
         --experiment_name hitl_iter0 \
-        --pool_file data/AlzheimersKG/focused/validation_pool.txt \
-        --output ../../data/hitl/iteration_1/pool_scores.jsonl
+        --dataset AlzheimersKG \
+        --validation_files original/valid.txt,synthetic/valid_random.txt \
+        --output ../../data/hitl/iteration_1/validation_scores.jsonl
+
+    # Subsequent iterations only score unreviewed edges
+    python score_edges.py \
+        --experiment_name hitl_iter1 \
+        --dataset AlzheimersKG \
+        --validation_files original/valid.txt,synthetic/valid_random.txt \
+        --exclude_reviewed ../../data/hitl/iteration_1/edges_to_review.jsonl \
+        --output ../../data/hitl/iteration_2/validation_scores.jsonl
 """
 
 import os
@@ -91,75 +108,106 @@ def main(params):
     simplefilter(action="ignore", category=UserWarning)
     simplefilter(action="ignore", category=SparseEfficiencyWarning)
 
+    # Parse validation files to score (both original and synthetic)
+    edge_files = [f.strip() for f in params.validation_files.split(",")]
     print("=" * 60)
-    print("Scoring Validation Pool Edges")
+    print("Scoring Validation Edges (Original + Synthetic)")
     print("=" * 60)
+    print(f"Files to score: {', '.join(edge_files)}")
+    print(
+        "Note: Both original (trusted) and synthetic (AI-generated) edges are scored."
+    )
 
     # Load trained model
     print(f"\n[1/4] Loading model from {params.experiment_name}...")
     graph_classifier = initialize_model(params, None, load_model=True)
     print(f"  ✓ Model loaded from experiments/{params.experiment_name}/")
 
-    # Generate subgraphs for validation pool edges
-    print(f"\n[2/4] Extracting subgraphs for validation pool...")
-    params.db_path = os.path.join(
-        params.main_dir,
-        f"data/{params.dataset}/validation_pool_subgraphs_{params.experiment_name}",
-    )
-
-    # Create custom file_paths for validation pool
-    # Must be set on params object, not passed as argument
+    # Build file_paths dict for graph construction
     # Note: 'train' is required by process_files() to build adjacency list
     params.file_paths = {
-        "train": os.path.join(params.main_dir, f"data/{params.dataset}/train.txt"),
-        "validation_pool": params.pool_file,
+        "train": os.path.join(
+            params.main_dir, f"data/{params.dataset}/original/train.txt"
+        ),
     }
+    # Add all validation files as separate splits
+    for i, edge_file in enumerate(edge_files):
+        split_name = f"validation_{i}"
+        params.file_paths[split_name] = os.path.join(
+            params.main_dir, f"data/{params.dataset}/{edge_file}"
+        )
 
-    # Generate subgraphs for validation pool
+    splits_to_score = [f"validation_{i}" for i in range(len(edge_files))]
+    db_path_suffix = "validation"
+
+    # Generate subgraphs
+    print(f"\n[2/4] Extracting subgraphs for edges...")
+    params.db_path = os.path.join(
+        params.main_dir,
+        f"data/{params.dataset}/{db_path_suffix}_subgraphs_{params.experiment_name}",
+    )
+
     generate_subgraph_datasets(
         params,
-        splits=["validation_pool"],
+        splits=splits_to_score,
         saved_relation2id=graph_classifier.relation2id,
         max_label_value=graph_classifier.gnn.max_label_value,
     )
     print(f"  ✓ Subgraphs extracted to {params.db_path}")
 
-    # Load validation pool dataset
-    print(f"\n[3/4] Loading validation pool dataset...")
-    validation_pool = SubgraphDataset(
-        params.db_path,
-        "validation_pool_pos",
-        "validation_pool_neg",  # Will be empty
-        params.file_paths,
-        graph_classifier.relation2id,
-        add_traspose_rels=params.add_traspose_rels,
-        num_neg_samples_per_link=0,  # No negative samples
-        use_kge_embeddings=params.use_kge_embeddings,
-        dataset=params.dataset,
-        kge_model=params.kge_model,
-        file_name="validation_pool",
-    )
-    print(f"  ✓ Loaded {len(validation_pool)} edges")
+    # Score all edge files
+    print(f"\n[3/4] Loading and scoring datasets...")
+    all_triplets = []
+    all_scores = []
 
-    # Score edges
-    print(f"\n[4/4] Scoring edges with trained model...")
-    scores = score_edges(params, graph_classifier, validation_pool)
+    for i, split_name in enumerate(splits_to_score):
+        # Determine original file for loading triplets
+        edge_file = edge_files[i]
+        triplet_file = os.path.join(
+            params.main_dir, f"data/{params.dataset}/{edge_file}"
+        )
 
-    # Load original triplets
-    triplets = load_triplets(params.pool_file)
+        print(f"  Processing {split_name}...")
+
+        # Load dataset
+        dataset = SubgraphDataset(
+            params.db_path,
+            f"{split_name}_pos",
+            f"{split_name}_neg",  # Will be empty
+            params.file_paths,
+            graph_classifier.relation2id,
+            add_traspose_rels=params.add_traspose_rels,
+            num_neg_samples_per_link=0,  # No negative samples
+            use_kge_embeddings=params.use_kge_embeddings,
+            dataset=params.dataset,
+            kge_model=params.kge_model,
+            file_name=split_name,
+        )
+
+        # Score edges
+        scores = score_edges(params, graph_classifier, dataset)
+
+        # Load original triplets
+        triplets = load_triplets(triplet_file)
+
+        all_triplets.extend(triplets)
+        all_scores.extend(scores)
+
+        print(f"    ✓ Scored {len(scores)} edges from {split_name}")
 
     # Export results
-    export_scores(triplets, scores, params.output)
+    print(f"\n[4/4] Exporting results...")
+    export_scores(all_triplets, all_scores, params.output)
 
     # Summary
     print("\n" + "=" * 60)
     print("Scoring Complete")
     print("=" * 60)
-    print(f"Scored {len(scores)} edges")
+    print(f"Total edges scored: {len(all_scores)}")
     print(f"\nScore distribution:")
-    print(f"  Min:  {min(scores):.3f}")
-    print(f"  Mean: {sum(scores) / len(scores):.3f}")
-    print(f"  Max:  {max(scores):.3f}")
+    print(f"  Min:  {min(all_scores):.3f}")
+    print(f"  Mean: {sum(all_scores) / len(all_scores):.3f}")
+    print(f"  Max:  {max(all_scores):.3f}")
     print(f"\nResults saved to: {params.output}")
 
 
@@ -181,13 +229,24 @@ if __name__ == "__main__":
         "-d",
         type=str,
         required=True,
-        help="Dataset name (e.g., AlzheimersKG/focused)",
+        help="Dataset name (e.g., AlzheimersKG)",
+    )
+
+    # Validation files to score (both original and synthetic)
+    parser.add_argument(
+        "--validation_files",
+        type=str,
+        required=True,
+        help="Comma-separated validation files (original + synthetic), e.g., 'original/valid.txt,synthetic/valid_random.txt'",
     )
     parser.add_argument(
-        "--pool_file", type=str, required=True, help="Path to validation_pool.txt"
+        "--exclude_reviewed",
+        type=str,
+        default=None,
+        help="Path to edges_to_review.jsonl from previous iteration to exclude already-reviewed edges",
     )
     parser.add_argument(
-        "--output", type=str, required=True, help="Output path for pool_scores.jsonl"
+        "--output", type=str, required=True, help="Output path for scores JSONL file"
     )
 
     # Model params (should match training)

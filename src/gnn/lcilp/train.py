@@ -26,7 +26,32 @@ def main(params):
     )
 
     if not os.path.isdir(params.db_path):
-        generate_subgraph_datasets(params)
+        # Prepare synthetic file paths for explicit negative sampling
+        synthetic_train_file_paths = []
+        synthetic_valid_file_paths = []
+
+        # Build full paths from the synthetic file keys in file_paths
+        for key in params.file_paths:
+            if key.startswith("synthetic_train"):
+                synthetic_train_file_paths.append(params.file_paths[key])
+
+        # Validate synthetic files are non-empty before training
+        for file_path in synthetic_train_file_paths:
+            if not os.path.exists(file_path):
+                raise FileNotFoundError(
+                    f"Synthetic training file not found: {file_path}"
+                )
+            if os.path.getsize(file_path) == 0:
+                raise ValueError(f"Synthetic training file is empty: {file_path}")
+
+        # Call generate_subgraph_datasets with explicit mode
+        generate_subgraph_datasets(
+            params,
+            splits=["train", "valid"],
+            neg_sampling_mode="explicit",
+            synthetic_train_files=synthetic_train_file_paths,
+            synthetic_valid_files=synthetic_valid_file_paths,  # Empty for now, can be added later
+        )
 
     train = SubgraphDataset(
         params.db_path,
@@ -109,6 +134,14 @@ if __name__ == "__main__":
         type=str,
         default="valid",
         help="Name of file containing validation triplets",
+    )
+    parser.add_argument(
+        "--synthetic_train_files",
+        type=str,
+        default="train_random.txt",
+        help="Comma-separated list of synthetic training files (e.g., 'train_random.txt,train_llm.txt'). "
+        "To use balanced negatives, specify the output from balance_negatives.py (e.g., 'train_balanced_neg.txt'). "
+        "Positives are automatically loaded from original/train.txt",
     )
 
     # Training regime params
@@ -303,14 +336,47 @@ if __name__ == "__main__":
     params = parser.parse_args()
     initialize_experiment(params, __file__)
 
+    # Build file_paths: original/ + synthetic/
     params.file_paths = {
-        "train": os.path.join(
-            params.main_dir, "data/{}/{}.txt".format(params.dataset, params.train_file)
+        "original_train": os.path.join(
+            params.main_dir,
+            f"data/{params.dataset}/original/{params.train_file}.txt",
         ),
-        "valid": os.path.join(
-            params.main_dir, "data/{}/{}.txt".format(params.dataset, params.valid_file)
+        "original_valid": os.path.join(
+            params.main_dir,
+            f"data/{params.dataset}/original/{params.valid_file}.txt",
         ),
     }
+
+    # Add synthetic training files
+    synthetic_files = [f.strip() for f in params.synthetic_train_files.split(",")]
+    for i, synth_file in enumerate(synthetic_files):
+        params.file_paths[f"synthetic_train_{i}"] = os.path.join(
+            params.main_dir, f"data/{params.dataset}/synthetic/{synth_file}"
+        )
+
+    # For backward compatibility, set 'train' to original_train
+    # (process_files expects a 'train' key for building adjacency list)
+    params.file_paths["train"] = params.file_paths["original_train"]
+    params.file_paths["valid"] = params.file_paths["original_valid"]
+
+    logging.info(
+        "Training with original + synthetic data (explicit negative sampling):"
+    )
+    logging.info(
+        f"  - Positives (original train): {params.file_paths['original_train']}"
+    )
+    logging.info(
+        f"  - Positives (original valid): {params.file_paths['original_valid']}"
+    )
+    logging.info(
+        f"  - Negatives (synthetic files): {', '.join([params.file_paths[k] for k in params.file_paths if k.startswith('synthetic')])}"
+    )
+    logging.info("")
+    logging.info(
+        "Note: To use balanced negatives, run scripts/balance_negatives.py first,"
+    )
+    logging.info("      then specify the _neg.txt file with --synthetic_train_files")
 
     if not params.disable_cuda and torch.cuda.is_available():
         params.device = torch.device("cuda:%d" % params.gpu)
