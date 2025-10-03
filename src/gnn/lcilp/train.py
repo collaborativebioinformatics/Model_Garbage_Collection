@@ -26,7 +26,23 @@ def main(params):
     )
 
     if not os.path.isdir(params.db_path):
-        generate_subgraph_datasets(params)
+        # Prepare synthetic file paths for explicit negative sampling
+        synthetic_train_file_paths = []
+        synthetic_valid_file_paths = []
+
+        # Build full paths from the synthetic file keys in file_paths
+        for key in params.file_paths:
+            if key.startswith("synthetic_train"):
+                synthetic_train_file_paths.append(params.file_paths[key])
+
+        # Call generate_subgraph_datasets with explicit mode
+        generate_subgraph_datasets(
+            params,
+            splits=["train", "valid"],
+            neg_sampling_mode="explicit",
+            synthetic_train_files=synthetic_train_file_paths,
+            synthetic_valid_files=synthetic_valid_file_paths,  # Empty for now, can be added later
+        )
 
     train = SubgraphDataset(
         params.db_path,
@@ -114,7 +130,9 @@ if __name__ == "__main__":
         "--synthetic_train_files",
         type=str,
         default="train_random.txt",
-        help="Comma-separated list of synthetic training files (e.g., 'train_random.txt,train_llm.txt')",
+        help="Comma-separated list of synthetic training files (e.g., 'train_random.txt,train_llm.txt'). "
+        "To use balanced negatives, specify the output from balance_negatives.py (e.g., 'train_balanced_neg.txt'). "
+        "Positives are automatically loaded from original/train.txt",
     )
 
     # Training regime params
@@ -333,12 +351,23 @@ if __name__ == "__main__":
     params.file_paths["train"] = params.file_paths["original_train"]
     params.file_paths["valid"] = params.file_paths["original_valid"]
 
-    logging.info("Training with original + synthetic data:")
-    logging.info(f"  - Original train: {params.file_paths['original_train']}")
-    logging.info(f"  - Original valid: {params.file_paths['original_valid']}")
     logging.info(
-        f"  - Synthetic files: {', '.join([params.file_paths[k] for k in params.file_paths if k.startswith('synthetic')])}"
+        "Training with original + synthetic data (explicit negative sampling):"
     )
+    logging.info(
+        f"  - Positives (original train): {params.file_paths['original_train']}"
+    )
+    logging.info(
+        f"  - Positives (original valid): {params.file_paths['original_valid']}"
+    )
+    logging.info(
+        f"  - Negatives (synthetic files): {', '.join([params.file_paths[k] for k in params.file_paths if k.startswith('synthetic')])}"
+    )
+    logging.info("")
+    logging.info(
+        "Note: To use balanced negatives, run scripts/balance_negatives.py first,"
+    )
+    logging.info("      then specify the _neg.txt file with --synthetic_train_files")
 
     if not params.disable_cuda and torch.cuda.is_available():
         params.device = torch.device("cuda:%d" % params.gpu)
