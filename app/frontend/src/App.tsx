@@ -15,52 +15,20 @@ import { CounterCard } from './components/CounterCard'
 import { UserCard } from './components/UserCard'
 import { StatsCard } from './components/StatsCard'
 import { GraphView } from './components/GraphView'
+import { TriToggle } from './components/TriToggle'
+import { TableView } from './components/TableView'
 
 const sampleGraphData = {
   elements: {
     nodes: [
-      {
-        data: {
-          id: "desktop",
-          label: "Desktop",
-          type: "device"
-        },
-        position: { x: 100, y: 100 }
-      },
-      {
-        data: {
-          id: "server",
-          label: "Server",
-          type: "device"
-        },
-        position: { x: 300, y: 100 }
-      },
-      {
-        data: {
-          id: "database",
-          label: "Database",
-          type: "database"
-        },
-        position: { x: 300, y: 300 }
-      }
+      { "data": { "id": "MONDO:0005723", "label": "faked", "description": "text definition" } },
+      { "data": { "id": "MONDO:0006764", "label": "made_up", "description": "description2" } },
+      { "data": { "id": "CHEBI:35610", "label": "label3", "description": "" } },
+      { "data": { "id": "MONDO:0018908", "label": "label4", "description": "description3" } }
     ],
     edges: [
-      {
-        data: {
-          id: "desktop-server",
-          source: "desktop",
-          target: "server",
-          interaction: "requests"
-        }
-      },
-      {
-        data: {
-          id: "server-database",
-          source: "server",
-          target: "database",
-          interaction: "query"
-        }
-      }
+      { "data": { "id": "edge1", "source": "MONDO:0005723", "target": "MONDO:0006764", "label": "biolink:subclass_of" } },
+      { "data": { "id": "edge2", "source": "CHEBI:35610", "target": "MONDO:0018908", "label": "biolink:treats_or_applied_or_studied_to_treat" } }
     ]
   },
   data: {
@@ -111,6 +79,22 @@ export function App() {
           {/* Stats Section */}
           <StatsCard />
 
+          {/* TriToggle Demo */}
+          <Box>
+            <Heading size="md" color="teal.300" mb={4}>
+              TriToggle Component
+            </Heading>
+            <TriToggle defaultState="neutral" onChange={(state) => console.log('TriToggle state:', state)} />
+          </Box>
+
+          {/* Table View */}
+          <Box>
+            <Heading size="md" color="teal.300" mb={4}>
+              Edge Table View
+            </Heading>
+            <TableView graphData={sampleGraphData} edgeLabel="label" />
+          </Box>
+
           {/* Graph Visualization */}
           <Box>
             <Heading size="md" color="teal.300" mb={4}>
@@ -119,6 +103,7 @@ export function App() {
             <GraphView
               graphData={sampleGraphData}
               highlightedEdges={highlightedEdges}
+              edgeLabel="label"
             />
             <HStack mt={4} spacing={3}>
               <Button
