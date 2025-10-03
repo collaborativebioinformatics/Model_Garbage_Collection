@@ -6,19 +6,12 @@ This script is part of the HITL (Human-in-the-Loop) pipeline. It scores
 synthetic edges from the validation set to identify uncertain edges for
 human review.
 
-Production Usage:
+Usage:
     python score_edges.py \
         --experiment_name hitl_iter0 \
         --dataset AlzheimersKG \
         --synthetic_files synthetic/valid_random.txt,synthetic/valid_llm.txt \
         --output ../../data/hitl/iteration_1/synthetic_valid_scores.jsonl
-
-MVP Usage (backward compatible):
-    python score_edges.py \
-        --experiment_name hitl_iter0 \
-        --dataset AlzheimersKG/focused \
-        --pool_file focused/validation_pool.txt \
-        --output ../../data/hitl/iteration_1/pool_scores.jsonl
 """
 
 import os
@@ -101,21 +94,12 @@ def main(params):
     simplefilter(action="ignore", category=UserWarning)
     simplefilter(action="ignore", category=SparseEfficiencyWarning)
 
-    # Determine if using production (synthetic files) or MVP (pool file)
-    if params.synthetic_files:
-        mode = "production"
-        edge_files = [f.strip() for f in params.synthetic_files.split(",")]
-        print("=" * 60)
-        print("Scoring Synthetic Validation Edges (Production Mode)")
-        print("=" * 60)
-        print(f"Files to score: {', '.join(edge_files)}")
-    else:
-        mode = "mvp"
-        edge_files = [params.pool_file]
-        print("=" * 60)
-        print("Scoring Validation Pool Edges (MVP Mode)")
-        print("=" * 60)
-        print(f"File to score: {params.pool_file}")
+    # Parse synthetic files to score
+    edge_files = [f.strip() for f in params.synthetic_files.split(",")]
+    print("=" * 60)
+    print("Scoring Synthetic Validation Edges")
+    print("=" * 60)
+    print(f"Files to score: {', '.join(edge_files)}")
 
     # Load trained model
     print(f"\n[1/4] Loading model from {params.experiment_name}...")
@@ -124,30 +108,20 @@ def main(params):
 
     # Build file_paths dict for graph construction
     # Note: 'train' is required by process_files() to build adjacency list
-    if mode == "production":
-        # Production: use original/train.txt for graph structure
-        params.file_paths = {
-            "train": os.path.join(
-                params.main_dir, f"data/{params.dataset}/original/train.txt"
-            ),
-        }
-        # Add all synthetic files as separate splits
-        for i, edge_file in enumerate(edge_files):
-            split_name = f"synthetic_valid_{i}"
-            params.file_paths[split_name] = os.path.join(
-                params.main_dir, f"data/{params.dataset}/{edge_file}"
-            )
+    params.file_paths = {
+        "train": os.path.join(
+            params.main_dir, f"data/{params.dataset}/original/train.txt"
+        ),
+    }
+    # Add all synthetic files as separate splits
+    for i, edge_file in enumerate(edge_files):
+        split_name = f"synthetic_valid_{i}"
+        params.file_paths[split_name] = os.path.join(
+            params.main_dir, f"data/{params.dataset}/{edge_file}"
+        )
 
-        splits_to_score = [f"synthetic_valid_{i}" for i in range(len(edge_files))]
-        db_path_suffix = "synthetic_valid"
-    else:
-        # MVP: use focused/train.txt for graph structure
-        params.file_paths = {
-            "train": os.path.join(params.main_dir, f"data/{params.dataset}/train.txt"),
-            "validation_pool": params.pool_file,
-        }
-        splits_to_score = ["validation_pool"]
-        db_path_suffix = "validation_pool"
+    splits_to_score = [f"synthetic_valid_{i}" for i in range(len(edge_files))]
+    db_path_suffix = "synthetic_valid"
 
     # Generate subgraphs
     print(f"\n[2/4] Extracting subgraphs for edges...")
@@ -171,13 +145,10 @@ def main(params):
 
     for i, split_name in enumerate(splits_to_score):
         # Determine original file for loading triplets
-        if mode == "production":
-            edge_file = edge_files[i]
-            triplet_file = os.path.join(
-                params.main_dir, f"data/{params.dataset}/{edge_file}"
-            )
-        else:
-            triplet_file = params.pool_file
+        edge_file = edge_files[i]
+        triplet_file = os.path.join(
+            params.main_dir, f"data/{params.dataset}/{edge_file}"
+        )
 
         print(f"  Processing {split_name}...")
 
@@ -241,21 +212,15 @@ if __name__ == "__main__":
         "-d",
         type=str,
         required=True,
-        help="Dataset name (e.g., AlzheimersKG for production, AlzheimersKG/focused for MVP)",
+        help="Dataset name (e.g., AlzheimersKG)",
     )
 
-    # Edge source (mutually exclusive: either synthetic_files or pool_file)
+    # Synthetic validation files to score
     parser.add_argument(
         "--synthetic_files",
         type=str,
-        default=None,
-        help="Comma-separated synthetic validation files (production mode), e.g., 'synthetic/valid_random.txt,synthetic/valid_llm.txt'",
-    )
-    parser.add_argument(
-        "--pool_file",
-        type=str,
-        default=None,
-        help="Path to validation_pool.txt (MVP mode, backward compatible)",
+        required=True,
+        help="Comma-separated synthetic validation files, e.g., 'synthetic/valid_random.txt,synthetic/valid_llm.txt'",
     )
     parser.add_argument(
         "--output", type=str, required=True, help="Output path for scores JSONL file"
@@ -337,12 +302,6 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-
-    # Validate arguments
-    if not args.synthetic_files and not args.pool_file:
-        parser.error("Either --synthetic_files or --pool_file must be provided")
-    if args.synthetic_files and args.pool_file:
-        parser.error("Cannot specify both --synthetic_files and --pool_file")
 
     # Set up paths
     args.main_dir = os.path.join(os.path.dirname(__file__))

@@ -1,4 +1,4 @@
-# Production Pipeline Usage Guide
+# HITL Pipeline Usage Guide
 
 **Last Updated:** 2025-10-03  
 **Branch:** `production-data-pipeline`
@@ -7,7 +7,7 @@
 
 ## Overview
 
-This guide documents how to use the production data pipeline that combines **original** (real) edges with **synthetic** (LLM/RAG-generated) edges for HITL training.
+This guide documents how to use the HITL (Human-in-the-Loop) pipeline that combines **original** (real Monarch KG) edges with **synthetic** (LLM/RAG-generated) edges for iterative GNN training.
 
 ## Data Structure
 
@@ -18,34 +18,27 @@ src/gnn/lcilp/data/AlzheimersKG/
 │   ├── valid.txt          # Real Monarch edges for validation (28 edges)
 │   └── test.txt           # Real Monarch edges for testing (30 edges)
 │
-├── synthetic/
-│   ├── train_random.txt   # Synthetic edges for training (135 edges)
-│   ├── valid_random.txt   # Synthetic edges for validation/review (28 edges)
-│   └── test_random.txt    # Synthetic edges for testing (30 edges)
-│
-└── focused/ (legacy MVP structure, still supported)
-    ├── train.txt
-    ├── valid.txt
-    ├── test.txt
-    └── validation_pool.txt
+└── synthetic/
+    ├── train_random.txt   # Synthetic edges for training (135 edges)
+    ├── valid_random.txt   # Synthetic edges for validation/review (28 edges)
+    └── test_random.txt    # Synthetic edges for testing (30 edges)
 ```
 
 ---
 
 ## Commands
 
-### 1. Training with Production Data
+### 1. Training with Original + Synthetic Data
 
 Train GNN on **original + synthetic** edges:
 
 ```bash
 cd src/gnn/lcilp
 
-# Production mode: combines original/train.txt + synthetic/train_random.txt
+# Train on original/train.txt + synthetic/train_random.txt
 /opt/homebrew/bin/micromamba run -n gnn-kg python train.py \
   -d AlzheimersKG \
-  -e hitl_iter0_production \
-  --use_production_data \
+  -e hitl_iter0 \
   --synthetic_train_files train_random.txt \
   --hop 3 \
   --num_gcn_layers 3 \
@@ -54,41 +47,20 @@ cd src/gnn/lcilp
 ```
 
 **Key flags:**
-- `--use_production_data`: Enable production mode (original/ + synthetic/)
+- `-d AlzheimersKG`: Dataset name
 - `--synthetic_train_files`: Comma-separated synthetic files (e.g., `train_random.txt,train_llm.txt,train_rag.txt`)
-- `-d AlzheimersKG`: Dataset name (no "focused" suffix in production mode)
+- Default: automatically loads `original/train.txt` + specified synthetic files
 
-### 2. Backward Compatible MVP Mode
-
-Train on focused dataset only (no synthetic edges):
-
-```bash
-cd src/gnn/lcilp
-
-# MVP mode: uses focused/train.txt only
-/opt/homebrew/bin/micromamba run -n gnn-kg python train.py \
-  -d AlzheimersKG/focused \
-  -e hitl_iter0_mvp \
-  --hop 3 \
-  --num_gcn_layers 3 \
-  --num_epochs 50 \
-  --batch_size 8
-```
-
-**Note:** Omitting `--use_production_data` defaults to MVP mode.
-
----
-
-### 3. Scoring Synthetic Validation Edges
+### 2. Scoring Synthetic Validation Edges
 
 Score **synthetic/valid_*.txt** for human review:
 
 ```bash
 cd src/gnn/lcilp
 
-# Production mode: score synthetic validation edges
+# Score synthetic validation edges
 /opt/homebrew/bin/micromamba run -n gnn-kg python score_edges.py \
-  --experiment_name hitl_iter0_production \
+  --experiment_name hitl_iter0 \
   --dataset AlzheimersKG \
   --synthetic_files synthetic/valid_random.txt \
   --output ../../data/hitl/iteration_1/synthetic_valid_scores.jsonl
@@ -96,28 +68,13 @@ cd src/gnn/lcilp
 
 **Key flags:**
 - `--synthetic_files`: Comma-separated synthetic validation files
-- `--dataset AlzheimersKG`: No "focused" suffix
-
-### 4. Backward Compatible Scoring (MVP)
-
-Score validation pool (29 backbone edges):
-
-```bash
-cd src/gnn/lcilp
-
-# MVP mode: score validation_pool.txt
-/opt/homebrew/bin/micromamba run -n gnn-kg python score_edges.py \
-  --experiment_name hitl_iter0_mvp \
-  --dataset AlzheimersKG/focused \
-  --pool_file focused/validation_pool.txt \
-  --output ../../data/hitl/iteration_1/pool_scores.jsonl
-```
+- `--dataset AlzheimersKG`: Dataset name (no subdirectory)
 
 ---
 
 ## Data Flow
 
-### Production HITL Workflow
+### Complete HITL Workflow
 
 ```
 1. Generate synthetic edges
@@ -126,7 +83,7 @@ cd src/gnn/lcilp
 2. Train GNN (iteration 0)
    ├─ Input: original/train.txt + synthetic/train_random.txt
    ├─ Validation: original/valid.txt
-   └─> Model: experiments/hitl_iter0_production/
+   └─> Model: experiments/hitl_iter0/
 
 3. Score synthetic validation edges
    ├─ Input: synthetic/valid_random.txt
@@ -147,26 +104,12 @@ cd src/gnn/lcilp
 
 7. Retrain with HITL (iteration 1)
    ├─ Input: train_augmented.jsonl (with per-edge weights)
-   └─> Model: experiments/hitl_iter1_production/
+   └─> Model: experiments/hitl_iter1/
 
 8. Evaluate on test set
    ├─ Input: synthetic/test_random.txt
    └─> Compare against: original/test.txt (ground truth)
 ```
-
----
-
-## Key Differences: Production vs MVP
-
-| Aspect | Production Mode | MVP Mode (Legacy) |
-|--------|----------------|-------------------|
-| **Flag** | `--use_production_data` | Default (no flag) |
-| **Dataset path** | `AlzheimersKG` | `AlzheimersKG/focused` |
-| **Training data** | `original/train.txt` + `synthetic/train_*.txt` | `focused/train.txt` |
-| **Validation** | `original/valid.txt` | `focused/valid.txt` |
-| **Review pool** | `synthetic/valid_*.txt` | `focused/validation_pool.txt` |
-| **Scoring** | `--synthetic_files` | `--pool_file` |
-| **Purpose** | Full HITL pipeline | MVP testing |
 
 ---
 
@@ -211,37 +154,52 @@ This creates:
 
 ---
 
+## Preparing Original Data
+
+Run `extract.py` to create the original dataset splits:
+
+```bash
+cd src/gnn
+/opt/homebrew/bin/micromamba run -n gnn-kg python extract.py
+```
+
+This extracts subgraphs from the full Alzheimer's KG and creates:
+- `original/train.txt` (135 edges, 70%)
+- `original/valid.txt` (28 edges, 15%)
+- `original/test.txt` (30 edges, 15%)
+
+---
+
 ## Troubleshooting
 
 ### "FileNotFoundError: original/train.txt"
 
-**Cause:** Using `--use_production_data` with old dataset structure.
+**Cause:** Dataset structure not created yet.
 
-**Fix:** Ensure `original/` and `synthetic/` directories exist:
+**Fix:** Run data preparation:
 ```bash
-ls src/gnn/lcilp/data/AlzheimersKG/
-# Should show: original/ synthetic/ focused/
+cd src/gnn
+/opt/homebrew/bin/micromamba run -n gnn-kg python extract.py
+/opt/homebrew/bin/micromamba run -n gnn-kg python generate_synthetic_edges.py
 ```
-
-### "Either --synthetic_files or --pool_file must be provided"
-
-**Cause:** `score_edges.py` requires one of these flags.
-
-**Fix:**
-- Production: Add `--synthetic_files synthetic/valid_random.txt`
-- MVP: Add `--pool_file focused/validation_pool.txt`
 
 ### Training uses only original edges, ignoring synthetic
 
-**Cause:** Forgot `--use_production_data` flag.
+**Cause:** Forgot `--synthetic_train_files` flag or wrong filename.
 
-**Fix:** Add the flag to enable production mode.
+**Fix:** Add the flag: `--synthetic_train_files train_random.txt`
+
+### "ModuleNotFoundError: No module named 'numpy'"
+
+**Cause:** Not using the `gnn-kg` conda environment.
+
+**Fix:** Prefix commands with `/opt/homebrew/bin/micromamba run -n gnn-kg`
 
 ---
 
 ## Next Steps
 
-1. **Run production training** to verify combined original + synthetic edges work
+1. **Run training** to verify combined original + synthetic edges work
 2. **Score synthetic validation edges** to test active learning selection
 3. **Implement validation UI** for human review (coming soon)
 4. **Replace mock synthetic edges** with real LLM/RAG output when ready
@@ -251,5 +209,5 @@ ls src/gnn/lcilp/data/AlzheimersKG/
 ## References
 
 - **HITL System Design:** `/internal/hitl-system-design.md`
-- **MVP Implementation Plan:** `/internal/hitl-mvp-focused-dataset-plan.md`
 - **Data Preparation:** `/src/gnn/extract.py`, `/src/gnn/generate_synthetic_edges.py`
+- **GNN Architecture:** `/internal/gnn-architecture.md`

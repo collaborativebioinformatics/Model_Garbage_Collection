@@ -21,8 +21,8 @@ files = {
     "query_backbone": "./lcilp/data/alzheimers_backbone_triples.txt",
 }
 
-# Output directory for focused dataset
-FOCUSED_OUTPUT_DIR = "./lcilp/data/AlzheimersKG/focused"
+# Output directory for original dataset
+ORIGINAL_OUTPUT_DIR = "./lcilp/data/AlzheimersKG/original"
 
 
 @dataclass
@@ -169,17 +169,17 @@ def load_triplets_from_file(file_path: str) -> List[Tuple[str, str, str]]:
     return triplets
 
 
-def prepare_focused_dataset(
+def prepare_original_dataset(
     merged_file: str,
     backbone_file: str,
-    output_dir: str = FOCUSED_OUTPUT_DIR,
+    output_dir: str = ORIGINAL_OUTPUT_DIR,
     train_ratio: float = 0.70,
     valid_ratio: float = 0.15,
     test_ratio: float = 0.15,
     random_seed: int = 42,
 ) -> Dict[str, List[Tuple[str, str, str]]]:
     """
-    Prepare focused dataset with backbone isolation.
+    Prepare original dataset with backbone isolation.
 
     This function:
     1. Loads merged subgraphs and backbone edges
@@ -201,7 +201,7 @@ def prepare_focused_dataset(
         Dictionary with 'train', 'valid', 'test', 'validation_pool' edge lists
     """
     print("=" * 60)
-    print("Preparing Focused Dataset for HITL Training")
+    print("Preparing Original Dataset for HITL Training")
     print("=" * 60)
 
     # Step 1: Load files
@@ -387,16 +387,16 @@ if __name__ == "__main__":
         params, adj_list, entity2id, relation2id, id2entity, id2relation, output_file
     )
 
-    # Prepare focused dataset with backbone isolation
+    # Prepare original dataset with backbone isolation
     print("\n" + "=" * 60)
     print("Creating train/valid/test splits for HITL training")
     print("=" * 60)
 
     try:
-        prepare_focused_dataset(
+        prepare_original_dataset(
             merged_file=output_file,
             backbone_file=files["query_backbone"],
-            output_dir=FOCUSED_OUTPUT_DIR,
+            output_dir=ORIGINAL_OUTPUT_DIR,
         )
     except ValueError as e:
         print(f"\n❌ ERROR: {e}")
