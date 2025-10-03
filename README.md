@@ -211,34 +211,7 @@ We built a GUI!
 
 
 ## Future Directions
-
-### Short-term Enhancements
-
-1. **Expanded Model Support**: Integration with additional LLM providers (Anthropic, Cohere, local models)
-2. **Advanced RAG Techniques**: Implementation of more sophisticated retrieval strategies and knowledge fusion methods
-3. **Interactive Validation Interface**: Development of web-based tools for streamlined expert review
-4. **Performance Optimization**: Batch processing improvements and caching mechanisms for large-scale operations
-
-### Medium-term Research Goals
-
-1. **Active Learning Integration**: Implement uncertainty-based sampling for targeted human validation
-2. **Multi-modal Knowledge Integration**: Incorporate image, genomic, and clinical data sources
-3. **Federated Learning Approaches**: Enable collaborative model training across institutions while preserving data privacy
-4. **Explainable AI Methods**: Develop interpretable models for edge prediction and error detection
-
-### Long-term Vision
-
-1. **Real-time Quality Monitoring**: Continuous assessment of knowledge graph integrity and automated error detection
-2. **Domain-specific Specialization**: Tailored models for specific biomedical subdomains (oncology, neurology, genetics)
-3. **Integration with Clinical Workflows**: Direct integration with electronic health records and clinical decision support systems
-4. **Standardization and Interoperability**: Development of standard protocols for knowledge graph quality assessment across platforms
-
-### Technical Roadmap
-
-1. **Scalability Improvements**: Architecture enhancements for processing larger knowledge graphs (millions of edges)
-2. **Advanced Graph Analytics**: Implementation of graph-theoretic measures for quality assessment
-3. **Automated Pipeline Orchestration**: Development of MLOps workflows for continuous model improvement
-4. **Cross-validation Studies**: Large-scale validation across multiple biomedical knowledge bases
+We built this prototype over 3 days as a hackathon team. We're stoked about it and are considering extending it in the future. We welcome any contributors or folks who wants to continue building off our proof-of-concept. 
 
 ## Contributing
 
