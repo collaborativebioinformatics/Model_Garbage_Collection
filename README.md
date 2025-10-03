@@ -6,7 +6,7 @@
 * Allen Baron (University of Maryland - Baltimore)
 * Yibei Chen (MIT)
 * Anne Ketter (Computercraft)
-* Samarpan Mohanty (University of Nebrask - Lincoln)
+* Samarpan Mohanty (University of Nebraska - Lincoln)
 * Evan Molinelli (Chan Zuckerburg Initiative)
 * Van Truong (University of Pennsylvania)
 
