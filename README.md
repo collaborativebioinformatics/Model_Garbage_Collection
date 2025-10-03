@@ -10,8 +10,6 @@
 * Evan Molinelli (Chan Zuckerburg Initiative)
 * Van Truong (University of Pennsylvania)
 
---- 
-
 ## Project Overview
 Biomedical knowledge graphs (KG) are powerful tools for linking genes, diseases, and phenotypes — but when AI models generate new edges, they often hallucinate or introduce errors. Our project focuses on pruning these errors. The KG Model Garbage Collection Tool is a proof-of-concept for how a combination of human review, grounded AI, and graph learning can work together to keep biomedical knowledge graphs accurate and trustworthy.
 
@@ -25,7 +23,6 @@ The KG Model Garbage Collection Tool provides a proof-of-concept (PoC) framework
 
 <img width="561" height="518" alt="Screenshot 2025-10-03 at 9 23 05 AM" src="https://github.com/user-attachments/assets/933c615e-d665-4841-a5d6-1bd89adf72d0" />
 
----
 
 ## Quickstart Instructions
 ## What can you do with KG Garbage Model Collector?
@@ -45,7 +42,6 @@ TODO update with filetree
 4. **src/knowledge-graph/extract.py** - extract the "backbone" of the graph for input to GNN
 5. **src/knowledge-graph/create_cytoscape_files.py** - create files for visualization in Cytoscape with node & edge data for each rebuilt knowledge graph & associated backbones
 
----
 
 ## Methods
 
@@ -84,7 +80,6 @@ TODO update with filetree
 - **Error Analysis**: Categorization of prediction errors and failure modes
 - **Human Validation Interface**: Web-based tools for expert review and feedback collection
 
----
 
 ### RAG Pipeline for Biomedical Knowledge Graphs
 
@@ -95,7 +90,6 @@ This repository implements a Retrieval-Augmented Generation (RAG) workflow that:
 4. Queries domain knowledge to assist in filling missing predicates in biomedical knowledge graphs
 5. Uses AWS Bedrock LLMs with retrieved context to generate reasoning-based explanations
 
----
 
 ### AWS Bedrock Setup
 
@@ -112,7 +106,6 @@ The script uses:
 - **Model**: `openai.gpt-oss-120b-1:0`
 - **Parameters**: `temperature=0.2`, `top_p=0.9`, and high `max_tokens`
 
----
 
 ### Features
 
@@ -123,8 +116,6 @@ The script uses:
 - **RAG Querying** – retrieves top-k chunks for domain context
 - **Predicate Filling** – enhances triples with missing predicates using LLMs
 - **Evidence Generation** – produces reasoning sentences with PubMed IDs for traceability
-
----
 
 
 ## RAG Usage
@@ -178,9 +169,7 @@ This produces:
 - `bedrock_rag_metrics_test.json` – run statistics
 - `bedrock_rag_responses_test.json` – detailed LLM responses
 
----
 
 ## Data Sources
 The KG Model Garbage Collection tool uses and displays data and algorithms from the Monarch Initiative. The Monarch Initiative (https://monarchinitiative.org) makes biomedical knowledge exploration more efficient and effective by providing tools for genotype-phenotype analysis, genomic diagnostics, and precision medicine across broad areas of disease.
 
---- 
