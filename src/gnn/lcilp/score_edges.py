@@ -1,13 +1,23 @@
 #!/usr/bin/env python3
 """
-Score edges from validation pool using trained GNN model.
+Score synthetic validation edges using trained GNN model.
 
-Usage:
+This script is part of the HITL (Human-in-the-Loop) pipeline. It scores
+synthetic edges from the validation set to identify uncertain edges for
+human review.
+
+Production Usage:
     python score_edges.py \
-        --model experiments/hitl_iter0/best_graph_classifier.pth \
-        --dataset AlzheimersKG/focused \
         --experiment_name hitl_iter0 \
-        --pool_file data/AlzheimersKG/focused/validation_pool.txt \
+        --dataset AlzheimersKG \
+        --synthetic_files synthetic/valid_random.txt,synthetic/valid_llm.txt \
+        --output ../../data/hitl/iteration_1/synthetic_valid_scores.jsonl
+
+MVP Usage (backward compatible):
+    python score_edges.py \
+        --experiment_name hitl_iter0 \
+        --dataset AlzheimersKG/focused \
+        --pool_file focused/validation_pool.txt \
         --output ../../data/hitl/iteration_1/pool_scores.jsonl
 """
 
@@ -91,75 +101,125 @@ def main(params):
     simplefilter(action="ignore", category=UserWarning)
     simplefilter(action="ignore", category=SparseEfficiencyWarning)
 
-    print("=" * 60)
-    print("Scoring Validation Pool Edges")
-    print("=" * 60)
+    # Determine if using production (synthetic files) or MVP (pool file)
+    if params.synthetic_files:
+        mode = "production"
+        edge_files = [f.strip() for f in params.synthetic_files.split(",")]
+        print("=" * 60)
+        print("Scoring Synthetic Validation Edges (Production Mode)")
+        print("=" * 60)
+        print(f"Files to score: {', '.join(edge_files)}")
+    else:
+        mode = "mvp"
+        edge_files = [params.pool_file]
+        print("=" * 60)
+        print("Scoring Validation Pool Edges (MVP Mode)")
+        print("=" * 60)
+        print(f"File to score: {params.pool_file}")
 
     # Load trained model
     print(f"\n[1/4] Loading model from {params.experiment_name}...")
     graph_classifier = initialize_model(params, None, load_model=True)
     print(f"  ✓ Model loaded from experiments/{params.experiment_name}/")
 
-    # Generate subgraphs for validation pool edges
-    print(f"\n[2/4] Extracting subgraphs for validation pool...")
+    # Build file_paths dict for graph construction
+    # Note: 'train' is required by process_files() to build adjacency list
+    if mode == "production":
+        # Production: use original/train.txt for graph structure
+        params.file_paths = {
+            "train": os.path.join(
+                params.main_dir, f"data/{params.dataset}/original/train.txt"
+            ),
+        }
+        # Add all synthetic files as separate splits
+        for i, edge_file in enumerate(edge_files):
+            split_name = f"synthetic_valid_{i}"
+            params.file_paths[split_name] = os.path.join(
+                params.main_dir, f"data/{params.dataset}/{edge_file}"
+            )
+
+        splits_to_score = [f"synthetic_valid_{i}" for i in range(len(edge_files))]
+        db_path_suffix = "synthetic_valid"
+    else:
+        # MVP: use focused/train.txt for graph structure
+        params.file_paths = {
+            "train": os.path.join(params.main_dir, f"data/{params.dataset}/train.txt"),
+            "validation_pool": params.pool_file,
+        }
+        splits_to_score = ["validation_pool"]
+        db_path_suffix = "validation_pool"
+
+    # Generate subgraphs
+    print(f"\n[2/4] Extracting subgraphs for edges...")
     params.db_path = os.path.join(
         params.main_dir,
-        f"data/{params.dataset}/validation_pool_subgraphs_{params.experiment_name}",
+        f"data/{params.dataset}/{db_path_suffix}_subgraphs_{params.experiment_name}",
     )
 
-    # Create custom file_paths for validation pool
-    # Must be set on params object, not passed as argument
-    # Note: 'train' is required by process_files() to build adjacency list
-    params.file_paths = {
-        "train": os.path.join(params.main_dir, f"data/{params.dataset}/train.txt"),
-        "validation_pool": params.pool_file,
-    }
-
-    # Generate subgraphs for validation pool
     generate_subgraph_datasets(
         params,
-        splits=["validation_pool"],
+        splits=splits_to_score,
         saved_relation2id=graph_classifier.relation2id,
         max_label_value=graph_classifier.gnn.max_label_value,
     )
     print(f"  ✓ Subgraphs extracted to {params.db_path}")
 
-    # Load validation pool dataset
-    print(f"\n[3/4] Loading validation pool dataset...")
-    validation_pool = SubgraphDataset(
-        params.db_path,
-        "validation_pool_pos",
-        "validation_pool_neg",  # Will be empty
-        params.file_paths,
-        graph_classifier.relation2id,
-        add_traspose_rels=params.add_traspose_rels,
-        num_neg_samples_per_link=0,  # No negative samples
-        use_kge_embeddings=params.use_kge_embeddings,
-        dataset=params.dataset,
-        kge_model=params.kge_model,
-        file_name="validation_pool",
-    )
-    print(f"  ✓ Loaded {len(validation_pool)} edges")
+    # Score all edge files
+    print(f"\n[3/4] Loading and scoring datasets...")
+    all_triplets = []
+    all_scores = []
 
-    # Score edges
-    print(f"\n[4/4] Scoring edges with trained model...")
-    scores = score_edges(params, graph_classifier, validation_pool)
+    for i, split_name in enumerate(splits_to_score):
+        # Determine original file for loading triplets
+        if mode == "production":
+            edge_file = edge_files[i]
+            triplet_file = os.path.join(
+                params.main_dir, f"data/{params.dataset}/{edge_file}"
+            )
+        else:
+            triplet_file = params.pool_file
 
-    # Load original triplets
-    triplets = load_triplets(params.pool_file)
+        print(f"  Processing {split_name}...")
+
+        # Load dataset
+        dataset = SubgraphDataset(
+            params.db_path,
+            f"{split_name}_pos",
+            f"{split_name}_neg",  # Will be empty
+            params.file_paths,
+            graph_classifier.relation2id,
+            add_traspose_rels=params.add_traspose_rels,
+            num_neg_samples_per_link=0,  # No negative samples
+            use_kge_embeddings=params.use_kge_embeddings,
+            dataset=params.dataset,
+            kge_model=params.kge_model,
+            file_name=split_name,
+        )
+
+        # Score edges
+        scores = score_edges(params, graph_classifier, dataset)
+
+        # Load original triplets
+        triplets = load_triplets(triplet_file)
+
+        all_triplets.extend(triplets)
+        all_scores.extend(scores)
+
+        print(f"    ✓ Scored {len(scores)} edges from {split_name}")
 
     # Export results
-    export_scores(triplets, scores, params.output)
+    print(f"\n[4/4] Exporting results...")
+    export_scores(all_triplets, all_scores, params.output)
 
     # Summary
     print("\n" + "=" * 60)
     print("Scoring Complete")
     print("=" * 60)
-    print(f"Scored {len(scores)} edges")
+    print(f"Total edges scored: {len(all_scores)}")
     print(f"\nScore distribution:")
-    print(f"  Min:  {min(scores):.3f}")
-    print(f"  Mean: {sum(scores) / len(scores):.3f}")
-    print(f"  Max:  {max(scores):.3f}")
+    print(f"  Min:  {min(all_scores):.3f}")
+    print(f"  Mean: {sum(all_scores) / len(all_scores):.3f}")
+    print(f"  Max:  {max(all_scores):.3f}")
     print(f"\nResults saved to: {params.output}")
 
 
@@ -181,13 +241,24 @@ if __name__ == "__main__":
         "-d",
         type=str,
         required=True,
-        help="Dataset name (e.g., AlzheimersKG/focused)",
+        help="Dataset name (e.g., AlzheimersKG for production, AlzheimersKG/focused for MVP)",
+    )
+
+    # Edge source (mutually exclusive: either synthetic_files or pool_file)
+    parser.add_argument(
+        "--synthetic_files",
+        type=str,
+        default=None,
+        help="Comma-separated synthetic validation files (production mode), e.g., 'synthetic/valid_random.txt,synthetic/valid_llm.txt'",
     )
     parser.add_argument(
-        "--pool_file", type=str, required=True, help="Path to validation_pool.txt"
+        "--pool_file",
+        type=str,
+        default=None,
+        help="Path to validation_pool.txt (MVP mode, backward compatible)",
     )
     parser.add_argument(
-        "--output", type=str, required=True, help="Output path for pool_scores.jsonl"
+        "--output", type=str, required=True, help="Output path for scores JSONL file"
     )
 
     # Model params (should match training)
@@ -266,6 +337,12 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
+
+    # Validate arguments
+    if not args.synthetic_files and not args.pool_file:
+        parser.error("Either --synthetic_files or --pool_file must be provided")
+    if args.synthetic_files and args.pool_file:
+        parser.error("Cannot specify both --synthetic_files and --pool_file")
 
     # Set up paths
     args.main_dir = os.path.join(os.path.dirname(__file__))

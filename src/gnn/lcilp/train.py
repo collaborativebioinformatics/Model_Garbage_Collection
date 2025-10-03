@@ -110,6 +110,17 @@ if __name__ == "__main__":
         default="valid",
         help="Name of file containing validation triplets",
     )
+    parser.add_argument(
+        "--use_production_data",
+        action="store_true",
+        help="Use production data structure (original/ + synthetic/) instead of MVP focused/",
+    )
+    parser.add_argument(
+        "--synthetic_train_files",
+        type=str,
+        default="train_random.txt",
+        help="Comma-separated list of synthetic training files (e.g., 'train_random.txt,train_llm.txt')",
+    )
 
     # Training regime params
     parser.add_argument(
@@ -303,14 +314,51 @@ if __name__ == "__main__":
     params = parser.parse_args()
     initialize_experiment(params, __file__)
 
-    params.file_paths = {
-        "train": os.path.join(
-            params.main_dir, "data/{}/{}.txt".format(params.dataset, params.train_file)
-        ),
-        "valid": os.path.join(
-            params.main_dir, "data/{}/{}.txt".format(params.dataset, params.valid_file)
-        ),
-    }
+    # Build file_paths based on mode (production vs MVP)
+    if params.use_production_data:
+        # Production mode: original/ + synthetic/
+        params.file_paths = {
+            "original_train": os.path.join(
+                params.main_dir,
+                f"data/{params.dataset}/original/{params.train_file}.txt",
+            ),
+            "original_valid": os.path.join(
+                params.main_dir,
+                f"data/{params.dataset}/original/{params.valid_file}.txt",
+            ),
+        }
+
+        # Add synthetic training files
+        synthetic_files = [f.strip() for f in params.synthetic_train_files.split(",")]
+        for i, synth_file in enumerate(synthetic_files):
+            params.file_paths[f"synthetic_train_{i}"] = os.path.join(
+                params.main_dir, f"data/{params.dataset}/synthetic/{synth_file}"
+            )
+
+        # For backward compatibility, set 'train' to original_train
+        # (process_files expects a 'train' key for building adjacency list)
+        params.file_paths["train"] = params.file_paths["original_train"]
+        params.file_paths["valid"] = params.file_paths["original_valid"]
+
+        logging.info("Using production data structure:")
+        logging.info(f"  - Original train: {params.file_paths['original_train']}")
+        logging.info(f"  - Original valid: {params.file_paths['original_valid']}")
+        logging.info(
+            f"  - Synthetic files: {', '.join([params.file_paths[k] for k in params.file_paths if k.startswith('synthetic')])}"
+        )
+    else:
+        # MVP mode: focused/ (backward compatible)
+        params.file_paths = {
+            "train": os.path.join(
+                params.main_dir,
+                "data/{}/{}.txt".format(params.dataset, params.train_file),
+            ),
+            "valid": os.path.join(
+                params.main_dir,
+                "data/{}/{}.txt".format(params.dataset, params.valid_file),
+            ),
+        }
+        logging.info("Using MVP data structure (focused/):")
 
     if not params.disable_cuda and torch.cuda.is_available():
         params.device = torch.device("cuda:%d" % params.gpu)
