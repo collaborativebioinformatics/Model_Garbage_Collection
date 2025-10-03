@@ -154,18 +154,6 @@ Model_Garbage_Collection/
 1. **Knowledge Graph Extraction**: Download subgraphs from the Monarch Knowledge Graph, including node metadata (identifiers, labels, descriptions) - *src/knowledge-graph/download.py*
 2. **Data Preprocessing**: Convert graph triples from JSON to structured CSV format for analysis - *src/knowledge-graph/triples_to_csv.py*
 4. **Edge Removal & Assignment Methodologies**: Systematically remove a percentage of edges from trusted graph data to create incomplete subgraphs. We used three strategies for creating our test KGs. - *Edge_Assignor.ipynb*. See [README-Edge_Assignor.md](README-Edge_Assignor.md) for details on RAG pipeline.
-	1. **Random Baseline**:
-		- Randomly assigns predicates from the set of unique relationships in the dataset
-		- Provides baseline performance metrics for comparison
-    2. **LLM-Based Assignment**:
-        - Utilizes AWS Bedrock with OpenAI GPT models
-        - Batch processing for efficiency
-        - Context-aware predicate selection based on subject-object relationships
-    3. **RAG-Enhanced Assignment**:
-        - Integrates domain knowledge from PubMed abstracts
-        - Uses ChromaDB for vector similarity search
-        - Provides scientific context for relationship prediction
-        - Includes PMID citations for traceability
 5. **Simulated Human Curation**: A Python script that simulates human review by comparing assigned edges against ground truth, generating curated datasets for GNN training - *src/human_simulator.py*
 6 **Prepare cytoscape visualization files**: Create files for visualization in Cytoscape with node & edge data for each rebuilt knowledge graph & associated backbones - *src/knowledge-graph/create_cytoscape_files.py*
 
