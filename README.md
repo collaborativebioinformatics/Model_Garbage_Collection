@@ -95,66 +95,25 @@ Belo is a quick logic flow behind each of our scripts.
 5. **src/knowledge-graph/create_cytoscape_files.py** - create files for visualization in Cytoscape with node & edge data for each rebuilt knowledge graph & associated backbones
 
 ### Directory Structure
+Here's an overview of our filetree in this repo. 
+
 ````Model_Garbage_Collection/
 ├── app/
 │   └── frontend/                    # React frontend application
-│       ├── src/
-│       │   ├── components/
-│       │   │   ├── graphviewer/
-│       │   │   │   └── GraphViewer.tsx
-│       │   │   ├── CounterCard.tsx
-│       │   │   ├── GraphView.tsx
-│       │   │   ├── StatsCard.tsx
-│       │   │   ├── TableView.tsx
-│       │   │   ├── TriToggle.tsx
-│       │   │   └── UserCard.tsx
-│       │   ├── data/alzheimers_llm/
-│       │   │   ├── backbone_graph.json
-│       │   │   ├── graph.json
-│       │   │   └── add_edge_ids.sh
-│       │   ├── types/
-│       │   │   └── GraphInterface.tsx
-│       │   ├── App.tsx
-│       │   ├── main.tsx
-│       │   ├── store.ts
-│       │   └── theme.ts
-│       ├── index.html
-│       ├── package.json
-│       ├── README.md
-│       ├── tsconfig.json
-│       └── vite.config.ts
 ├── data/                            # Input datasets
 │   ├── alzheimers_nodes.json
-│   ├── alzheimers_triples.csv
-│   └── example_edges.jsonl
+│   └── alzheimers_triples.csv
 ├── notebooks/                       # Jupyter notebooks for analysis
 │   └── model_testing.ipynb
 ├── outputs/                         # Generated results and datasets
 │   ├── cytoscape/                   # Graph visualization files
-│   │   ├── alzheimers_llm_rag-backbone.json
-│   │   ├── alzheimers_llm_rag.json
-│   │   ├── alzheimers_llm-backbone.json
-│   │   ├── alzheimers_llm.json
-│   │   ├── alzheimers_random-backbone.json
-│   │   └── alzheimers_random.json
 │   ├── antijoin_alzheimers_llm_rag.csv
 │   ├── antijoin_alzheimers_llm.csv
 │   ├── antijoin_alzheimers_random.csv
-│   ├── bedrock_filled_test.csv
-│   ├── bedrock_rag_filled_test.csv
-│   ├── bedrock_rag_metrics_test.json
-│   ├── bedrock_rag_responses_test.json
-│   ├── modified_chunk_50%_removed.csv
-│   └── randomly_assigned_edges.csv
 ├── src/                             # Core source code
 │   ├── gnn/                         # Graph Neural Network components
 │   │   ├── lcilp/                   # Link prediction implementation
 │   │   │   ├── data/                # Training datasets
-│   │   │   │   ├── FB15K237/
-│   │   │   │   ├── NELL-995/
-│   │   │   │   ├── WN18RR/
-│   │   │   │   ├── alzheimers_*.csv
-│   │   │   │   └── [various versioned datasets]
 │   │   │   ├── ensembling/          # Model ensemble methods
 │   │   │   │   ├── blend.py
 │   │   │   │   ├── compute_auc.py
@@ -177,10 +136,6 @@ Belo is a quick logic flow behind each of our scripts.
 │   │   │   │   ├── graph_sampler.py
 │   │   │   │   └── multicom.py
 │   │   │   ├── utils/               # Utility functions
-│   │   │   │   ├── data_utils.py
-│   │   │   │   ├── dgl_utils.py
-│   │   │   │   ├── graph_utils.py
-│   │   │   │   └── initialization_utils.py
 │   │   │   ├── graph_sampler.py
 │   │   │   ├── score_edges.py
 │   │   │   ├── train.py
