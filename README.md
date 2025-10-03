@@ -45,13 +45,7 @@ The **KG Model Garbage Collection Tool** provides a proof-of-concept (PoC) frame
 
 ### Dependencies
 
-Install Python dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Key dependencies include: pandas, numpy, boto3 (AWS SDK), sentence-transformers, chromadb, langchain, requests
+Key python dependencies include: pandas, numpy, boto3 (AWS SDK), sentence-transformers, chromadb, langchain, requests
 
 ### AWS Configuration
 
@@ -75,28 +69,21 @@ cd Model_Garbage_Collection
 
 2. Install dependencies:
 ```bash
-pip install -r requirements.txt
+pip install .
 ```
 
 3. Configure environment variables:
 ```bash
-export AWS_REGION=us-east-1
+export AWS_REGION=your-region
 export AWS_PROFILE=your-profile
 ```
 
-### Order of Execution
-Belo is a quick logic flow behind each of our scripts. 
-
-1. **src/knowledge-graph/download.py** - download a subgraph from Monarch KG (and node data including id, label, & description)
-2. **src/knowledge-graph/triples_to_csv.py** - convert the downloaded triples from JSON to CSV file
-3. **Edge_Assignor.ipynb** - randomly remove some edges from the downloaded triples and use 3 strategies to rebuild the edges (random, LLM, LLM-RAG)
-4. **src/knowledge-graph/extract.py** - extract the "backbone" of the graph for input to GNN
-5. **src/knowledge-graph/create_cytoscape_files.py** - create files for visualization in Cytoscape with node & edge data for each rebuilt knowledge graph & associated backbones
 
 ### Directory Structure
 Here's an overview of our filetree in this repo. 
 
-````Model_Garbage_Collection/
+````
+Model_Garbage_Collection/
 ├── app/
 │   └── frontend/                    # React frontend application
 ├── data/                            # Input datasets
@@ -105,16 +92,7 @@ Here's an overview of our filetree in this repo.
 ├── notebooks/                       # Jupyter notebooks for analysis
 │   └── model_testing.ipynb
 ├── outputs/                         # Generated results and datasets
-│   ├── cytoscape/                   # Graph visualization files
-│   ├── antijoin_alzheimers_llm_rag.csv
-│   ├── antijoin_alzheimers_llm.csv
-│   ├── antijoin_alzheimers_random.csv
-│   ├── bedrock_filled_test.csv
-│   ├── bedrock_rag_filled_test.csv
-│   ├── bedrock_rag_metrics_test.json
-│   ├── bedrock_rag_responses_test.json
-│   ├── modified_chunk_50%_removed.csv
-│   └── randomly_assigned_edges.csv
+│   └── cytoscape/                   # Graph visualization files
 ├── src/                             # Core source code
 │   ├── gnn/                         # Graph Neural Network components
 │   │   ├── lcilp/                   # Link prediction implementation
@@ -163,8 +141,7 @@ Here's an overview of our filetree in this repo.
 ├── main.py                          # Main application entry point
 ├── logo.svg
 ├── pyproject.toml                   # Python project configuration
-├── README.md                        # Project documentation
-└── README_RAG.md                    # RAG pipeline documentation
+└── README.md                        # Project documentation
 ````
 
 
@@ -173,28 +150,28 @@ Here's an overview of our filetree in this repo.
 ### Data Processing Pipeline
 <img width="1761" height="617" alt="image" src="https://github.com/user-attachments/assets/0f4c9d81-b80a-4c75-b2f9-49c50b6d2382" />
 
-1. **Knowledge Graph Extraction**: Download subgraphs from the Monarch Knowledge Graph, including node metadata (identifiers, labels, descriptions)
-2. **Data Preprocessing**: Convert graph triples from JSON to structured CSV format for analysis
-3. **Edge Removal**: Systematically remove a percentage of edges from trusted graph data to create incomplete subgraphs
-4. **Edge Assignment Methodologies**: We used three strategies for creating our test KGs
+1. **Knowledge Graph Extraction**: Download subgraphs from the Monarch Knowledge Graph, including node metadata (identifiers, labels, descriptions) - *src/knowledge-graph/download.py*
+2. **Data Preprocessing**: Convert graph triples from JSON to structured CSV format for analysis - *src/knowledge-graph/triples_to_csv.py*
+4. **Edge Removal & Assignment Methodologies**: Systematically remove a percentage of edges from trusted graph data to create incomplete subgraphs. We used three strategies for creating our test KGs. - *Edge_Assignor.ipynb*
+	1. **Random Baseline**:
+		- Randomly assigns predicates from the set of unique relationships in the dataset
+		- Provides baseline performance metrics for comparison
+    2. **LLM-Based Assignment**:
+        - Utilizes AWS Bedrock with OpenAI GPT models
+        - Batch processing for efficiency
+        - Context-aware predicate selection based on subject-object relationships
+    3. **RAG-Enhanced Assignment**:
+        - Integrates domain knowledge from PubMed abstracts
+        - Uses ChromaDB for vector similarity search
+        - Provides scientific context for relationship prediction
+        - Includes PMID citations for traceability
+5. **Simulated Human Curation**: A Python script that simulates human review by comparing assigned edges against ground truth, generating curated datasets for GNN training - *src/human_simulator.py*
+6 **Prepare cytoscape visualization files**: Create files for visualization in Cytoscape with node & edge data for each rebuilt knowledge graph & associated backbones - *src/knowledge-graph/create_cytoscape_files.py*
 
-A. **Random Baseline**:
-- Randomly assigns predicates from the set of unique relationships in the dataset
-- Provides baseline performance metrics for comparison
 
-B. **LLM-Based Assignment**:
-- Utilizes AWS Bedrock with OpenAI GPT models
-- Batch processing for efficiency
-- Context-aware predicate selection based on subject-object relationships
-
-C. **RAG-Enhanced Assignment**:
-- Integrates domain knowledge from PubMed abstracts
-- Uses ChromaDB for vector similarity search
-- Provides scientific context for relationship prediction
-- Includes PMID citations for traceability
-
-6. **Validation Framework**: Compare predicted edges against ground truth using exact matching and validation scoring
-7. **Graph Neural Network Training**: Extract graph backbones for GNN input and training on validation patterns
+### Model training & validation pipeline
+1. **Validation Framework**: Compare predicted edges against ground truth using exact matching and validation scoring
+2. **Graph Neural Network Training**: Extract graph backbones for GNN input and training on validation patterns
 
 
 ### RAG Pipeline for Biomedical Knowledge Graphs
