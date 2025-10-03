@@ -1,5 +1,5 @@
-import { Box, useColorModeValue, Tooltip } from '@chakra-ui/react'
-import { useEffect, useRef, useState } from 'preact/hooks'
+import { Box, useColorModeValue, Tooltip, VStack, HStack, Text } from '@chakra-ui/react'
+import { useEffect, useRef, useState, useMemo } from 'preact/hooks'
 import cytoscape, { Core, NodeSingular, EdgeCollection } from 'cytoscape'
 
 interface GraphData {
@@ -34,9 +34,60 @@ interface GraphData {
 interface GraphViewProps {
   graphData: GraphData
   highlightedEdges?: string[]
+  edgeLabel:string
 }
 
-export function GraphView({ graphData, highlightedEdges = [] }: GraphViewProps) {
+// Color palette for edge labels
+const COLOR_PALETTE = [
+  '#4299E1', // blue
+  '#48BB78', // green
+  '#ED8936', // orange
+  '#9F7AEA', // purple
+  '#F56565', // red
+  '#38B2AC', // teal
+  '#ECC94B', // yellow
+  '#ED64A6', // pink
+  '#667EEA', // indigo
+  '#FC8181', // red-light
+]
+
+// Legend component
+interface LegendProps {
+  colorMap: Map<string, string>
+  bgColor: string
+  borderColor: string
+}
+
+function Legend({ colorMap, bgColor, borderColor }: LegendProps) {
+  return (
+    <Box
+      position="absolute"
+      top="10px"
+      right="10px"
+      bg={bgColor}
+      borderRadius="md"
+      borderWidth="1px"
+      borderColor={borderColor}
+      p={3}
+      shadow="md"
+      maxH="200px"
+      overflowY="auto"
+      zIndex={1000}
+    >
+      <Text fontSize="sm" fontWeight="bold" mb={2}>Edge Types</Text>
+      <VStack align="stretch" spacing={1}>
+        {Array.from(colorMap.entries()).map(([label, color]) => (
+          <HStack key={label} spacing={2}>
+            <Box w="20px" h="3px" bg={color} borderRadius="sm" />
+            <Text fontSize="xs">{label}</Text>
+          </HStack>
+        ))}
+      </VStack>
+    </Box>
+  )
+}
+
+export function GraphView({ graphData, highlightedEdges = [], edgeLabel="label" }: GraphViewProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const cyRef = useRef<Core | null>(null)
   const [hoveredNode, setHoveredNode] = useState<any>(null)
@@ -45,8 +96,36 @@ export function GraphView({ graphData, highlightedEdges = [] }: GraphViewProps) 
   const bgColor = useColorModeValue('white', 'gray.800')
   const borderColor = useColorModeValue('gray.200', 'gray.700')
 
+  // Create color mapping for unique edge labels
+  const edgeLabelColorMap = useMemo(() => {
+    const uniqueLabels = new Set<string>()
+    graphData.elements.edges.forEach(edge => {
+      const labelValue = edge.data[edgeLabel]
+      if (labelValue !== undefined && labelValue !== null) {
+        uniqueLabels.add(String(labelValue))
+      }
+    })
+
+    const colorMap = new Map<string, string>()
+    Array.from(uniqueLabels).forEach((label, index) => {
+      colorMap.set(label, COLOR_PALETTE[index % COLOR_PALETTE.length])
+    })
+
+    return colorMap
+  }, [graphData, edgeLabel])
+
+
   useEffect(() => {
     if (!containerRef.current) return
+
+    // Build dynamic styles for each edge label value
+    const edgeStyles = Array.from(edgeLabelColorMap.entries()).map(([label, color]) => ({
+      selector: `edge[${edgeLabel} = "${label}"]`,
+      style: {
+        'line-color': color,
+        'target-arrow-color': color,
+      }
+    }))
 
     // Initialize Cytoscape
     cyRef.current = cytoscape({
@@ -76,11 +155,19 @@ export function GraphView({ graphData, highlightedEdges = [] }: GraphViewProps) 
             'target-arrow-color': '#718096',
             'target-arrow-shape': 'triangle',
             'curve-style': 'bezier',
-            'label': 'data(interaction)',
+            'label': '',
             'font-size': '10px',
             'text-rotation': 'autorotate',
             'text-margin-y': -10,
             'color': '#A0AEC0'
+          }
+        },
+        ...edgeStyles,
+        {
+          selector: 'edge.selected',
+          style: {
+            'label': `data(${edgeLabel})`,
+            'width': 3,
           }
         },
         {
@@ -117,6 +204,27 @@ export function GraphView({ graphData, highlightedEdges = [] }: GraphViewProps) 
       }
     })
 
+    // Initialize all edges with selected: false
+    cyRef.current.edges().forEach(edge => {
+      edge.data('selected', false)
+    })
+
+    // Add click event listener for edges
+    cyRef.current.on('tap', 'edge', (evt: any) => {
+      const edge = evt.target
+      const currentSelected = edge.data('selected')
+
+      // Toggle selected state
+      edge.data('selected', !currentSelected)
+
+      // Toggle CSS class for styling
+      if (!currentSelected) {
+        edge.addClass('selected')
+      } else {
+        edge.removeClass('selected')
+      }
+    })
+
     // Add hover event listeners
     cyRef.current.on('mouseover', 'node', (evt: any) => {
       const node: NodeSingular = evt.target
@@ -136,7 +244,7 @@ export function GraphView({ graphData, highlightedEdges = [] }: GraphViewProps) 
         cyRef.current.destroy()
       }
     }
-  }, [graphData])
+  }, [graphData, edgeLabel, edgeLabelColorMap])
 
   // Update highlighted edges when prop changes
   useEffect(() => {
@@ -168,6 +276,8 @@ export function GraphView({ graphData, highlightedEdges = [] }: GraphViewProps) 
         borderColor={borderColor}
         shadow="xl"
       />
+
+      <Legend colorMap={edgeLabelColorMap} bgColor={bgColor} borderColor={borderColor} />
 
       {hoveredNode && (
         <Box
