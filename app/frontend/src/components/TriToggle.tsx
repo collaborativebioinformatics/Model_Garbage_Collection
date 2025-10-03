@@ -6,11 +6,15 @@ export type TriToggleState = 'neutral' | 'yes' | 'no'
 
 interface TriToggleProps {
   defaultState?: TriToggleState
+  state?: TriToggleState
   onChange?: (state: TriToggleState) => void
 }
 
-export function TriToggle({ defaultState = 'neutral', onChange }: TriToggleProps) {
-  const [state, setState] = useState<TriToggleState>(defaultState)
+export function TriToggle({ defaultState = 'neutral', state: controlledState, onChange }: TriToggleProps) {
+  const [internalState, setInternalState] = useState<TriToggleState>(defaultState)
+
+  // Use controlled state if provided, otherwise use internal state
+  const state = controlledState !== undefined ? controlledState : internalState
 
   const handleClick = () => {
     const nextState =
@@ -18,7 +22,11 @@ export function TriToggle({ defaultState = 'neutral', onChange }: TriToggleProps
       state === 'yes' ? 'no' :
       'neutral'
 
-    setState(nextState)
+    // Update internal state only if not controlled
+    if (controlledState === undefined) {
+      setInternalState(nextState)
+    }
+
     onChange?.(nextState)
   }
 

@@ -11,18 +11,16 @@ import {
   HStack,
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'preact/hooks'
-import { CounterCard } from './components/CounterCard'
-import { UserCard } from './components/UserCard'
-import { StatsCard } from './components/StatsCard'
 import { GraphView } from './components/GraphView'
-import { TriToggle } from './components/TriToggle'
 import { TableView } from './components/TableView'
 import { GraphData } from './types/GraphInterface'
 import graphDataJson from './data/alzheimers_llm/graph.json'
 import backboneDataJson from './data/alzheimers_llm/backbone_graph.json'
+import subgraphDataJson from './data/alzheimers_llm/subgraph.json'
 
 const graphData: GraphData = graphDataJson as GraphData
 const backboneData: GraphData = backboneDataJson as GraphData
+const subgraphData: GraphData = subgraphDataJson as GraphData
 
 export function App() {
   const { setColorMode } = useColorMode()
@@ -84,6 +82,7 @@ export function App() {
               graphData={graphData}
               highlightedEdges={highlightedEdges}
               edgeLabel="label"
+              showNodeLabels={false}
             />
           </Box>
 
@@ -105,14 +104,15 @@ export function App() {
               graphData={backboneData}
               highlightedEdges={[]}
               edgeLabel="label"
+              showNodeLabels={true}
             />
           </Box>
 
           {/* Interactive Components Grid */}
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
+          {/* <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
             <CounterCard />
             <UserCard />
-          </SimpleGrid>
+          </SimpleGrid> */}
 
           {/* Footer */}
           <Box textAlign="center" pt={8} pb={4}>

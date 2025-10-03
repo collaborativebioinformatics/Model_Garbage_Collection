@@ -6,7 +6,8 @@ import { GraphData } from '../types/GraphInterface'
 interface GraphViewProps {
   graphData: GraphData
   highlightedEdges?: string[]
-  edgeLabel:string
+  edgeLabel: string
+  showNodeLabels?: boolean
 }
 
 // Color palette for edge labels
@@ -59,7 +60,7 @@ function Legend({ colorMap, bgColor, borderColor }: LegendProps) {
   )
 }
 
-export function GraphView({ graphData, highlightedEdges = [], edgeLabel="label" }: GraphViewProps) {
+export function GraphView({ graphData, highlightedEdges = [], edgeLabel="label", showNodeLabels = true }: GraphViewProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const cyRef = useRef<Core | null>(null)
   const [hoveredNode, setHoveredNode] = useState<any>(null)
@@ -108,7 +109,7 @@ export function GraphView({ graphData, highlightedEdges = [], edgeLabel="label" 
           selector: 'node',
           style: {
             'background-color': '#4299E1',
-            'label': 'data(label)',
+            'label': showNodeLabels ? 'data(label)' : '',
             'color': '#fff',
             'text-valign': 'center',
             'text-halign': 'center',
@@ -163,15 +164,15 @@ export function GraphView({ graphData, highlightedEdges = [], edgeLabel="label" 
       layout: {
         name: 'cose', // Force-directed layout
         animate: true,
-        animationDuration: 1000,
+        animationDuration: 5000,
         nodeRepulsion: 400000,
         idealEdgeLength: 100,
         edgeElasticity: 100,
         nestingFactor: 5,
         gravity: 80,
         numIter: 1000,
-        initialTemp: 200,
-        coolingFactor: 0.95,
+        initialTemp: 100,
+        coolingFactor: 0.999,
         minTemp: 1.0
       }
     })
@@ -216,7 +217,7 @@ export function GraphView({ graphData, highlightedEdges = [], edgeLabel="label" 
         cyRef.current.destroy()
       }
     }
-  }, [graphData, edgeLabel, edgeLabelColorMap])
+  }, [graphData, edgeLabel, edgeLabelColorMap, showNodeLabels])
 
   // Update highlighted edges when prop changes
   useEffect(() => {
