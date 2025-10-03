@@ -86,178 +86,16 @@ export AWS_REGION=us-east-1
 export AWS_PROFILE=your-profile
 ```
 
-### Order of execution
+### Order of Execution
+Belo is a quick logic flow behind each of our scripts. 
+
 1. **src/knowledge-graph/download.py** - download a subgraph from Monarch KG (and node data including id, label, & description)
 2. **src/knowledge-graph/triples_to_csv.py** - convert the downloaded triples from JSON to CSV file
-3. **Edge_Assignore.ipynb** - randomly remove some edges from the downloaded triples and use 3 strategies to rebuild the edges (random, LLM, LLM-RAG)
+3. **Edge_Assignor.ipynb** - randomly remove some edges from the downloaded triples and use 3 strategies to rebuild the edges (random, LLM, LLM-RAG)
 4. **src/knowledge-graph/extract.py** - extract the "backbone" of the graph for input to GNN
 5. **src/knowledge-graph/create_cytoscape_files.py** - create files for visualization in Cytoscape with node & edge data for each rebuilt knowledge graph & associated backbones
 
-
-## Methods
-
-### Data Processing Pipeline
-1. **Knowledge Graph Extraction**: Download subgraphs from the Monarch Knowledge Graph, including node metadata (identifiers, labels, descriptions)
-2. **Data Preprocessing**: Convert graph triples from JSON to structured CSV format for analysis
-3. **Edge Removal**: Systematically remove a percentage of edges from trusted graph data to create incomplete subgraphs
-4. **Edge Prediction Strategies**:
-   - **Random Assignment**: Baseline method using random selection from available predicates
-   - **LLM-Based Prediction**: AWS Bedrock API with GPT models for context-aware edge prediction
-   - **RAG-Enhanced Prediction**: Retrieval-Augmented Generation using PubMed abstracts and ChromaDB for domain-specific context
-5. **Validation Framework**: Compare predicted edges against ground truth using exact matching and validation scoring
-6. **Graph Neural Network Training**: Extract graph backbones for GNN input and training on validation patterns
-
-### Edge Assignment Methodologies
-
-#### Random Baseline
-- Randomly assigns predicates from the set of unique relationships in the dataset
-- Provides baseline performance metrics for comparison
-
-#### LLM-Based Assignment
-- Utilizes AWS Bedrock with OpenAI GPT models
-- Batch processing for efficiency
-- Context-aware predicate selection based on subject-object relationships
-
-#### RAG-Enhanced Assignment
-- Integrates domain knowledge from PubMed abstracts
-- Uses ChromaDB for vector similarity search
-- Provides scientific context for relationship prediction
-- Includes PMID citations for traceability
-
-### RAG Pipeline for Biomedical Knowledge Graphs
-
-This repository implements a Retrieval-Augmented Generation (RAG) workflow that:
-1. Fetches abstracts from PubMed (via NCBI E-utilities)
-2. Cleans and embeds them using Sentence Transformers
-3. Stores embeddings in ChromaDB for efficient similarity search
-4. Queries domain knowledge to assist in filling missing predicates in biomedical knowledge graphs
-5. Uses AWS Bedrock LLMs with retrieved context to generate reasoning-based explanations
-
-### RAG Usage
-
-#### 1. Retrieve and Store PubMed Abstracts
-
-The pipeline automatically:
-- Retrieves PubMed abstracts (default: Alzheimer's disease)
-- Cleans, chunks, embeds, and stores them in ChromaDB
-
-```python
-import requests
-from sentence_transformers import SentenceTransformer
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-import chromadb
-
-# Initialize components
-client = chromadb.Client()
-collection = client.create_collection("pubtator_data")
-model = SentenceTransformer("all-MiniLM-L6-v2")
-```
-
-#### 2. Query Domain Knowledge
-
-```python
-results = query_domain_knowledge(
-    "amyloid beta and alzheimers relationship", 
-    collection, 
-    model, 
-    top_k=3
-)
-print(results)
-```
-
-#### 3. Fill Missing Predicates in Triples
-
-```python
-filled_df, metrics, responses = fill_missing_predicates_llm_with_domain_knowledge(
-    input_df=my_triples_df,
-    unique_predicates=["biolink:related_to", "biolink:interacts_with", "biolink:causes"],
-    collection=collection,
-    model=model,
-    output_file='bedrock_rag_filled_test.csv',
-    metrics_file='bedrock_rag_metrics_test.json',
-    responses_file='bedrock_rag_responses_test.json'
-)
-```
-
-This produces:
-- `bedrock_rag_filled_test.csv` – triples with filled predicates
-- `bedrock_rag_metrics_test.json` – run statistics
-- `bedrock_rag_responses_test.json` – detailed LLM responses
-
-### Graph Neural Network Training
-
-1. **Extract Graph Backbone**:
-```bash
-python src/knowledge-graph/extract.py
-```
-
-2. **Prepare Training Data**:
-```bash
-python src/gnn/run_hitl_prep.sh
-```
-
-3. **Train GNN Model**:
-```bash
-python src/gnn/lcilp/train.py
-```
-
-### Graphical User Interface
-We built a GUI!
-
-## Future Directions
-
-### Short-term Enhancements
-
-1. **Expanded Model Support**: Integration with additional LLM providers (Anthropic, Cohere, local models)
-2. **Advanced RAG Techniques**: Implementation of more sophisticated retrieval strategies and knowledge fusion methods
-3. **Interactive Validation Interface**: Development of web-based tools for streamlined expert review
-4. **Performance Optimization**: Batch processing improvements and caching mechanisms for large-scale operations
-
-### Medium-term Research Goals
-
-1. **Active Learning Integration**: Implement uncertainty-based sampling for targeted human validation
-2. **Multi-modal Knowledge Integration**: Incorporate image, genomic, and clinical data sources
-3. **Federated Learning Approaches**: Enable collaborative model training across institutions while preserving data privacy
-4. **Explainable AI Methods**: Develop interpretable models for edge prediction and error detection
-
-### Long-term Vision
-
-1. **Real-time Quality Monitoring**: Continuous assessment of knowledge graph integrity and automated error detection
-2. **Domain-specific Specialization**: Tailored models for specific biomedical subdomains (oncology, neurology, genetics)
-3. **Integration with Clinical Workflows**: Direct integration with electronic health records and clinical decision support systems
-4. **Standardization and Interoperability**: Development of standard protocols for knowledge graph quality assessment across platforms
-
-### Technical Roadmap
-
-1. **Scalability Improvements**: Architecture enhancements for processing larger knowledge graphs (millions of edges)
-2. **Advanced Graph Analytics**: Implementation of graph-theoretic measures for quality assessment
-3. **Automated Pipeline Orchestration**: Development of MLOps workflows for continuous model improvement
-4. **Cross-validation Studies**: Large-scale validation across multiple biomedical knowledge bases
-
-## Contributing
-
-We welcome contributions from the biomedical informatics and AI research communities. Please refer to our contribution guidelines and code of conduct for details on participating in this project.
-
-## License
-
-This project is licensed under the terms specified in the LICENSE file.
-
-## Acknowledgments
-
-This project builds upon the foundational work of the Monarch Initiative and leverages data from multiple biomedical knowledge sources. We acknowledge the contributions of domain experts and the broader biomedical informatics community.
-
-### Validation and Evaluation
-
-- **Ground Truth Comparison**: Systematic comparison against trusted Monarch KG data
-- **Accuracy Metrics**: Predicate matching rates, precision, and recall calculations
-- **Error Analysis**: Categorization of prediction errors and failure modes
-- **Human Validation Interface**: Web-based tools for expert review and feedback collection
-
-
-## Data Sources
-The KG Model Garbage Collection tool uses and displays data and algorithms from the Monarch Initiative. The Monarch Initiative (https://monarchinitiative.org) makes biomedical knowledge exploration more efficient and effective by providing tools for genotype-phenotype analysis, genomic diagnostics, and precision medicine across broad areas of disease.
-
-## Directory Structure
+### Directory Structure
 ````Model_Garbage_Collection/
 ├── app/
 │   └── frontend/                    # React frontend application
@@ -369,3 +207,170 @@ The KG Model Garbage Collection tool uses and displays data and algorithms from 
 ├── README.md                        # Project documentation
 └── README_RAG.md                    # RAG pipeline documentation
 ````
+
+
+## Detailed Explanation of Our Methods
+
+### Data Processing Pipeline
+1. **Knowledge Graph Extraction**: Download subgraphs from the Monarch Knowledge Graph, including node metadata (identifiers, labels, descriptions)
+2. **Data Preprocessing**: Convert graph triples from JSON to structured CSV format for analysis
+3. **Edge Removal**: Systematically remove a percentage of edges from trusted graph data to create incomplete subgraphs
+4. **Edge Prediction Strategies**:
+   - **Random Assignment**: Baseline method using random selection from available predicates
+   - **LLM-Based Prediction**: AWS Bedrock API with GPT models for context-aware edge prediction
+   - **RAG-Enhanced Prediction**: Retrieval-Augmented Generation using PubMed abstracts and ChromaDB for domain-specific context
+5. **Validation Framework**: Compare predicted edges against ground truth using exact matching and validation scoring
+6. **Graph Neural Network Training**: Extract graph backbones for GNN input and training on validation patterns
+
+### Edge Assignment Methodologies
+
+A. **Random Baseline**:
+- Randomly assigns predicates from the set of unique relationships in the dataset
+- Provides baseline performance metrics for comparison
+
+B. **LLM-Based Assignment**:
+- Utilizes AWS Bedrock with OpenAI GPT models
+- Batch processing for efficiency
+- Context-aware predicate selection based on subject-object relationships
+
+C. **RAG-Enhanced Assignment**:
+- Integrates domain knowledge from PubMed abstracts
+- Uses ChromaDB for vector similarity search
+- Provides scientific context for relationship prediction
+- Includes PMID citations for traceability
+
+### RAG Pipeline for Biomedical Knowledge Graphs
+
+This repository implements a Retrieval-Augmented Generation (RAG) workflow that:
+1. Fetches abstracts from PubMed (via NCBI E-utilities)
+2. Cleans and embeds them using Sentence Transformers
+3. Stores embeddings in ChromaDB for efficient similarity search
+4. Queries domain knowledge to assist in filling missing predicates in biomedical knowledge graphs
+5. Uses AWS Bedrock LLMs with retrieved context to generate reasoning-based explanations
+
+
+### RAG Usage
+
+#### 1. Retrieve and Store PubMed Abstracts
+
+The pipeline automatically:
+- Retrieves PubMed abstracts (default: Alzheimer's disease)
+- Cleans, chunks, embeds, and stores them in ChromaDB
+
+```python
+import requests
+from sentence_transformers import SentenceTransformer
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+import chromadb
+
+# Initialize components
+client = chromadb.Client()
+collection = client.create_collection("pubtator_data")
+model = SentenceTransformer("all-MiniLM-L6-v2")
+```
+
+#### 2. Query Domain Knowledge
+
+```python
+results = query_domain_knowledge(
+    "amyloid beta and alzheimers relationship", 
+    collection, 
+    model, 
+    top_k=3
+)
+print(results)
+```
+
+#### 3. Fill Missing Predicates in Triples
+
+```python
+filled_df, metrics, responses = fill_missing_predicates_llm_with_domain_knowledge(
+    input_df=my_triples_df,
+    unique_predicates=["biolink:related_to", "biolink:interacts_with", "biolink:causes"],
+    collection=collection,
+    model=model,
+    output_file='bedrock_rag_filled_test.csv',
+    metrics_file='bedrock_rag_metrics_test.json',
+    responses_file='bedrock_rag_responses_test.json'
+)
+```
+
+This produces:
+- `bedrock_rag_filled_test.csv` – triples with filled predicates
+- `bedrock_rag_metrics_test.json` – run statistics
+- `bedrock_rag_responses_test.json` – detailed LLM responses
+
+
+### Validation and Evaluation
+
+- **Ground Truth Comparison**: Systematic comparison against trusted Monarch KG data
+- **Accuracy Metrics**: Predicate matching rates, precision, and recall calculations
+- **Error Analysis**: Categorization of prediction errors and failure modes
+- **Human Validation Interface**: Web-based tools for expert review and feedback collection
+
+
+### Graph Neural Network Training
+
+1. **Extract Graph Backbone**:
+```bash
+python src/knowledge-graph/extract.py
+```
+
+2. **Prepare Training Data**:
+```bash
+python src/gnn/run_hitl_prep.sh
+```
+
+3. **Train GNN Model**:
+```bash
+python src/gnn/lcilp/train.py
+```
+
+### Graphical User Interface
+We built a GUI!
+
+
+## Future Directions
+
+### Short-term Enhancements
+
+1. **Expanded Model Support**: Integration with additional LLM providers (Anthropic, Cohere, local models)
+2. **Advanced RAG Techniques**: Implementation of more sophisticated retrieval strategies and knowledge fusion methods
+3. **Interactive Validation Interface**: Development of web-based tools for streamlined expert review
+4. **Performance Optimization**: Batch processing improvements and caching mechanisms for large-scale operations
+
+### Medium-term Research Goals
+
+1. **Active Learning Integration**: Implement uncertainty-based sampling for targeted human validation
+2. **Multi-modal Knowledge Integration**: Incorporate image, genomic, and clinical data sources
+3. **Federated Learning Approaches**: Enable collaborative model training across institutions while preserving data privacy
+4. **Explainable AI Methods**: Develop interpretable models for edge prediction and error detection
+
+### Long-term Vision
+
+1. **Real-time Quality Monitoring**: Continuous assessment of knowledge graph integrity and automated error detection
+2. **Domain-specific Specialization**: Tailored models for specific biomedical subdomains (oncology, neurology, genetics)
+3. **Integration with Clinical Workflows**: Direct integration with electronic health records and clinical decision support systems
+4. **Standardization and Interoperability**: Development of standard protocols for knowledge graph quality assessment across platforms
+
+### Technical Roadmap
+
+1. **Scalability Improvements**: Architecture enhancements for processing larger knowledge graphs (millions of edges)
+2. **Advanced Graph Analytics**: Implementation of graph-theoretic measures for quality assessment
+3. **Automated Pipeline Orchestration**: Development of MLOps workflows for continuous model improvement
+4. **Cross-validation Studies**: Large-scale validation across multiple biomedical knowledge bases
+
+## Contributing
+
+We welcome contributions from the biomedical informatics and AI research communities. Please submit feedback and requests as 'issues'!
+
+## License
+
+
+## Acknowledgments
+
+This project builds upon the foundational work of the Monarch Initiative and leverages data from multiple biomedical knowledge sources. We acknowledge the contributions of domain experts and the broader biomedical informatics community.
+
+
+## Data Sources
+The KG Model Garbage Collection tool uses and displays data and algorithms from the Monarch Initiative. The Monarch Initiative (https://monarchinitiative.org) makes biomedical knowledge exploration more efficient and effective by providing tools for genotype-phenotype analysis, genomic diagnostics, and precision medicine across broad areas of disease.
