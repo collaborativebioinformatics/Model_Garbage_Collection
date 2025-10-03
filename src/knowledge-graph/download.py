@@ -64,3 +64,29 @@ response.raise_for_status()
 os.makedirs(data_dir, exist_ok=True)
 with open(os.path.join(data_dir, "alzheimers_subgraph.json"), "w") as f:
     f.write(response.text)
+
+print(f"Downloaded Alzheimer's subgraph to {os.path.join(data_dir, 'alzheimers_subgraph.json')}")
+
+# Also run the triples to CSV conversion
+print("\nConverting triples to CSV...")
+try:
+    import sys
+    sys.path.append(os.path.dirname(__file__))
+    from triples_to_csv import main as convert_triples
+    convert_triples()
+except ImportError:
+    print("triples_to_csv.py not found - skipping CSV conversion")
+except Exception as e:
+    print(f"Error converting to CSV: {e}")
+
+# Optionally also download node data
+print("\nAlso downloading node information...")
+try:
+    from download_nodes import main as download_nodes_main
+    download_nodes_main()
+except ImportError:
+    print("download_nodes.py not found - skipping node data download")
+except Exception as e:
+    print(f"Error downloading node data: {e}")
+
+print("\nDownload process completed!")
