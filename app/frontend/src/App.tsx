@@ -25,6 +25,7 @@ const subgraphData: GraphData = subgraphDataJson as GraphData
 export function App() {
   const { setColorMode } = useColorMode()
   const [highlightedEdges, setHighlightedEdges] = useState<string[]>([])
+  const [currentBackboneData, setCurrentBackboneData] = useState<GraphData>(backboneData)
 
   // Ensure dark mode is active
   useEffect(() => {
@@ -37,6 +38,10 @@ export function App() {
         ? prev.filter(id => id !== edgeId)
         : [...prev, edgeId]
     )
+  }
+
+  const importSubgraph = () => {
+    setCurrentBackboneData(subgraphData)
   }
 
   return (
@@ -92,7 +97,7 @@ export function App() {
             <Heading size="md" color="teal.300" mb={4}>
               Edge Table View
             </Heading>
-            <TableView graphData={backboneData} edgeLabel="label" />
+            <TableView graphData={currentBackboneData} edgeLabel="label" />
           </Box>
 
           {/* Backbone Visualization */}
@@ -101,11 +106,18 @@ export function App() {
               Backbone Query Graph Visualization
             </Heading>
             <GraphView
-              graphData={backboneData}
+              graphData={currentBackboneData}
               highlightedEdges={[]}
               edgeLabel="label"
               showNodeLabels={true}
             />
+            <Button
+              mt={4}
+              colorScheme="blue"
+              onClick={importSubgraph}
+            >
+              Import Subgraph
+            </Button>
           </Box>
 
           {/* Interactive Components Grid */}
