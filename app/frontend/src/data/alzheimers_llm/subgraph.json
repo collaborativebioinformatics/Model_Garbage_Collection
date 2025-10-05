@@ -1,0 +1,4530 @@
+{
+  "elements": {
+    "nodes": [
+      {
+        "data": {
+          "description": "A pyridinecarboxamide that is pyridine in which the hydrogen at position 3 is replaced by a carboxamide group.",
+          "id": "CHEBI:17154",
+          "label": "nicotinamide"
+        }
+      },
+      {
+        "data": {
+          "description": "Any member of a group of vitamers that belong to the chemical structural class called pyridines that exhibit biological activity against vitamin B3 deficiency. Vitamin B3 deficiency causes a condition known as pellagra whose symptoms include depression, dermatitis and diarrhea. The vitamers include nicotinic acid and nicotinamide (and their ionized and salt forms).",
+          "id": "CHEBI:176839",
+          "label": "vitamin B3"
+        }
+      },
+      {
+        "data": {
+          "description": "A complex cob(III)alamin in which cobalt is positioned in the centre of a planar corrin tetrapyrrole ring and bound axially to a 5,6-dimethylbenzimidazole moiety and a cyano group. It is one of several forms of the vitamin known as vitamin B12.",
+          "id": "CHEBI:17439",
+          "label": "cyanocob(III)alamin"
+        }
+      },
+      {
+        "data": {
+          "description": "A reversible condition wherein large vacuoles of triglyceride fat accumulate in liver cells via the process of steatosis.",
+          "id": "MONDO:0004790",
+          "label": "fatty liver disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A stilbenol that is stilbene in which the phenyl groups are substituted at positions 3, 5, and 4' by hydroxy groups.",
+          "id": "CHEBI:27881",
+          "label": "resveratrol"
+        }
+      },
+      {
+        "data": {
+          "description": "An eye emergency condition which may lead to blindness if left untreated. It is characterized by the separation of the inner retina layers from the underlying pigment epithelium. Causes include trauma, advanced diabetes mellitus, high myopia, and choroid tumors. Symptoms include sudden appearance of floaters, sudden light flushes, and blurred vision.",
+          "id": "MONDO:0008375",
+          "label": "retinal detachment"
+        }
+      },
+      {
+        "data": {
+          "description": "",
+          "id": "RGD:68114",
+          "label": "OXYS/Nov"
+        }
+      },
+      {
+        "data": {
+          "description": "Partial or complete opacity of the crystalline lens of one or both eyes that decreases visual acuity and eventually results in blindness. Some cataracts appear in infancy or in childhood, but most develop in older individuals. (Sternberg Diagnostic Surgical Pathology, 3rd ed.)",
+          "id": "MONDO:0005129",
+          "label": "cataract"
+        }
+      },
+      {
+        "data": {
+          "description": "Neurodegeneration with brain iron accumulation (NBIA, formerly Hallervorden-Spatz syndrome) encompasses a group of rare neurodegenerative disorders characterized by progressive extrapyramidal dysfunction (dystonia, rigidity, choreoathetosis), iron accumulation in the brain and the presence of axonal spheroids, usually limited to the central nervous system.",
+          "id": "MONDO:0018307",
+          "label": "neurodegeneration with brain iron accumulation"
+        }
+      },
+      {
+        "data": {
+          "description": "An instance of dementia that is caused by an inherited genomic modification in an individual.",
+          "id": "MONDO:0015547",
+          "label": "hereditary dementia"
+        }
+      },
+      {
+        "data": {
+          "description": "Members of the class of phenols that contain 2 or more benzene rings each of which is substituted by at least one hydroxy group.",
+          "id": "CHEBI:26195",
+          "label": "polyphenol"
+        }
+      },
+      {
+        "data": {
+          "description": "Lipid infiltration of the hepatic parenchymal cells that is due to alcohol abuse. The fatty changes in the alcoholic fatty liver may be reversible, depending on the amounts of triglycerides accumulated.",
+          "id": "MONDO:0021104",
+          "label": "alcoholic fatty liver disease"
+        }
+      },
+      {
+        "data": {
+          "description": "Any member of a group of fat-soluble hydroxy seco-steroids that exhibit biological activity against vitamin D deficiency. Vitamin D  can be obtained from sun exposure, food and supplements and is biologically inactive and converted into the biologically active calcitriol via double hydroxylation in the body.",
+          "id": "CHEBI:27300",
+          "label": "vitamin D"
+        }
+      },
+      {
+        "data": {
+          "description": "A spectrum of clinical liver diseases ranging from mild biochemical abnormalities to acute liver failure, caused by drugs, drug metabolites, and chemicals from the environment.",
+          "id": "MONDO:0005359",
+          "label": "drug-induced liver injury"
+        }
+      },
+      {
+        "data": {
+          "description": "A tetracyclic diterpenoid isolated originally from the bark of the Pacific yew tree, Taxus brevifolia. It is a mitotic inhibitor used in cancer chemotherapy. Note that the use of the former generic name 'taxol' is now limited, as Taxol is a registered trade mark.",
+          "id": "CHEBI:45863",
+          "label": "paclitaxel"
+        }
+      },
+      {
+        "data": {
+          "description": "A usually aggressive malignant neoplasm of the soft tissue or bone. It arises from muscle, fat, fibrous tissue, bone, cartilage, and blood vessels. Sarcomas occur in both children and adults. The prognosis depends largely on the degree of differentiation (grade) of the neoplasm. Representative subtypes are liposarcoma, leiomyosarcoma, osteosarcoma, and chondrosarcoma.",
+          "id": "MONDO:0005089",
+          "label": "sarcoma"
+        }
+      },
+      {
+        "data": {
+          "description": "A laboratory test result indicating elevated triglyceride concentration in the blood.",
+          "id": "MONDO:0005347",
+          "label": "hypertriglyceridemia"
+        }
+      },
+      {
+        "data": {
+          "description": "A disease involving the placenta.",
+          "id": "MONDO:0005917",
+          "label": "placenta disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "Chronic progressive interstitial lung disorder characterized by the replacement of the lung tissue by connective tissue, leading to progressive dyspnea, respiratory failure, or right heart failure. Causes include chronic inflammatory processes, exposure to environmental irritants, radiation therapy, autoimmune disorders, certain drugs, or it may be idiopathic (no identifiable cause).",
+          "id": "MONDO:0002771",
+          "label": "pulmonary fibrosis"
+        }
+      },
+      {
+        "data": {
+          "description": "A disorder of the central nervous system characterized by gradual and progressive loss of neural tissue and neurologic function.",
+          "id": "MONDO:0005559",
+          "label": "neurodegenerative disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A benign or malignant neoplasm involving the stomach.",
+          "id": "MONDO:0021085",
+          "label": "gastric neoplasm"
+        }
+      },
+      {
+        "data": {
+          "description": "A substance that reduces or suppresses inflammation.",
+          "id": "CHEBI:35472",
+          "label": "anti-inflammatory drug"
+        }
+      },
+      {
+        "data": {
+          "description": "Any compound that has anti-inflammatory effects.",
+          "id": "CHEBI:67079",
+          "label": "anti-inflammatory agent"
+        }
+      },
+      {
+        "data": {
+          "description": "A bone marrow-based plasma cell neoplasm characterized by a serum monoclonal protein and skeletal destruction with osteolytic lesions, pathological fractures, bone pain, hypercalcemia, and anemia. Clinical variants include non-secretory myeloma, smoldering myeloma, indolent myeloma, and plasma cell leukemia. (WHO, 2001)",
+          "id": "MONDO:0009693",
+          "label": "plasma cell myeloma"
+        }
+      },
+      {
+        "data": {
+          "description": "A beta-diketone that is methane in which two of the hydrogens are substituted by feruloyl groups. A natural dyestuff found in the root of Curcuma longa.",
+          "id": "CHEBI:3962",
+          "label": "curcumin"
+        }
+      },
+      {
+        "data": {
+          "description": "The condition of having at least three loose or liquid bowel movements each day.",
+          "id": "MONDO:0001673",
+          "label": "diarrheal disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A member of the class of benzoic acids that is salicylic acid in which the hydrogen that is attached to the phenolic hydroxy group has been replaced by an acetoxy group. A non-steroidal anti-inflammatory drug with cyclooxygenase inhibitor activity.",
+          "id": "CHEBI:15365",
+          "label": "acetylsalicylic acid"
+        }
+      },
+      {
+        "data": {
+          "description": "A chronic, pathological complication associated with diabetes mellitus, where nerve damages are incurred due to diabetic microvascular injury involving small blood vessels that supply these nerves, resulting in peripheral and/or autonomic nerve dysfunction.",
+          "id": "MONDO:0006626",
+          "label": "diabetic neuropathy"
+        }
+      },
+      {
+        "data": {
+          "description": "A pyridinemonocarboxylic acid that is pyridine in which the hydrogen at position 3 is replaced by a carboxy group.",
+          "id": "CHEBI:15940",
+          "label": "nicotinic acid"
+        }
+      },
+      {
+        "data": {
+          "description": "Narrowing of the coronary artery lumen diameter.",
+          "id": "MONDO:0006715",
+          "label": "coronary stenosis"
+        }
+      },
+      {
+        "data": {
+          "description": "A disease believed to be caused by a viral illness that triggers degeneration of the nerve cells in the substantia nigra. Overall, this degeneration leads to clinical parkinsonism.",
+          "id": "MONDO:0001945",
+          "label": "postencephalitic Parkinson disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A group of disorders which feature impaired motor control characterized by bradykinesia, MUSCLE RIGIDITY; TREMOR; and postural instability. Parkinsonian diseases are generally divided into primary parkinsonism (see PARKINSON DISEASE), secondary parkinsonism (see PARKINSON DISEASE, SECONDARY) and inherited forms. These conditions are associated with dysfunction of dopaminergic or closely related motor integration neuronal pathways in the BASAL GANGLIA.",
+          "id": "MONDO:0021095",
+          "label": "parkinsonian disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "An inherited disorder resulting from an enzyme defect in biochemical and metabolic pathways affecting proteins, fats, carbohydrates metabolism or organelle function.",
+          "id": "MONDO:0019052",
+          "label": "inborn errors of metabolism"
+        }
+      },
+      {
+        "data": {
+          "description": "A congenital disorder (due to inherited enzyme abnormality) or acquired (due to failure of a metabolically important organ) disorder resulting from an abnormal metabolic process.",
+          "id": "MONDO:0005066",
+          "label": "metabolic disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A benzodiazepine that is 10H-thieno[2,3-b][1,5]benzodiazepine substituted by a methyl group at position 2 and a 4-methylpiperazin-1-yl group at position 4.",
+          "id": "CHEBI:7735",
+          "label": "olanzapine"
+        }
+      },
+      {
+        "data": {
+          "description": "Neurological conditions resulting in abnormal voluntary or involuntary movement, which may impact the speed, fluency, quality and ease of movement.",
+          "id": "MONDO:0005395",
+          "label": "movement disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "Imerslund-Grasbeck syndrome (IGS) or selective vitamin B12 (cobalamin) malabsorption with proteinuria is a rare autosomal recessive disorder characterized by vitamin B12 deficiency commonly resulting in megaloblastic anemia, which is responsive to parenteral vitamin B12 therapy and appears in childhood.",
+          "id": "MONDO:0009853",
+          "label": "Imerslund-Grasbeck syndrome"
+        }
+      },
+      {
+        "data": {
+          "description": "A vitamin D that is calciol or its hydroxylated metabolites calcidiol and calcitriol. Calciol (also known as vitamin D3) acts as a hormone precursor, being hydroxylated in the liver to calcidiol (25-hydroxyvitamin D3), which is then further hydroxylated in the kidney to give calcitriol (1,25-dihydroxyvitamin D3), the active hormone.",
+          "id": "CHEBI:73558",
+          "label": "D3 vitamins"
+        }
+      },
+      {
+        "data": {
+          "description": "",
+          "id": "CHEBI:26416",
+          "label": "pyridine alkaloid"
+        }
+      },
+      {
+        "data": {
+          "description": "Build-up of fatty material and calcium deposition in the arterial wall resulting in partial or complete occlusion of the arterial lumen.",
+          "id": "MONDO:0005311",
+          "label": "atherosclerosis"
+        }
+      },
+      {
+        "data": {
+          "description": "Impairment of the renal function secondary to chronic kidney damage persisting for three or more months.",
+          "id": "MONDO:0005300",
+          "label": "chronic kidney disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A disease involving the liver.",
+          "id": "MONDO:0005154",
+          "label": "liver disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A drug used to cause dilation of the blood vessels.",
+          "id": "CHEBI:35620",
+          "label": "vasodilator agent"
+        }
+      },
+      {
+        "data": {
+          "description": "Persistently high systemic arterial blood pressure. Based on multiple readings (blood pressure determination), hypertension is currently defined as when systolic pressure is consistently greater than 140 mm Hg or when diastolic pressure is consistently 90 mm Hg or more.",
+          "id": "MONDO:0005044",
+          "label": "hypertensive disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A benign or malignant neoplasm of the breast parenchyma. It can originate from the ducts, lobules or the breast adipose tissue. Breast neoplasms are much more common in females than males.",
+          "id": "MONDO:0021100",
+          "label": "breast neoplasm"
+        }
+      },
+      {
+        "data": {
+          "description": "A congenital or acquired disorder characterized by abnormal loss or redistribution of the adipose tissue in the body.",
+          "id": "MONDO:0006573",
+          "label": "lipodystrophy"
+        }
+      },
+      {
+        "data": {
+          "description": "An N-acyl-amino acid that is a form of the water-soluble vitamin B9. Its biologically active forms (tetrahydrofolate and others) are essential for nucleotide biosynthesis and homocysteine remethylation.",
+          "id": "CHEBI:27470",
+          "label": "folic acid"
+        }
+      },
+      {
+        "data": {
+          "description": "A degenerative vascular disorder affecting the brain. It is caused by the blockage of the blood supply to the brain. It is manifested with decline of memory and cognitive functions.",
+          "id": "MONDO:0004648",
+          "label": "vascular dementia"
+        }
+      },
+      {
+        "data": {
+          "description": "Loss of intellectual abilities interfering with an individual's social and occupational functions. Causes include Alzheimer's disease, brain injuries, brain tumors, and vascular disorders.",
+          "id": "MONDO:0001627",
+          "label": "dementia"
+        }
+      },
+      {
+        "data": {
+          "description": "A benzodiazepine that is 5H-dibenzo[b,e][1,4]diazepine substituted by a chloro group at position 8 and a 4-methylpiperazin-1-yl group at position 11. It is a second generation antipsychotic used in the treatment of psychiatric disorders like  schizophrenia.",
+          "id": "CHEBI:3766",
+          "label": "clozapine"
+        }
+      },
+      {
+        "data": {
+          "description": "A benign or malignant, primary or metastatic neoplasm involving the lungs. Representative examples of benign neoplasms include adenoma, papilloma, chondroma, and endobronchial lipoma. Representative examples of malignant neoplasms include carcinoma, carcinoid tumor, sarcoma, and lymphoma.",
+          "id": "MONDO:0021117",
+          "label": "lung neoplasm"
+        }
+      },
+      {
+        "data": {
+          "description": "Any ether in which the oxygen is attached to at least one aryl substituent.",
+          "id": "CHEBI:35618",
+          "label": "aromatic ether"
+        }
+      },
+      {
+        "data": {
+          "description": "The most malignant astrocytic tumor (WHO grade IV). It is composed of poorly differentiated neoplastic astrocytes and it is characterized by the presence of cellular polymorphism, nuclear atypia, brisk mitotic activity, vascular thrombosis, microvascular proliferation and necrosis. It typically affects adults and is preferentially located in the cerebral hemispheres. It may develop from diffuse astrocytoma WHO grade II or anaplastic astrocytoma (secondary glioblastoma, IDH-mutant), but more frequently, it manifests after a short clinical history de novo, without evidence of a less malignant precursor lesion (primary glioblastoma, IDH- wildtype). (Adapted from WHO)",
+          "id": "MONDO:0018177",
+          "label": "glioblastoma"
+        }
+      },
+      {
+        "data": {
+          "description": "A metabolic disorder characterized by deficiency of high density (alpha) lipoprotein in the blood.",
+          "id": "MONDO:0017773",
+          "label": "hypoalphalipoproteinemia"
+        }
+      },
+      {
+        "data": {
+          "description": "A disease involving the spinal cord.",
+          "id": "MONDO:0002545",
+          "label": "spinal cord disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A pyranoindolizinoquinoline that is pyrano[3',4':6,7]indolizino[1,2-b]quinoline which is substituted by oxo groups at positions 3 and 14, and by an ethyl group and a hydroxy group at position 4 (the S enantiomer).",
+          "id": "CHEBI:27656",
+          "label": "camptothecin"
+        }
+      },
+      {
+        "data": {
+          "description": "A malignant lymphocytic neoplasm of B-cell or T-cell lineage involving primarily the bone marrow and the peripheral blood. This category includes precursor or acute lymphoblastic leukemias and chronic leukemias.",
+          "id": "MONDO:0005402",
+          "label": "lymphoid leukemia"
+        }
+      },
+      {
+        "data": {
+          "description": "Any disease or disorder of the retina.",
+          "id": "MONDO:0005283",
+          "label": "retinal disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A condition of reduced bone mass, with decreased cortical thickness and a decrease in the number and size of the trabeculae of cancellous bone (but normal chemical composition), resulting in increased fracture incidence. Osteoporosis is classified as primary (Type 1, postmenopausal osteoporosis; Type 2, age-associated osteoporosis; and idiopathic, which can affect juveniles, premenopausal women, and middle-aged men) and secondary osteoporosis (which results from an identifiable cause of bone mass loss).",
+          "id": "MONDO:0005298",
+          "label": "osteoporosis"
+        }
+      },
+      {
+        "data": {
+          "description": "A disease that has its basis in the disruption of bone resorption. Bone resorption is a process in which specialized cells known as osteoclasts degrade the organic and inorganic portions of bone, and endocytose and transport the degradation products.",
+          "id": "MONDO:0000837",
+          "label": "bone resorption disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A malignant (clonal) hematologic disorder, involving hematopoietic stem cells and characterized by the presence of primitive or atypical myeloid or lymphoid cells in the bone marrow and the blood. Leukemias are classified as acute or chronic based on the degree of cellular differentiation and the predominant cell type present. Leukemia is usually associated with anemia, fever, hemorrhagic episodes, and splenomegaly. Common leukemias include acute myeloid leukemia, chronic myelogenous leukemia, acute lymphoblastic or precursor lymphoblastic leukemia, and chronic lymphocytic leukemia. Treatment is vital to patient survival; untreated, the natural course of acute leukemias is normally measured in weeks or months, while that of chronic leukemias is more often measured in months or years.",
+          "id": "MONDO:0005059",
+          "label": "leukemia"
+        }
+      },
+      {
+        "data": {
+          "description": "A disease involving the kidney.",
+          "id": "MONDO:0005240",
+          "label": "kidney disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A member of the class of  acetamides that is acetamide in which one of the hydrogens attached to the nitrogen atom is replaced by a 2-(5-methoxy-1H-indol-3-yl)ethyl group. It is a hormone secreted by the pineal gland in humans.",
+          "id": "CHEBI:16796",
+          "label": "melatonin"
+        }
+      },
+      {
+        "data": {
+          "description": "A disease involving the urinary bladder.",
+          "id": "MONDO:0006026",
+          "label": "urinary bladder disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A neoplasm (disease) that involves the digestive system.",
+          "id": "MONDO:0021223",
+          "label": "digestive system neoplasm"
+        }
+      },
+      {
+        "data": {
+          "description": "Progressive kidney disorder caused by vascular damage to the glomerular capillaries, in patients with diabetes mellitus. It is usually manifested with nephritic syndrome and glomerulosclerosis.",
+          "id": "MONDO:0005016",
+          "label": "diabetic kidney disease"
+        }
+      },
+      {
+        "data": {
+          "description": "An anti-inflammatory drug that is not a steroid. In addition to anti-inflammatory actions, non-steroidal anti-inflammatory drugs have analgesic, antipyretic, and platelet-inhibitory actions. They act by blocking the synthesis of prostaglandins by inhibiting cyclooxygenase, which converts arachidonic acid to cyclic endoperoxides, precursors of prostaglandins.",
+          "id": "CHEBI:35475",
+          "label": "non-steroidal anti-inflammatory drug"
+        }
+      },
+      {
+        "data": {
+          "description": "A noninflammatory degenerative joint disease occurring chiefly in older persons, characterized by degeneration of the articular cartilage, hypertrophy of bone at the margins and changes in the synovial membrane. It is accompanied by pain and stiffness, particularly after prolonged activity.",
+          "id": "MONDO:0005178",
+          "label": "osteoarthritis"
+        }
+      },
+      {
+        "data": {
+          "description": "Narrowing of the coronary arteries due to fatty deposits inside the arterial walls. The diagnostic criteria may include documented history of any of the following: documented coronary artery stenosis greater than or equal to 50% (by cardiac catheterization or other modality of direct imaging of the coronary arteries); previous coronary artery bypass surgery (CABG); previous percutaneous coronary intervention (PCI); previous myocardial infarction. (ACC)",
+          "id": "MONDO:0005010",
+          "label": "coronary artery disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A group of rare heterogeneous inherited or acquired bone marrow disorders, isolated or part of a syndrome, characterized by decreased hemoglobin synthesis, because of defective use of iron (although plasmatic iron levels may be normal or elevated) and the presence of ringed sideroblasts in the bone marrow due to the pathologic iron overload in mitochondria as visualized by Perls' staining. The group encompasses (idiopathic) acquired sideroblastic anemia and constitutional sideroblastic anemias. The latter include syndromic sideroblastic anemias such as Pearson syndrome, mitochondrial mypathy and sideroblastic anemias, x-linked sideroblastic anemia-ataxia, thiamine responsive megaloblastic anemia syndrome and nonsyndromic sideroblastic anemias comprising x-linked and autosomal recessive sideroblastic anemias.",
+          "id": "MONDO:0015194",
+          "label": "sideroblastic anemia"
+        }
+      },
+      {
+        "data": {
+          "description": "A non-neoplastic or neoplastic disorder that affects the respiratory system. Representative examples include pneumonia, chronic obstructive pulmonary disease, pulmonary failure, lung adenoma, lung carcinoma, and tracheal carcinoma.",
+          "id": "MONDO:0005087",
+          "label": "respiratory system disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "Diseases caused by abnormal function of the mitochondria. They may be caused by mutations, acquired or inherited, in mitochondrial dna or in nuclear genes that code for mitochondrial components. They may also be the result of acquired mitochondria dysfunction due to adverse effects of drugs, infections, or other environmental causes.",
+          "id": "MONDO:0004069",
+          "label": "inborn mitochondrial metabolism disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A tetracycline analogue having a dimethylamino group at position 7 and lacking the methyl and hydroxy groups at position 5.",
+          "id": "CHEBI:50694",
+          "label": "minocycline"
+        }
+      },
+      {
+        "data": {
+          "description": "Huntington disease (HD) is a rare neurodegenerative disorder of the central nervous system characterized by unwanted choreatic movements, behavioral and psychiatric disturbances and dementia.",
+          "id": "MONDO:0007739",
+          "label": "Huntington disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A pyrazole obtained by cyclocodensation of the two carbonyl groups of curcumin with hydrazine.",
+          "id": "CHEBI:84340",
+          "label": "hydrazinocurcumin"
+        }
+      },
+      {
+        "data": {
+          "description": "Metabolic dysfunction-associated steatotic liver disease (MASLD, formerly known as nonalcoholic fatty liver disease or NAFLD) is a type of liver disease that is not caused by alcohol. It typically does not cause symptoms in the early stages, but it can cause health problems due to fat accumulation, inflammation, and scarring in the liver.",
+          "id": "MONDO:0013209",
+          "label": "metabolic dysfunction-associated steatotic liver disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A substance used to treat hyperlipidemia (an excess of lipids in the blood).",
+          "id": "CHEBI:35679",
+          "label": "antilipemic drug"
+        }
+      },
+      {
+        "data": {
+          "description": "An elevated concentration of lipoproteins.",
+          "id": "MONDO:0037748",
+          "label": "hyperlipoproteinemia"
+        }
+      },
+      {
+        "data": {
+          "description": "",
+          "id": "MONDO:0021187",
+          "label": "hyperlipidemia"
+        }
+      },
+      {
+        "data": {
+          "description": "A non-neoplastic or neoplastic disorder affecting the optic nerve (second cranial nerve).",
+          "id": "MONDO:0002135",
+          "label": "optic nerve disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A benign or malignant brain and spinal cord tumor that arises from glial cells (astrocytes, oligodendrocytes, ependymal cells). Tumors that arise from astrocytes are called astrocytic tumors or astrocytomas. Tumors that arise from oligodendrocytes are called oligodendroglial tumors. Tumors that arise from ependymal cells are called ependymomas.",
+          "id": "MONDO:0021042",
+          "label": "glioma"
+        }
+      },
+      {
+        "data": {
+          "description": "Formation or presence of a blood clot (thrombus) in the cranial sinuses, large endothelium-lined venous channels situated within the skull. Intracranial sinuses, also called cranial venous sinuses, include the superior sagittal, cavernous, lateral, petrous sinuses, and many others. Cranial sinus thrombosis can lead to severe headache; seizure; and other neurological defects.",
+          "id": "MONDO:0002692",
+          "label": "intracranial sinus thrombosis"
+        }
+      },
+      {
+        "data": {
+          "description": "Amyotrophic lateral sclerosis (ALS) is a neurodegenerative disease characterized by progressive muscular paralysis reflecting degeneration of motor neurons in the primary motor cortex, corticospinal tracts, brainstem and spinal cord.",
+          "id": "MONDO:0004976",
+          "label": "amyotrophic lateral sclerosis"
+        }
+      },
+      {
+        "data": {
+          "description": "Overproduction of parathyroid hormone in response to influence external to the parathyroid glands.",
+          "id": "MONDO:0006964",
+          "label": "secondary hyperparathyroidism"
+        }
+      },
+      {
+        "data": {
+          "description": "A transplantable, poorly differentiated malignant tumor which appeared originally as a spontaneous breast carcinoma in a mouse. It grows in both solid and ascitic forms.",
+          "id": "MONDO:0006739",
+          "label": "Ehrlich tumor carcinoma"
+        }
+      },
+      {
+        "data": {
+          "description": "A rare subtype of type I autosomal dominant cerebellar ataxia (ADCA type I). It is characterized by a variable clinical picture which can include dementia, psychiatric disorders, parkinsonism, dystonia, chorea, spasticity, and epilepsy.",
+          "id": "MONDO:0011781",
+          "label": "spinocerebellar ataxia type 17"
+        }
+      },
+      {
+        "data": {
+          "description": "Metabolic disorder associated with fractures of the femoral neck, vertebrae, and distal forearm. It occurs commonly in women within 15-20 years after menopause, and is caused by factors associated with menopause including estrogen deficiency.",
+          "id": "MONDO:0008159",
+          "label": "postmenopausal osteoporosis"
+        }
+      },
+      {
+        "data": {
+          "description": "A partial or complete loss of hearing in one or both ears. It is classified as conductive, sensory, or central.",
+          "id": "MONDO:0005365",
+          "label": "hearing loss disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "Anemia that is characterized by increased red blood cell volume.",
+          "id": "MONDO:0002281",
+          "label": "macrocytic anemia"
+        }
+      },
+      {
+        "data": {
+          "description": "Abnormally high intraocular pressure.",
+          "id": "MONDO:0006875",
+          "label": "ocular hypertension"
+        }
+      },
+      {
+        "data": {
+          "description": "A chronic, pathological complication associated with diabetes mellitus, where retinal damages are incurred due to microaneurysms in the vasculature of the retina, progressively leading to abnormal blood vessel growth, and swelling and leaking of fluid from blood vessels, resulting in vision loss or blindness.",
+          "id": "MONDO:0005266",
+          "label": "diabetic retinopathy"
+        }
+      },
+      {
+        "data": {
+          "description": "Inflammation of the urinary bladder.",
+          "id": "MONDO:0006032",
+          "label": "cystitis"
+        }
+      },
+      {
+        "data": {
+          "description": "An ischemic condition of the brain, producing a persistent focal neurological deficit in the area of distribution of the cerebral arteries.",
+          "id": "MONDO:0002679",
+          "label": "cerebral infarction"
+        }
+      },
+      {
+        "data": {
+          "description": "Necrosis occurring in the middle cerebral artery distribution system which brings blood to the entire lateral aspects of each cerebral hemisphere. Clinical signs include impaired cognition; aphasia; agraphia; weak and numbness in the face and arms, contralaterally or bilaterally depending on the infarction.",
+          "id": "MONDO:0006857",
+          "label": "middle cerebral artery infarction"
+        }
+      },
+      {
+        "data": {
+          "description": "A reduction in the number of red blood cells, the amount of hemoglobin, and/or the volume of packed red blood cells. Clinically, anemia represents a reduction in the oxygen-transporting capacity of a designated volume of blood, resulting from an imbalance between blood loss (through hemorrhage or hemolysis) and blood production. Signs and symptoms of anemia may include pallor of the skin and mucous membranes, shortness of breath, palpitations of the heart, soft systolic murmurs, lethargy, and fatigability.",
+          "id": "MONDO:0002280",
+          "label": "anemia"
+        }
+      },
+      {
+        "data": {
+          "description": "A common, severe type of vascular headache often associated with increased sympathetic activity, resulting in nausea, vomiting, and light sensitivity.",
+          "id": "MONDO:0005277",
+          "label": "migraine disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A chronic condition characterized by minimal or absent production of insulin by the pancreas.",
+          "id": "MONDO:0005147",
+          "label": "type 1 diabetes mellitus"
+        }
+      },
+      {
+        "data": {
+          "description": "A breast carcinoma arising from the ducts. While ductal carcinomas can arise at other sites, this term is universally used to refer to carcinomas of the breast. Ductal carcinomas account for about two thirds of all breast cancers. Two types of ductal carcinomas have been described: ductal carcinoma in situ (DCIS) and invasive ductal carcinoma. The latter often spreads to the axillary lymph nodes and other anatomic sites. The two forms of ductal carcinoma often coexist.",
+          "id": "MONDO:0005590",
+          "label": "breast ductal adenocarcinoma"
+        }
+      },
+      {
+        "data": {
+          "description": "Abnormally high level of glucose in the blood.",
+          "id": "MONDO:0002909",
+          "label": "hyperglycemia"
+        }
+      },
+      {
+        "data": {
+          "description": "A primary or metastatic malignant neoplasm affecting the brain.",
+          "id": "MONDO:0001657",
+          "label": "brain cancer"
+        }
+      },
+      {
+        "data": {
+          "description": "A group of neurologic disorders caused by damage to the nervous system following exposure to pharmacologic, biologic, and chemical agents. Examples of neurotoxins include chemotherapy agents, radiation treatment, heavy metals, pesticides, and food additives.",
+          "id": "MONDO:0005527",
+          "label": "toxic encephalopathy"
+        }
+      },
+      {
+        "data": {
+          "description": "A non-neoplastic or neoplastic disorder that affects the brain, spinal cord, or peripheral nerves.",
+          "id": "MONDO:0005071",
+          "label": "nervous system disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "",
+          "id": "MONDO:0100280",
+          "label": "Waldenstrom macroglobulinemia"
+        }
+      },
+      {
+        "data": {
+          "description": "A congenital abnormality consisting of one or more clefts (splits) in the upper lip, which may be accompanied by a cleft palate; it is the result of the failure of the embryonic parts of the lip to fuse.",
+          "id": "MONDO:0004747",
+          "label": "cleft lip"
+        }
+      },
+      {
+        "data": {
+          "description": "Anemia resulting from bone marrow failure (aplastic or hypoplastic bone marrow). The production of erythroblasts and red cells is markedly decreased, and it may be associated with decreased production of granulocytes (granulocytopenia) and platelets (thrombocytopenia) as well. Aplastic anemia may be idiopathic or secondary due to bone marrow damage by toxins, radiation, or immunologic factors.",
+          "id": "MONDO:0015909",
+          "label": "aplastic anemia"
+        }
+      },
+      {
+        "data": {
+          "description": "A disorder of cardiac function caused by insufficient blood flow to the muscle tissue of the heart. The decreased blood flow may be due to narrowing of the coronary arteries (coronary artery disease), to obstruction by a thrombus (coronary thrombosis), or less commonly, to diffuse narrowing of arterioles and other small vessels within the heart. Severe interruption of the blood supply to the myocardial tissue may result in necrosis of cardiac muscle (myocardial infarction).",
+          "id": "MONDO:0024644",
+          "label": "myocardial ischemia"
+        }
+      },
+      {
+        "data": {
+          "description": "A disorder characterized by replacement of the liver parenchyma with fibrous tissue and regenerative nodules. It is usually caused by alcoholism, hepatitis B, and hepatitis C. Complications include the development of ascites, esophageal varices, bleeding, and hepatic encephalopathy.",
+          "id": "MONDO:0005155",
+          "label": "cirrhosis of liver"
+        }
+      },
+      {
+        "data": {
+          "description": "A neurologic condition associated with the ACQUIRED IMMUNODEFICIENCY SYNDROME and characterized by impaired concentration and memory, slowness of hand movements, ATAXIA, incontinence, apathy, and gait difficulties associated with HIV-1 viral infection of the central nervous system. Pathologic examination of the brain reveals white matter rarefaction, perivascular infiltrates of lymphocytes, foamy macrophages, and multinucleated giant cells. (From Adams et al., Principles of Neurology, 6th ed, pp760-1; N Engl J Med, 1995 Apr 6;332(14):934-40)",
+          "id": "MONDO:0020689",
+          "label": "AIDS dementia complex"
+        }
+      },
+      {
+        "data": {
+          "description": "An infection caused by the human immunodeficiency virus.",
+          "id": "MONDO:0005109",
+          "label": "HIV infectious disease"
+        }
+      },
+      {
+        "data": {
+          "description": "Hypoparathyroidism is an endocrine disorder in which the parathyroid glands in the neck do not produce enough parathyroid hormone (PTH). Common signs and symptoms include abdominal pain, brittle nails, cataracts, dry hair and skin, muscle cramps, tetany, pain in the face, legs, and feet, seizures, tingling sensation, and weakened tooth enamel (in children). It may be caused by injury to the parathyroid glands (e.g., during surgery). Other causes, include low blood magnesium levels, a side effect of radioactive iodine treatment for hyperthyroidism, metabolic alkalosis, DiGeorge syndrome, and type I polyglandular autoimmune syndrome. The goal of treatment is to restore the calcium and mineral balance in the body.",
+          "id": "MONDO:0001220",
+          "label": "hypoparathyroidism"
+        }
+      },
+      {
+        "data": {
+          "description": "A disease characterized by low serum levels of vitamin B12, either inherited or acquired.",
+          "id": "MONDO:0020696",
+          "label": "vitamin B12 deficiency"
+        }
+      },
+      {
+        "data": {
+          "description": "A serious metabolic condition caused by mutations in the MTHFR gene, medications, or nutritional deficiency. It results in increased levels of homocysteine in the blood. Patients with this condition are at an increased risk for recurrent blood clots formation and cardiovascular accidents.",
+          "id": "MONDO:0004743",
+          "label": "hyperhomocysteinemia"
+        }
+      },
+      {
+        "data": {
+          "description": "A vascular disorder characterized by thickening and hardening of the walls of the arteries.",
+          "id": "MONDO:0002277",
+          "label": "arteriosclerosis disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A disease involving the muscle tissue.",
+          "id": "MONDO:0003939",
+          "label": "muscle tissue disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "Acute and chronic (see also brain INJURIES, CHRONIC) injuries to the brain, including the cerebral hemispheres, CEREBELLUM, and brain STEM. Clinical manifestations depend on the nature of injury. Diffuse trauma to the brain is frequently associated with DIFFUSE AXONAL INJURY or COMA, POST-TRAUMATIC. Localized injuries may be associated with NEUROBEHAVIORAL MANIFESTATIONS; HEMIPARESIS, or other focal neurologic deficits.",
+          "id": "MONDO:0043510",
+          "label": "brain injury"
+        }
+      },
+      {
+        "data": {
+          "description": "Damage inflicted on the body as the direct or indirect result of an external force, with or without disruption of structural continuity.",
+          "id": "MONDO:0021178",
+          "label": "injury"
+        }
+      },
+      {
+        "data": {
+          "description": "A loss of global cognitive ability of sufficient amount to interfere with normal social or occupational function. Dementia represents a loss of previously present cognitive abilities, generally in adults, and can affect memory, thinking, language, judgment, and behavior.",
+          "id": "HP:0000726",
+          "label": "Dementia"
+        }
+      },
+      {
+        "data": {
+          "description": "A member of the class of phenols that is 4-aminophenol in which one of the hydrogens attached to the amino group has been replaced by an acetyl group.",
+          "id": "CHEBI:46195",
+          "label": "paracetamol"
+        }
+      },
+      {
+        "data": {
+          "description": "Gross necrosis of the myocardium, as a result of interruption of the blood supply to the area, as in coronary thrombosis.",
+          "id": "MONDO:0005068",
+          "label": "myocardial infarction"
+        }
+      },
+      {
+        "data": {
+          "description": "A disease involving the cardiovascular system.",
+          "id": "MONDO:0004995",
+          "label": "cardiovascular disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A rare disorder of the digestive tract characterized by malabsorption and anemia. It is likely caused by infection leading to small intestinal mucosal injury, bacterial overgrowth and inflammatory changes. It is most prevalent in residents and visitors to tropical and subtropical climates. Clinical signs include anorexia, abdominal bloating, diarrhea and weight loss. Clinical course may progress to deficiencies of folate, vitamin B12 and iron. Prognosis is favorable with nutrient replacement and antibiotic therapy, however relapses are common.",
+          "id": "MONDO:0001078",
+          "label": "tropical sprue"
+        }
+      },
+      {
+        "data": {
+          "description": "Neuroacanthocytosis (NA) syndromes are a group of genetic diseases characterized by the association of red blood cell acanthocytosis (deformed erythrocytes with spike-like protrusions) and progressive degeneration of the basal ganglia.",
+          "id": "MONDO:0016987",
+          "label": "neuroacanthocytosis"
+        }
+      },
+      {
+        "data": {
+          "description": "An autoimmune multi-organ disease typically associated with vasculopathy and autoantibody production. Most patients have antinuclear antibodies (ANA). The presence of anti-dsDNA or anti-Smith antibodies are highly-specific.",
+          "id": "MONDO:0007915",
+          "label": "systemic lupus erythematosus"
+        }
+      },
+      {
+        "data": {
+          "description": "An inherited condition that affects the nervous system and causes movement problems. People with this condition develop impaired muscle coordination (ataxia) that worsens over time. Other features include the gradual loss of strength and sensation in the arms and legs, muscle stiffness (spasticity), and impaired speech. Many individuals have a form of heart disease called hypertrophic cardiomyopathy. Some develop diabetes, impaired vision, hearing loss, or an abnormal curvature of the spine (scoliosis). Most people with Friedreich ataxia begin to experience the signs and symptoms around puberty.",
+          "id": "MONDO:0100339",
+          "label": "Friedreich ataxia"
+        }
+      },
+      {
+        "data": {
+          "description": "A disease involving the peripheral nervous system.",
+          "id": "MONDO:0003620",
+          "label": "peripheral nervous system disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A metabolic disorder characterized by abnormally high blood sugar levels due to diminished production of insulin or insulin resistance/desensitization.",
+          "id": "MONDO:0005015",
+          "label": "diabetes mellitus"
+        }
+      },
+      {
+        "data": {
+          "description": "A sudden loss of neurological function secondary to hemorrhage or ischemia in the brain parenchyma due to a vascular event.",
+          "id": "MONDO:0005098",
+          "label": "stroke disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A chronic disorder, possibly autoimmune, marked by excessive production of collagen which results in hardening and thickening of body tissues. The two types of systemic scleroderma, limited cutaneous and diffuse cutaneous are classified with focus on the extent of affected skin. A relationship exists between the extent of skin area affected and degree of internal organ/system involvement. Systemic scleroderma can manifest itself in pulmonary fibrosis, Raynaud's syndrome, digestive system telangiectasias, renal hypertension and/or pulmonary hypertension.",
+          "id": "MONDO:0005100",
+          "label": "systemic sclerosis"
+        }
+      },
+      {
+        "data": {
+          "description": "Any deviation from the normal structure or function of the skin or subcutaneous tissue that is manifested by a characteristic set of symptoms and signs.",
+          "id": "MONDO:0005093",
+          "label": "skin disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "Invasion of the host RESPIRATORY SYSTEM by microorganisms, usually leading to pathological processes or diseases.",
+          "id": "MONDO:0024355",
+          "label": "respiratory tract infectious disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A chronic erythematous skin disorder that affects the face. It is characterized by the development of redness in the cheeks, nose, and/or forehead and telangiectasia. Sometimes, the erythematous changes may involve the eyelids.",
+          "id": "MONDO:0006604",
+          "label": "rosacea"
+        }
+      },
+      {
+        "data": {
+          "description": "Diminished or absent blood supply to the brain caused by obstruction (thrombosis or embolism) of an artery resulting in neurologic damage.",
+          "id": "MONDO:0005299",
+          "label": "brain ischemia"
+        }
+      },
+      {
+        "data": {
+          "description": "Lack of blood supply to an area of the body, resulting in impairment of tissue oxygenation.",
+          "id": "MONDO:0005053",
+          "label": "ischemic disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A subclass of polyketides having an octahydrotetracene-2-carboxamide skeleton, substituted with many hydroxy and other groups.",
+          "id": "CHEBI:26895",
+          "label": "tetracyclines"
+        }
+      },
+      {
+        "data": {
+          "description": "A phosphatidylcholine that is a glycerol phosphatide (phosphoglyceride, glycerophospholipid) in which the hydroxy group of choline is esterified with the phosphate group of phosphatidic acid.",
+          "id": "CHEBI:16110",
+          "label": "1,2-diacyl-sn-glycero-3-phosphocholine(1+)"
+        }
+      },
+      {
+        "data": {
+          "description": "A usually malignant and aggressive neoplasm of the mesothelium which is often associated with exposure to asbestos.",
+          "id": "MONDO:0005065",
+          "label": "mesothelioma"
+        }
+      },
+      {
+        "data": {
+          "description": "A radiculopathy that is present in more than one nerve.",
+          "id": "MONDO:0002960",
+          "label": "polyradiculopathy"
+        }
+      },
+      {
+        "data": {
+          "description": "Cleft palate is a fissure type embryopathy that affects the soft and hard palate to varying degrees.",
+          "id": "MONDO:0016064",
+          "label": "cleft palate"
+        }
+      },
+      {
+        "data": {
+          "description": "Parkinsonism with dementia of Guadeloupe is characterized by symmetrical bradykinesia, predominantly axial rigidity, postural instability with early falls and cognitive decline with prominent features of frontal lobe dysfunction.",
+          "id": "MONDO:0019977",
+          "label": "parkinsonism with dementia of Guadeloupe"
+        }
+      },
+      {
+        "data": {
+          "description": "A condition with a clinical picture similar to that of Parkinson disease, but which is caused by external factors, including medication.",
+          "id": "MONDO:0006966",
+          "label": "secondary Parkinson disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A group of at least three distinct histological types of lung cancer, including non-small cell squamous cell carcinoma, adenocarcinoma, and large cell carcinoma. Non-small cell lung carcinomas have a poor response to conventional chemotherapy.",
+          "id": "MONDO:0005233",
+          "label": "non-small cell lung carcinoma"
+        }
+      },
+      {
+        "data": {
+          "description": "The conjugate base of a 1,2-diacyl-sn-glycero-3-phosphocholine compound formed by deprotonation of the phosphate OH group.",
+          "id": "CHEBI:57643",
+          "label": "1,2-diacyl-sn-glycero-3-phosphocholine"
+        }
+      },
+      {
+        "data": {
+          "description": "Kidney damage that results from chronically elevated blood pressure; complications include glomerular damage resulting in proteinuria and hematuria.",
+          "id": "MONDO:0024633",
+          "label": "hypertensive nephropathy"
+        }
+      },
+      {
+        "data": {
+          "description": "A malignant, usually aggressive tumor composed of atypical, neoplastic melanocytes. Most often, melanomas arise in the skin (cutaneous melanomas) and include the following histologic subtypes: superficial spreading melanoma, nodular melanoma, acral lentiginous melanoma, and lentigo maligna melanoma. Cutaneous melanomas may arise from acquired or congenital melanocytic or dysplastic nevi. Melanomas may also arise in other anatomic sites including the gastrointestinal system, eye, urinary tract, and reproductive system. Melanomas frequently metastasize to lymph nodes, liver, lungs, and brain.",
+          "id": "MONDO:0005105",
+          "label": "melanoma"
+        }
+      },
+      {
+        "data": {
+          "description": "A congenital neural tube defect in which vertebrae are not fully formed. It results in the protrusion of the spinal cord through the opening of the vertebrae.",
+          "id": "MONDO:0008449",
+          "label": "spina bifida"
+        }
+      },
+      {
+        "data": {
+          "description": "A neoplasm arising from the epithelium. It may be encapsulated or non-encapsulated but non-invasive. The neoplastic epithelial cells may or may not display cellular atypia or dysplasia. In the gastrointestinal tract, when dysplasia becomes severe it is sometimes called carcinoma in situ. Representative examples are pituitary gland adenoma, follicular adenoma of the thyroid gland, and adenomas (or adenomatous polyps) of the gastrointestinal tract.",
+          "id": "MONDO:0004972",
+          "label": "adenoma"
+        }
+      },
+      {
+        "data": {
+          "description": "A condition characterized by painful swelling of the joints, which is caused by deposition of urate crystals.",
+          "id": "MONDO:0005393",
+          "label": "gout"
+        }
+      },
+      {
+        "data": {
+          "description": "A benign or malignant tumor involving the skin. Representative examples of benign skin neoplasms include the benign melanocytic skin nevus, acanthoma, sebaceous adenoma, sweat gland adenoma, lipoma, hemangioma, fibroma, and benign fibrous histiocytoma. Representative examples of malignant skin neoplasms include basal cell carcinoma, squamous cell carcinoma, melanoma, and Kaposi sarcoma.",
+          "id": "MONDO:0002531",
+          "label": "skin neoplasm"
+        }
+      },
+      {
+        "data": {
+          "description": "A progressive dementia with reduction of cognitive functions. It presents the same phenotype as sporadic Alzheimer disease (AD) but has an early age of onset, usually before 60 years old.",
+          "id": "MONDO:0015140",
+          "label": "early-onset autosomal dominant Alzheimer disease"
+        }
+      },
+      {
+        "data": {
+          "description": "An infection caused by Staphylococcus.",
+          "id": "MONDO:0024313",
+          "label": "staphylococcal infection"
+        }
+      },
+      {
+        "data": {
+          "description": "Abnormally low level of 25-hydroxyvitamin D in the blood.",
+          "id": "MONDO:0100471",
+          "label": "vitamin D deficiency"
+        }
+      },
+      {
+        "data": {
+          "description": "Disorders that are causes by overuse of tendons.",
+          "id": "MONDO:0100010",
+          "label": "tendinopathy"
+        }
+      },
+      {
+        "data": {
+          "description": "An Alzheimer's disease that is characterized by an association of the apolipoprotein E E4 allele.",
+          "id": "MONDO:0007089",
+          "label": "Alzheimer disease 2"
+        }
+      },
+      {
+        "data": {
+          "description": "A primary or metastatic malignant neoplasm involving the ovary. Most primary malignant ovarian neoplasms are either carcinomas (serous, mucinous, or endometrioid adenocarcinomas) or malignant germ cell tumors. Metastatic malignant neoplasms to the ovary include carcinomas, lymphomas, and melanomas.",
+          "id": "MONDO:0008170",
+          "label": "ovarian cancer"
+        }
+      },
+      {
+        "data": {
+          "description": "Bartter syndrome is a group of rare renal tubular disease characterized by impaired salt reabsorption in the thick ascending limb of Henle's loop and clinically by the association of hypokalemic alkalosis, hypercalciuria/nephrocalcinosis, increased levels of plasma renin and aldosterone, low blood pressure and vascular resistance to angiotensin II.",
+          "id": "MONDO:0015231",
+          "label": "Bartter syndrome"
+        }
+      },
+      {
+        "data": {
+          "description": "An autoimmune demyelinating disease of the central nervous system that is produced experimentally in animals by the injection of homogenized brain or spinal cord in Freund's adjuvant. Myelin basic protein appears to be the antigen that elicits the hypersensitivity immune response which is characterized by focal areas of lymphocyte and macrophage infiltration into the brain, associated with demyelination and destruction of the blood-brain barrier. Experimental allergic encephalomyelitis (EAE) is used as an animal model for demyelinating diseases of the human central nervous system such as multiple sclerosis.",
+          "id": "MONDO:0005134",
+          "label": "experimental autoimmune encephalomyelitis"
+        }
+      },
+      {
+        "data": {
+          "description": "A fetus that does not grow beyond the 10th percentile of conventionally accepted weight for gestational age.",
+          "id": "MONDO:0005030",
+          "label": "fetal growth restriction"
+        }
+      },
+      {
+        "data": {
+          "description": "A progressive degenerative disorder of the central nervous system characterized by loss of dopamine producing neurons in the substantia nigra and the presence of Lewy bodies in the substantia nigra and locus coeruleus. Signs and symptoms include tremor which is most pronounced during rest, muscle rigidity, slowing of the voluntary movements, a tendency to fall back, and a mask-like facial expression.",
+          "id": "MONDO:0005180",
+          "label": "Parkinson disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A disease involving the hematopoietic system.",
+          "id": "MONDO:0005570",
+          "label": "hematologic disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "Optic neuritis is inflammation of the optic nerve, the nerve that carries the visual signal from the eye to the brain.The conditionmay cause sudden, reduced vision in the affected eye(s). While the cause of optic neuritis is unknown, it has been associated with autoimmune diseases, infections, multiple sclerosis, drug toxicity and deficiency of vitamin B-12. Vision often returns to normal within 2-3 weeks without treatment. In some cases, corticosteroids are given to speed recovery. If known, the underlying cause should be treated.",
+          "id": "MONDO:0005885",
+          "label": "optic neuritis"
+        }
+      },
+      {
+        "data": {
+          "description": "Any compound that supports healthy aging, slows the biological aging process, or extends lifespan.",
+          "id": "CHEBI:176497",
+          "label": "geroprotector"
+        }
+      },
+      {
+        "data": {
+          "description": "",
+          "id": "CHEBI:140785",
+          "label": "R-cob(III)alamin"
+        }
+      },
+      {
+        "data": {
+          "description": "An acute infectious disorder that is caused by gram positive or gram negative bacteria; representative examples include pneumococcal, streptococcal, salmonella, and meningeal infections.",
+          "id": "MONDO:0005113",
+          "label": "bacterial infectious disease"
+        }
+      },
+      {
+        "data": {
+          "description": "A neurological syndrome characterized by clumsy and uncoordinated movement of the limbs, trunk, and cranial muscles. It results from pathology in the cerebellum and its connections, or in the proprioceptive sensory pathways.",
+          "id": "MONDO:0000437",
+          "label": "cerebellar ataxia"
+        }
+      },
+      {
+        "data": {
+          "description": "Decreased number of spermatozoa in the semen.",
+          "id": "MONDO:0001913",
+          "label": "oligospermia"
+        }
+      },
+      {
+        "data": {
+          "description": "Diabetic angiopathy is a form of angiopathy associated with diabetic complications.",
+          "id": "MONDO:0000960",
+          "label": "diabetic peripheral angiopathy"
+        }
+      },
+      {
+        "data": {
+          "description": "An inherited disorder characterized by progressive degeneration and atrophy of the nervous system.",
+          "id": "MONDO:0024237",
+          "label": "inherited neurodegenerative disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A carcinoma arising from squamous epithelial cells. Morphologically, it is characterized by the proliferation of atypical, often pleomorphic squamous cells. Squamous cell carcinomas are graded by the degree of cellular differentiation as well, moderately, or poorly differentiated. Well differentiated carcinomas are usually associated with keratin production and the presence of intercellular bridges between adjacent cells. Representative examples are lung squamous cell carcinoma, skin squamous cell carcinoma, and cervical squamous cell carcinoma.",
+          "id": "MONDO:0005096",
+          "label": "squamous cell carcinoma"
+        }
+      },
+      {
+        "data": {
+          "description": "A type of diabetes mellitus that is characterized by insulin resistance or desensitization and increased blood glucose levels. This is a chronic disease that can develop gradually over the life of a patient and can be linked to both environmental factors and heredity.",
+          "id": "MONDO:0005148",
+          "label": "type 2 diabetes mellitus"
+        }
+      },
+      {
+        "data": {
+          "description": "Binding to vitamin D, any of a group of related, fat-soluble compounds that are derived from delta-5,7 steroids and play a central role in calcium metabolism. Specific forms of vitamin D include calciferol (ergocalciferol; vitamin D2) and cholecalciferol (calciol; vitamin D3).",
+          "id": "GO:0005499",
+          "label": "vitamin D binding"
+        }
+      },
+      {
+        "data": {
+          "description": "A finding of low numbers of red and white blood cells and platelets in the peripheral blood.",
+          "id": "MONDO:0001529",
+          "label": "pancytopenia"
+        }
+      },
+      {
+        "data": {
+          "description": "A pyridinemonocarboxylate that is the conjugate base of nicotinic acid, arising from deprotonation of the carboxy group; major species at pH 7.3.",
+          "id": "CHEBI:32544",
+          "label": "nicotinate"
+        }
+      },
+      {
+        "data": {
+          "description": "Any nerve disorder caused by the entrapment and compression of a nerve.",
+          "id": "MONDO:0003615",
+          "label": "nerve compression syndrome"
+        }
+      },
+      {
+        "data": {
+          "description": "Loss of vision in the central portion of the retina (macula), secondary to retinal degeneration.",
+          "id": "MONDO:0003004",
+          "label": "macular degeneration"
+        }
+      },
+      {
+        "data": {
+          "description": "",
+          "id": "MONDO:0018425",
+          "label": "Huntington disease-like syndrome due to C9ORF72 expansions"
+        }
+      },
+      {
+        "data": {
+          "description": "",
+          "id": "CHEBI:23333",
+          "label": "cob(III)alamins"
+        }
+      },
+      {
+        "data": {
+          "description": "3-Isopropylimino-3,5-dihydro-phenazine in which the hydrogen at position 5 is substituted substituted by a 4-chlorophenyl group, and that at position 2 is substituted by a (4-chlorophenyl)amino group. A dark red crystalline solid, clofazimine is an antimycobacterial and is one of the main drugs used for the treatment of  multi-bacillary leprosy. However, it can cause red/brown discolouration of the skin, so other treatments are often preferred in light-skinned patients.",
+          "id": "CHEBI:3749",
+          "label": "clofazimine"
+        }
+      },
+      {
+        "data": {
+          "description": "",
+          "id": "CHEBI:37958",
+          "label": "dye"
+        }
+      },
+      {
+        "data": {
+          "description": "A disease involving the lens of camera-type eye.",
+          "id": "MONDO:0001176",
+          "label": "lens disorder"
+        }
+      },
+      {
+        "data": {
+          "description": "A primary or metastatic malignant tumor involving the prostate gland. The vast majority are carcinomas.",
+          "id": "MONDO:0008315",
+          "label": "prostate cancer"
+        }
+      },
+      {
+        "data": {
+          "description": "Megaloblastic anemia caused by vitamin B-12 deficiency due to impaired absorption. The impaired absorption of vitamin B-12 is secondary to atrophic gastritis and loss of gastric parietal cells.",
+          "id": "MONDO:0008228",
+          "label": "pernicious anemia"
+        }
+      },
+      {
+        "data": {
+          "description": "A disorder characterized by confusion; inattentiveness; disorientation; illusions; hallucinations; agitation; and in some instances autonomic nervous system overactivity. It may result from toxic/metabolic conditions or structural brain lesions. (From Adams et al., Principles of Neurology, 6th ed, pp411-2)",
+          "id": "MONDO:0045057",
+          "label": "delirium"
+        }
+      },
+      {
+        "data": {
+          "description": "Actylcholine is an ester of acetic acid and choline, which acts as a neurotransmitter.",
+          "id": "CHEBI:15355",
+          "label": "acetylcholine"
+        }
+      },
+      {
+        "data": {
+          "description": "A brief attack (from a few minutes to an hour) of cerebral dysfunction of vascular origin, with no persistent neurological deficit.",
+          "id": "MONDO:0005264",
+          "label": "transient ischemic attack"
+        }
+      },
+      {
+        "data": {
+          "description": "",
+          "id": "CHEBI:36853",
+          "label": "hydroxy seco-steroid"
+        }
+      },
+      {
+        "data": {
+          "description": "Abnormally high levels of insulin in the blood.",
+          "id": "MONDO:0002177",
+          "label": "hyperinsulinism"
+        }
+      },
+      {
+        "data": {
+          "description": "A tertiary alcohol is a compound in which a hydroxy group, -OH, is attached to a saturated carbon atom which has three other carbon atoms attached to it.",
+          "id": "CHEBI:26878",
+          "label": "tertiary alcohol"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "id": "edge_0",
+          "source": "CHEBI:17154",
+          "target": "CHEBI:176839",
+          "label": "biolink:subclass_of",
+          "score": 14.98
+        }
+      },
+      {
+        "data": {
+          "id": "edge_1",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0004790",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -8.95
+        }
+      },
+      {
+        "data": {
+          "id": "edge_2",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0008375",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.75
+        }
+      },
+      {
+        "data": {
+          "id": "edge_3",
+          "source": "RGD:68114",
+          "target": "MONDO:0005129",
+          "label": "biolink:model_of",
+          "score": 14.39
+        }
+      },
+      {
+        "data": {
+          "id": "edge_4",
+          "source": "MONDO:0018307",
+          "target": "MONDO:0015547",
+          "label": "biolink:subclass_of",
+          "score": 10.63
+        }
+      },
+      {
+        "data": {
+          "id": "edge_5",
+          "source": "CHEBI:26195",
+          "target": "MONDO:0021104",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.55
+        }
+      },
+      {
+        "data": {
+          "id": "edge_6",
+          "source": "CHEBI:27300",
+          "target": "MONDO:0005359",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.4
+        }
+      },
+      {
+        "data": {
+          "id": "edge_7",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0005089",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.01
+        }
+      },
+      {
+        "data": {
+          "id": "edge_8",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005347",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14
+        }
+      },
+      {
+        "data": {
+          "id": "edge_9",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0005917",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.77
+        }
+      },
+      {
+        "data": {
+          "id": "edge_10",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0002771",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.05
+        }
+      },
+      {
+        "data": {
+          "id": "edge_11",
+          "source": "MONDO:0018307",
+          "target": "MONDO:0005559",
+          "label": "biolink:related_to",
+          "score": 16.52
+        }
+      },
+      {
+        "data": {
+          "id": "edge_12",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0021085",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.11
+        }
+      },
+      {
+        "data": {
+          "id": "edge_13",
+          "source": "CHEBI:35472",
+          "target": "CHEBI:67079",
+          "label": "biolink:subclass_of",
+          "score": 19.35
+        }
+      },
+      {
+        "data": {
+          "id": "edge_14",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0009693",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.59
+        }
+      },
+      {
+        "data": {
+          "id": "edge_15",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0001673",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.01
+        }
+      },
+      {
+        "data": {
+          "id": "edge_16",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0006626",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -11.59
+        }
+      },
+      {
+        "data": {
+          "id": "edge_17",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0006715",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.49
+        }
+      },
+      {
+        "data": {
+          "id": "edge_18",
+          "source": "MONDO:0001945",
+          "target": "MONDO:0021095",
+          "label": "biolink:subclass_of",
+          "score": 13.85
+        }
+      },
+      {
+        "data": {
+          "id": "edge_19",
+          "source": "MONDO:0019052",
+          "target": "MONDO:0005066",
+          "label": "biolink:subclass_of",
+          "score": 18.2
+        }
+      },
+      {
+        "data": {
+          "id": "edge_20",
+          "source": "CHEBI:7735",
+          "target": "MONDO:0005395",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.36
+        }
+      },
+      {
+        "data": {
+          "id": "edge_21",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0009853",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.94
+        }
+      },
+      {
+        "data": {
+          "id": "edge_22",
+          "source": "CHEBI:73558",
+          "target": "CHEBI:27300",
+          "label": "biolink:subclass_of",
+          "score": 16.58
+        }
+      },
+      {
+        "data": {
+          "id": "edge_23",
+          "source": "CHEBI:17154",
+          "target": "CHEBI:26416",
+          "label": "biolink:subclass_of",
+          "score": 13.48
+        }
+      },
+      {
+        "data": {
+          "id": "edge_24",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0005311",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.92
+        }
+      },
+      {
+        "data": {
+          "id": "edge_25",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0005300",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.35
+        }
+      },
+      {
+        "data": {
+          "id": "edge_26",
+          "source": "MONDO:0005359",
+          "target": "MONDO:0005154",
+          "label": "biolink:subclass_of",
+          "score": 17.11
+        }
+      },
+      {
+        "data": {
+          "id": "edge_27",
+          "source": "CHEBI:35620",
+          "target": "MONDO:0005044",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.25
+        }
+      },
+      {
+        "data": {
+          "id": "edge_28",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0021100",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.31
+        }
+      },
+      {
+        "data": {
+          "id": "edge_29",
+          "source": "MONDO:0006573",
+          "target": "MONDO:0005066",
+          "label": "biolink:subclass_of",
+          "score": -17.62
+        }
+      },
+      {
+        "data": {
+          "id": "edge_30",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0005917",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.27
+        }
+      },
+      {
+        "data": {
+          "id": "edge_31",
+          "source": "MONDO:0004648",
+          "target": "MONDO:0001627",
+          "label": "biolink:subclass_of",
+          "score": 10.64
+        }
+      },
+      {
+        "data": {
+          "id": "edge_32",
+          "source": "CHEBI:3766",
+          "target": "MONDO:0001627",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.22
+        }
+      },
+      {
+        "data": {
+          "id": "edge_33",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0021117",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.53
+        }
+      },
+      {
+        "data": {
+          "id": "edge_34",
+          "source": "CHEBI:3962",
+          "target": "CHEBI:35618",
+          "label": "biolink:subclass_of",
+          "score": -16.18
+        }
+      },
+      {
+        "data": {
+          "id": "edge_35",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0006573",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.05
+        }
+      },
+      {
+        "data": {
+          "id": "edge_36",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0018177",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.82
+        }
+      },
+      {
+        "data": {
+          "id": "edge_37",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0017773",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.37
+        }
+      },
+      {
+        "data": {
+          "id": "edge_38",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0002545",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.69
+        }
+      },
+      {
+        "data": {
+          "id": "edge_39",
+          "source": "CHEBI:27656",
+          "target": "MONDO:0005402",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.39
+        }
+      },
+      {
+        "data": {
+          "id": "edge_40",
+          "source": "MONDO:0008375",
+          "target": "MONDO:0005283",
+          "label": "biolink:subclass_of",
+          "score": 19.33
+        }
+      },
+      {
+        "data": {
+          "id": "edge_41",
+          "source": "MONDO:0005298",
+          "target": "MONDO:0000837",
+          "label": "biolink:subclass_of",
+          "score": 19.59
+        }
+      },
+      {
+        "data": {
+          "id": "edge_42",
+          "source": "CHEBI:26195",
+          "target": "MONDO:0005059",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -9.04
+        }
+      },
+      {
+        "data": {
+          "id": "edge_43",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0005240",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -7.51
+        }
+      },
+      {
+        "data": {
+          "id": "edge_44",
+          "source": "CHEBI:16796",
+          "target": "MONDO:0006026",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -11.56
+        }
+      },
+      {
+        "data": {
+          "id": "edge_45",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0021223",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.96
+        }
+      },
+      {
+        "data": {
+          "id": "edge_46",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0005016",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.92
+        }
+      },
+      {
+        "data": {
+          "id": "edge_47",
+          "source": "CHEBI:17154",
+          "target": "CHEBI:15940",
+          "label": "biolink:related_to",
+          "score": 11.75
+        }
+      },
+      {
+        "data": {
+          "id": "edge_48",
+          "source": "CHEBI:35475",
+          "target": "MONDO:0005178",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.24
+        }
+      },
+      {
+        "data": {
+          "id": "edge_49",
+          "source": "MONDO:0006715",
+          "target": "MONDO:0005010",
+          "label": "biolink:subclass_of",
+          "score": 16.8
+        }
+      },
+      {
+        "data": {
+          "id": "edge_50",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0015194",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.57
+        }
+      },
+      {
+        "data": {
+          "id": "edge_51",
+          "source": "CHEBI:27300",
+          "target": "MONDO:0005087",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.99
+        }
+      },
+      {
+        "data": {
+          "id": "edge_52",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0004069",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.13
+        }
+      },
+      {
+        "data": {
+          "id": "edge_53",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0001673",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.38
+        }
+      },
+      {
+        "data": {
+          "id": "edge_54",
+          "source": "CHEBI:50694",
+          "target": "MONDO:0007739",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.04
+        }
+      },
+      {
+        "data": {
+          "id": "edge_55",
+          "source": "MONDO:0017773",
+          "target": "MONDO:0005066",
+          "label": "biolink:subclass_of",
+          "score": 19.78
+        }
+      },
+      {
+        "data": {
+          "id": "edge_56",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0005010",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.27
+        }
+      },
+      {
+        "data": {
+          "id": "edge_57",
+          "source": "CHEBI:50694",
+          "target": "MONDO:0005395",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.95
+        }
+      },
+      {
+        "data": {
+          "id": "edge_58",
+          "source": "CHEBI:84340",
+          "target": "CHEBI:26195",
+          "label": "biolink:subclass_of",
+          "score": 16.23
+        }
+      },
+      {
+        "data": {
+          "id": "edge_59",
+          "source": "CHEBI:7735",
+          "target": "MONDO:0001627",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.71
+        }
+      },
+      {
+        "data": {
+          "id": "edge_60",
+          "source": "MONDO:0013209",
+          "target": "MONDO:0004790",
+          "label": "biolink:subclass_of",
+          "score": 11.62
+        }
+      },
+      {
+        "data": {
+          "id": "edge_61",
+          "source": "CHEBI:35679",
+          "target": "MONDO:0037748",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.78
+        }
+      },
+      {
+        "data": {
+          "id": "edge_62",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0021187",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.87
+        }
+      },
+      {
+        "data": {
+          "id": "edge_63",
+          "source": "CHEBI:35475",
+          "target": "CHEBI:35472",
+          "label": "biolink:subclass_of",
+          "score": 14.09
+        }
+      },
+      {
+        "data": {
+          "id": "edge_64",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0002135",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.03
+        }
+      },
+      {
+        "data": {
+          "id": "edge_65",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0021042",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.5
+        }
+      },
+      {
+        "data": {
+          "id": "edge_66",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0002692",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.81
+        }
+      },
+      {
+        "data": {
+          "id": "edge_67",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0004976",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.58
+        }
+      },
+      {
+        "data": {
+          "id": "edge_68",
+          "source": "CHEBI:27300",
+          "target": "MONDO:0006964",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.24
+        }
+      },
+      {
+        "data": {
+          "id": "edge_69",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0006739",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.11
+        }
+      },
+      {
+        "data": {
+          "id": "edge_70",
+          "source": "MONDO:0011781",
+          "target": "MONDO:0005559",
+          "label": "biolink:related_to",
+          "score": 17.24
+        }
+      },
+      {
+        "data": {
+          "id": "edge_71",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0008159",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.6
+        }
+      },
+      {
+        "data": {
+          "id": "edge_72",
+          "source": "CHEBI:16796",
+          "target": "MONDO:0005365",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.78
+        }
+      },
+      {
+        "data": {
+          "id": "edge_73",
+          "source": "CHEBI:84340",
+          "target": "CHEBI:3962",
+          "label": "biolink:related_to",
+          "score": 12.58
+        }
+      },
+      {
+        "data": {
+          "id": "edge_74",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0002281",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.26
+        }
+      },
+      {
+        "data": {
+          "id": "edge_75",
+          "source": "CHEBI:27300",
+          "target": "MONDO:0005298",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.64
+        }
+      },
+      {
+        "data": {
+          "id": "edge_76",
+          "source": "CHEBI:15940",
+          "target": "CHEBI:35620",
+          "label": "biolink:related_to",
+          "score": 18.41
+        }
+      },
+      {
+        "data": {
+          "id": "edge_77",
+          "source": "CHEBI:7735",
+          "target": "MONDO:0007739",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.71
+        }
+      },
+      {
+        "data": {
+          "id": "edge_78",
+          "source": "CHEBI:35475",
+          "target": "MONDO:0006875",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.13
+        }
+      },
+      {
+        "data": {
+          "id": "edge_79",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005266",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.48
+        }
+      },
+      {
+        "data": {
+          "id": "edge_80",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0006032",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.22
+        }
+      },
+      {
+        "data": {
+          "id": "edge_81",
+          "source": "CHEBI:15940",
+          "target": "CHEBI:26416",
+          "label": "biolink:subclass_of",
+          "score": 14.58
+        }
+      },
+      {
+        "data": {
+          "id": "edge_82",
+          "source": "CHEBI:50694",
+          "target": "MONDO:0002679",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.94
+        }
+      },
+      {
+        "data": {
+          "id": "edge_83",
+          "source": "CHEBI:27300",
+          "target": "MONDO:0002771",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.62
+        }
+      },
+      {
+        "data": {
+          "id": "edge_84",
+          "source": "CHEBI:50694",
+          "target": "MONDO:0006857",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.04
+        }
+      },
+      {
+        "data": {
+          "id": "edge_85",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0002280",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.33
+        }
+      },
+      {
+        "data": {
+          "id": "edge_86",
+          "source": "MONDO:0018307",
+          "target": "MONDO:0001627",
+          "label": "biolink:related_to",
+          "score": 14.03
+        }
+      },
+      {
+        "data": {
+          "id": "edge_87",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0005277",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -18.38
+        }
+      },
+      {
+        "data": {
+          "id": "edge_88",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0005059",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.74
+        }
+      },
+      {
+        "data": {
+          "id": "edge_89",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005147",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.64
+        }
+      },
+      {
+        "data": {
+          "id": "edge_90",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005283",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.83
+        }
+      },
+      {
+        "data": {
+          "id": "edge_91",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0005590",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.19
+        }
+      },
+      {
+        "data": {
+          "id": "edge_92",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0002909",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.29
+        }
+      },
+      {
+        "data": {
+          "id": "edge_93",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0001657",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -18.45
+        }
+      },
+      {
+        "data": {
+          "id": "edge_94",
+          "source": "MONDO:0005527",
+          "target": "MONDO:0005071",
+          "label": "biolink:subclass_of",
+          "score": 19.59
+        }
+      },
+      {
+        "data": {
+          "id": "edge_95",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0100280",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.3
+        }
+      },
+      {
+        "data": {
+          "id": "edge_96",
+          "source": "MONDO:0018307",
+          "target": "MONDO:0019052",
+          "label": "biolink:subclass_of",
+          "score": -8.73
+        }
+      },
+      {
+        "data": {
+          "id": "edge_97",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0004747",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.27
+        }
+      },
+      {
+        "data": {
+          "id": "edge_98",
+          "source": "CHEBI:50694",
+          "target": "MONDO:0021042",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -11.68
+        }
+      },
+      {
+        "data": {
+          "id": "edge_99",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0021187",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.8
+        }
+      },
+      {
+        "data": {
+          "id": "edge_100",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0015909",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.98
+        }
+      },
+      {
+        "data": {
+          "id": "edge_101",
+          "source": "CHEBI:16796",
+          "target": "MONDO:0024644",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.86
+        }
+      },
+      {
+        "data": {
+          "id": "edge_102",
+          "source": "MONDO:0005155",
+          "target": "MONDO:0005154",
+          "label": "biolink:subclass_of",
+          "score": 19.59
+        }
+      },
+      {
+        "data": {
+          "id": "edge_103",
+          "source": "MONDO:0020689",
+          "target": "MONDO:0005109",
+          "label": "biolink:related_to",
+          "score": 12.29
+        }
+      },
+      {
+        "data": {
+          "id": "edge_104",
+          "source": "CHEBI:27300",
+          "target": "MONDO:0001220",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.28
+        }
+      },
+      {
+        "data": {
+          "id": "edge_105",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0020696",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.81
+        }
+      },
+      {
+        "data": {
+          "id": "edge_106",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0004743",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.98
+        }
+      },
+      {
+        "data": {
+          "id": "edge_107",
+          "source": "MONDO:0005016",
+          "target": "MONDO:0005300",
+          "label": "biolink:subclass_of",
+          "score": -15.92
+        }
+      },
+      {
+        "data": {
+          "id": "edge_108",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0002679",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.8
+        }
+      },
+      {
+        "data": {
+          "id": "edge_109",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0037748",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.17
+        }
+      },
+      {
+        "data": {
+          "id": "edge_110",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0001657",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.9
+        }
+      },
+      {
+        "data": {
+          "id": "edge_111",
+          "source": "CHEBI:16796",
+          "target": "MONDO:0005071",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.62
+        }
+      },
+      {
+        "data": {
+          "id": "edge_112",
+          "source": "MONDO:0005311",
+          "target": "MONDO:0002277",
+          "label": "biolink:subclass_of",
+          "score": 15.68
+        }
+      },
+      {
+        "data": {
+          "id": "edge_113",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0003939",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.4
+        }
+      },
+      {
+        "data": {
+          "id": "edge_114",
+          "source": "MONDO:0043510",
+          "target": "MONDO:0021178",
+          "label": "biolink:subclass_of",
+          "score": 12.37
+        }
+      },
+      {
+        "data": {
+          "id": "edge_115",
+          "source": "MONDO:0011781",
+          "target": "HP:0000726",
+          "label": "biolink:has_phenotype",
+          "score": 15.49
+        }
+      },
+      {
+        "data": {
+          "id": "edge_116",
+          "source": "CHEBI:46195",
+          "target": "MONDO:0005068",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.57
+        }
+      },
+      {
+        "data": {
+          "id": "edge_117",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0004995",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.7
+        }
+      },
+      {
+        "data": {
+          "id": "edge_118",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0001078",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.7
+        }
+      },
+      {
+        "data": {
+          "id": "edge_119",
+          "source": "MONDO:0020696",
+          "target": "MONDO:0005066",
+          "label": "biolink:subclass_of",
+          "score": -12.63
+        }
+      },
+      {
+        "data": {
+          "id": "edge_120",
+          "source": "MONDO:0016987",
+          "target": "MONDO:0001627",
+          "label": "biolink:related_to",
+          "score": 15.92
+        }
+      },
+      {
+        "data": {
+          "id": "edge_121",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0007915",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.54
+        }
+      },
+      {
+        "data": {
+          "id": "edge_122",
+          "source": "CHEBI:27300",
+          "target": "MONDO:0005155",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.69
+        }
+      },
+      {
+        "data": {
+          "id": "edge_123",
+          "source": "CHEBI:27656",
+          "target": "MONDO:0100339",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.08
+        }
+      },
+      {
+        "data": {
+          "id": "edge_124",
+          "source": "CHEBI:16796",
+          "target": "MONDO:0003620",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.53
+        }
+      },
+      {
+        "data": {
+          "id": "edge_125",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0005010",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.43
+        }
+      },
+      {
+        "data": {
+          "id": "edge_126",
+          "source": "MONDO:0015547",
+          "target": "MONDO:0001627",
+          "label": "biolink:subclass_of",
+          "score": 15.86
+        }
+      },
+      {
+        "data": {
+          "id": "edge_127",
+          "source": "MONDO:0018307",
+          "target": "MONDO:0005395",
+          "label": "biolink:subclass_of",
+          "score": 12.23
+        }
+      },
+      {
+        "data": {
+          "id": "edge_128",
+          "source": "CHEBI:46195",
+          "target": "MONDO:0005277",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.51
+        }
+      },
+      {
+        "data": {
+          "id": "edge_129",
+          "source": "MONDO:0015194",
+          "target": "MONDO:0002280",
+          "label": "biolink:subclass_of",
+          "score": 16.77
+        }
+      },
+      {
+        "data": {
+          "id": "edge_130",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0004790",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.34
+        }
+      },
+      {
+        "data": {
+          "id": "edge_131",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0006626",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.98
+        }
+      },
+      {
+        "data": {
+          "id": "edge_132",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0005015",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.44
+        }
+      },
+      {
+        "data": {
+          "id": "edge_133",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0021187",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.79
+        }
+      },
+      {
+        "data": {
+          "id": "edge_134",
+          "source": "CHEBI:46195",
+          "target": "MONDO:0005098",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.2
+        }
+      },
+      {
+        "data": {
+          "id": "edge_135",
+          "source": "MONDO:0005100",
+          "target": "MONDO:0005093",
+          "label": "biolink:subclass_of",
+          "score": 10.81
+        }
+      },
+      {
+        "data": {
+          "id": "edge_136",
+          "source": "CHEBI:35679",
+          "target": "MONDO:0005068",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.17
+        }
+      },
+      {
+        "data": {
+          "id": "edge_137",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0024355",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.01
+        }
+      },
+      {
+        "data": {
+          "id": "edge_138",
+          "source": "MONDO:0001627",
+          "target": "HP:0000726",
+          "label": "biolink:has_phenotype",
+          "score": 18.83
+        }
+      },
+      {
+        "data": {
+          "id": "edge_139",
+          "source": "MONDO:0015909",
+          "target": "MONDO:0002280",
+          "label": "biolink:subclass_of",
+          "score": 14.21
+        }
+      },
+      {
+        "data": {
+          "id": "edge_140",
+          "source": "CHEBI:46195",
+          "target": "MONDO:0002277",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.1
+        }
+      },
+      {
+        "data": {
+          "id": "edge_141",
+          "source": "MONDO:0005016",
+          "target": "MONDO:0005015",
+          "label": "biolink:related_to",
+          "score": 13.74
+        }
+      },
+      {
+        "data": {
+          "id": "edge_142",
+          "source": "CHEBI:16796",
+          "target": "MONDO:0005527",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.71
+        }
+      },
+      {
+        "data": {
+          "id": "edge_143",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0005098",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.74
+        }
+      },
+      {
+        "data": {
+          "id": "edge_144",
+          "source": "CHEBI:17154",
+          "target": "MONDO:0004790",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.11
+        }
+      },
+      {
+        "data": {
+          "id": "edge_145",
+          "source": "MONDO:0006604",
+          "target": "MONDO:0005093",
+          "label": "biolink:subclass_of",
+          "score": 13.44
+        }
+      },
+      {
+        "data": {
+          "id": "edge_146",
+          "source": "CHEBI:16796",
+          "target": "MONDO:0021187",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.11
+        }
+      },
+      {
+        "data": {
+          "id": "edge_147",
+          "source": "MONDO:0003620",
+          "target": "MONDO:0005071",
+          "label": "biolink:subclass_of",
+          "score": 12.41
+        }
+      },
+      {
+        "data": {
+          "id": "edge_148",
+          "source": "MONDO:0037748",
+          "target": "MONDO:0021187",
+          "label": "biolink:subclass_of",
+          "score": 19.66
+        }
+      },
+      {
+        "data": {
+          "id": "edge_149",
+          "source": "CHEBI:16796",
+          "target": "MONDO:0007915",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13
+        }
+      },
+      {
+        "data": {
+          "id": "edge_150",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0021085",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -17.38
+        }
+      },
+      {
+        "data": {
+          "id": "edge_151",
+          "source": "CHEBI:15365",
+          "target": "CHEBI:35475",
+          "label": "biolink:related_to",
+          "score": 11.65
+        }
+      },
+      {
+        "data": {
+          "id": "edge_152",
+          "source": "MONDO:0005299",
+          "target": "MONDO:0005053",
+          "label": "biolink:subclass_of",
+          "score": 14.65
+        }
+      },
+      {
+        "data": {
+          "id": "edge_153",
+          "source": "CHEBI:26895",
+          "target": "MONDO:0005559",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.13
+        }
+      },
+      {
+        "data": {
+          "id": "edge_154",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0005266",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.01
+        }
+      },
+      {
+        "data": {
+          "id": "edge_155",
+          "source": "CHEBI:16110",
+          "target": "MONDO:0001627",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.52
+        }
+      },
+      {
+        "data": {
+          "id": "edge_156",
+          "source": "CHEBI:16796",
+          "target": "MONDO:0006032",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.36
+        }
+      },
+      {
+        "data": {
+          "id": "edge_157",
+          "source": "CHEBI:26195",
+          "target": "MONDO:0005154",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.29
+        }
+      },
+      {
+        "data": {
+          "id": "edge_158",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0005065",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.43
+        }
+      },
+      {
+        "data": {
+          "id": "edge_159",
+          "source": "CHEBI:27300",
+          "target": "MONDO:0002960",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.9
+        }
+      },
+      {
+        "data": {
+          "id": "edge_160",
+          "source": "CHEBI:17154",
+          "target": "MONDO:0016064",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.22
+        }
+      },
+      {
+        "data": {
+          "id": "edge_161",
+          "source": "MONDO:0019977",
+          "target": "MONDO:0021095",
+          "label": "biolink:subclass_of",
+          "score": 18.89
+        }
+      },
+      {
+        "data": {
+          "id": "edge_162",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0006966",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.57
+        }
+      },
+      {
+        "data": {
+          "id": "edge_163",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0005065",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.02
+        }
+      },
+      {
+        "data": {
+          "id": "edge_164",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0005089",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.39
+        }
+      },
+      {
+        "data": {
+          "id": "edge_165",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0005233",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.82
+        }
+      },
+      {
+        "data": {
+          "id": "edge_166",
+          "source": "CHEBI:16110",
+          "target": "CHEBI:57643",
+          "label": "biolink:related_to",
+          "score": 12.82
+        }
+      },
+      {
+        "data": {
+          "id": "edge_167",
+          "source": "CHEBI:50694",
+          "target": "MONDO:0024355",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.47
+        }
+      },
+      {
+        "data": {
+          "id": "edge_168",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0002545",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.93
+        }
+      },
+      {
+        "data": {
+          "id": "edge_169",
+          "source": "MONDO:0100280",
+          "target": "MONDO:0019052",
+          "label": "biolink:subclass_of",
+          "score": 13.89
+        }
+      },
+      {
+        "data": {
+          "id": "edge_170",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0005098",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.81
+        }
+      },
+      {
+        "data": {
+          "id": "edge_171",
+          "source": "MONDO:0024633",
+          "target": "MONDO:0005044",
+          "label": "biolink:related_to",
+          "score": 18.41
+        }
+      },
+      {
+        "data": {
+          "id": "edge_172",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0005105",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.03
+        }
+      },
+      {
+        "data": {
+          "id": "edge_173",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0008449",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.98
+        }
+      },
+      {
+        "data": {
+          "id": "edge_174",
+          "source": "MONDO:0001945",
+          "target": "MONDO:0001627",
+          "label": "biolink:related_to",
+          "score": 17.92
+        }
+      },
+      {
+        "data": {
+          "id": "edge_175",
+          "source": "MONDO:0008159",
+          "target": "MONDO:0005298",
+          "label": "biolink:subclass_of",
+          "score": 12.47
+        }
+      },
+      {
+        "data": {
+          "id": "edge_176",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0004972",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.38
+        }
+      },
+      {
+        "data": {
+          "id": "edge_177",
+          "source": "CHEBI:35475",
+          "target": "MONDO:0005393",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.62
+        }
+      },
+      {
+        "data": {
+          "id": "edge_178",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0002531",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.45
+        }
+      },
+      {
+        "data": {
+          "id": "edge_179",
+          "source": "CHEBI:26195",
+          "target": "MONDO:0005359",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.66
+        }
+      },
+      {
+        "data": {
+          "id": "edge_180",
+          "source": "CHEBI:35475",
+          "target": "MONDO:0002531",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.54
+        }
+      },
+      {
+        "data": {
+          "id": "edge_181",
+          "source": "MONDO:0015140",
+          "target": "HP:0000726",
+          "label": "biolink:has_phenotype",
+          "score": 19.14
+        }
+      },
+      {
+        "data": {
+          "id": "edge_182",
+          "source": "MONDO:0005016",
+          "target": "MONDO:0005066",
+          "label": "biolink:subclass_of",
+          "score": 11.1
+        }
+      },
+      {
+        "data": {
+          "id": "edge_183",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005402",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.38
+        }
+      },
+      {
+        "data": {
+          "id": "edge_184",
+          "source": "CHEBI:50694",
+          "target": "MONDO:0024313",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.12
+        }
+      },
+      {
+        "data": {
+          "id": "edge_185",
+          "source": "CHEBI:27300",
+          "target": "MONDO:0100471",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.26
+        }
+      },
+      {
+        "data": {
+          "id": "edge_186",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0004747",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -16.89
+        }
+      },
+      {
+        "data": {
+          "id": "edge_187",
+          "source": "CHEBI:35475",
+          "target": "MONDO:0100010",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.94
+        }
+      },
+      {
+        "data": {
+          "id": "edge_188",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0005233",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.45
+        }
+      },
+      {
+        "data": {
+          "id": "edge_189",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0043510",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.09
+        }
+      },
+      {
+        "data": {
+          "id": "edge_190",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005016",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.78
+        }
+      },
+      {
+        "data": {
+          "id": "edge_191",
+          "source": "CHEBI:84340",
+          "target": "CHEBI:35618",
+          "label": "biolink:subclass_of",
+          "score": 17.68
+        }
+      },
+      {
+        "data": {
+          "id": "edge_192",
+          "source": "MONDO:0007089",
+          "target": "HP:0000726",
+          "label": "biolink:has_phenotype",
+          "score": -10.54
+        }
+      },
+      {
+        "data": {
+          "id": "edge_193",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0021095",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.08
+        }
+      },
+      {
+        "data": {
+          "id": "edge_194",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0008170",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.57
+        }
+      },
+      {
+        "data": {
+          "id": "edge_195",
+          "source": "CHEBI:35475",
+          "target": "MONDO:0015231",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.58
+        }
+      },
+      {
+        "data": {
+          "id": "edge_196",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005134",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.94
+        }
+      },
+      {
+        "data": {
+          "id": "edge_197",
+          "source": "MONDO:0005030",
+          "target": "MONDO:0005917",
+          "label": "biolink:subclass_of",
+          "score": 18.9
+        }
+      },
+      {
+        "data": {
+          "id": "edge_198",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0005365",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.59
+        }
+      },
+      {
+        "data": {
+          "id": "edge_199",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0005105",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.73
+        }
+      },
+      {
+        "data": {
+          "id": "edge_200",
+          "source": "RGD:68114",
+          "target": "MONDO:0005298",
+          "label": "biolink:model_of",
+          "score": -11.88
+        }
+      },
+      {
+        "data": {
+          "id": "edge_201",
+          "source": "CHEBI:50694",
+          "target": "MONDO:0005180",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.96
+        }
+      },
+      {
+        "data": {
+          "id": "edge_202",
+          "source": "MONDO:0005347",
+          "target": "MONDO:0005066",
+          "label": "biolink:subclass_of",
+          "score": 17.93
+        }
+      },
+      {
+        "data": {
+          "id": "edge_203",
+          "source": "MONDO:0002280",
+          "target": "MONDO:0005570",
+          "label": "biolink:subclass_of",
+          "score": 13.96
+        }
+      },
+      {
+        "data": {
+          "id": "edge_204",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0005068",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.86
+        }
+      },
+      {
+        "data": {
+          "id": "edge_205",
+          "source": "MONDO:0005147",
+          "target": "MONDO:0005015",
+          "label": "biolink:subclass_of",
+          "score": 18.89
+        }
+      },
+      {
+        "data": {
+          "id": "edge_206",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005066",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.11
+        }
+      },
+      {
+        "data": {
+          "id": "edge_207",
+          "source": "MONDO:0001945",
+          "target": "MONDO:0006966",
+          "label": "biolink:subclass_of",
+          "score": 13.53
+        }
+      },
+      {
+        "data": {
+          "id": "edge_208",
+          "source": "MONDO:0005885",
+          "target": "MONDO:0002135",
+          "label": "biolink:subclass_of",
+          "score": -8.93
+        }
+      },
+      {
+        "data": {
+          "id": "edge_209",
+          "source": "CHEBI:27300",
+          "target": "MONDO:0008159",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.41
+        }
+      },
+      {
+        "data": {
+          "id": "edge_210",
+          "source": "CHEBI:27656",
+          "target": "MONDO:0007739",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -6.05
+        }
+      },
+      {
+        "data": {
+          "id": "edge_211",
+          "source": "CHEBI:50694",
+          "target": "CHEBI:176497",
+          "label": "biolink:related_to",
+          "score": 17.29
+        }
+      },
+      {
+        "data": {
+          "id": "edge_212",
+          "source": "MONDO:0006966",
+          "target": "MONDO:0005559",
+          "label": "biolink:subclass_of",
+          "score": 19.07
+        }
+      },
+      {
+        "data": {
+          "id": "edge_213",
+          "source": "CHEBI:3766",
+          "target": "MONDO:0021095",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.97
+        }
+      },
+      {
+        "data": {
+          "id": "edge_214",
+          "source": "CHEBI:17439",
+          "target": "CHEBI:140785",
+          "label": "biolink:subclass_of",
+          "score": 17.71
+        }
+      },
+      {
+        "data": {
+          "id": "edge_215",
+          "source": "CHEBI:3962",
+          "target": "CHEBI:67079",
+          "label": "biolink:related_to",
+          "score": 12.22
+        }
+      },
+      {
+        "data": {
+          "id": "edge_216",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0013209",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.01
+        }
+      },
+      {
+        "data": {
+          "id": "edge_217",
+          "source": "CHEBI:17154",
+          "target": "MONDO:0006604",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -19.26
+        }
+      },
+      {
+        "data": {
+          "id": "edge_218",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0005016",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.8
+        }
+      },
+      {
+        "data": {
+          "id": "edge_219",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0100339",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.75
+        }
+      },
+      {
+        "data": {
+          "id": "edge_220",
+          "source": "CHEBI:26195",
+          "target": "MONDO:0005155",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.45
+        }
+      },
+      {
+        "data": {
+          "id": "edge_221",
+          "source": "CHEBI:17154",
+          "target": "MONDO:0005559",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.72
+        }
+      },
+      {
+        "data": {
+          "id": "edge_222",
+          "source": "CHEBI:3962",
+          "target": "CHEBI:26195",
+          "label": "biolink:subclass_of",
+          "score": 11.61
+        }
+      },
+      {
+        "data": {
+          "id": "edge_223",
+          "source": "MONDO:0024313",
+          "target": "MONDO:0005113",
+          "label": "biolink:subclass_of",
+          "score": 16.96
+        }
+      },
+      {
+        "data": {
+          "id": "edge_224",
+          "source": "CHEBI:15365",
+          "target": "CHEBI:176497",
+          "label": "biolink:related_to",
+          "score": 16.71
+        }
+      },
+      {
+        "data": {
+          "id": "edge_225",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0005068",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.78
+        }
+      },
+      {
+        "data": {
+          "id": "edge_226",
+          "source": "MONDO:0000437",
+          "target": "MONDO:0005395",
+          "label": "biolink:subclass_of",
+          "score": 16.62
+        }
+      },
+      {
+        "data": {
+          "id": "edge_227",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0001913",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.93
+        }
+      },
+      {
+        "data": {
+          "id": "edge_228",
+          "source": "CHEBI:50694",
+          "target": "MONDO:0005134",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.42
+        }
+      },
+      {
+        "data": {
+          "id": "edge_229",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0000960",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.26
+        }
+      },
+      {
+        "data": {
+          "id": "edge_230",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0021104",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.6
+        }
+      },
+      {
+        "data": {
+          "id": "edge_231",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005109",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.64
+        }
+      },
+      {
+        "data": {
+          "id": "edge_232",
+          "source": "MONDO:0037748",
+          "target": "MONDO:0005066",
+          "label": "biolink:subclass_of",
+          "score": 10.89
+        }
+      },
+      {
+        "data": {
+          "id": "edge_233",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0018177",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.67
+        }
+      },
+      {
+        "data": {
+          "id": "edge_234",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0002531",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.61
+        }
+      },
+      {
+        "data": {
+          "id": "edge_235",
+          "source": "MONDO:0018307",
+          "target": "MONDO:0024237",
+          "label": "biolink:subclass_of",
+          "score": 15.2
+        }
+      },
+      {
+        "data": {
+          "id": "edge_236",
+          "source": "CHEBI:27881",
+          "target": "CHEBI:26195",
+          "label": "biolink:subclass_of",
+          "score": 14.63
+        }
+      },
+      {
+        "data": {
+          "id": "edge_237",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0011781",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.38
+        }
+      },
+      {
+        "data": {
+          "id": "edge_238",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0001078",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -10.6
+        }
+      },
+      {
+        "data": {
+          "id": "edge_239",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0005096",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.25
+        }
+      },
+      {
+        "data": {
+          "id": "edge_240",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0002281",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.52
+        }
+      },
+      {
+        "data": {
+          "id": "edge_241",
+          "source": "CHEBI:57643",
+          "target": "CHEBI:16110",
+          "label": "biolink:related_to",
+          "score": -14.71
+        }
+      },
+      {
+        "data": {
+          "id": "edge_242",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005100",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.6
+        }
+      },
+      {
+        "data": {
+          "id": "edge_243",
+          "source": "CHEBI:50694",
+          "target": "MONDO:0005053",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.44
+        }
+      },
+      {
+        "data": {
+          "id": "edge_244",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0021117",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.07
+        }
+      },
+      {
+        "data": {
+          "id": "edge_245",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005015",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.09
+        }
+      },
+      {
+        "data": {
+          "id": "edge_246",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005148",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.97
+        }
+      },
+      {
+        "data": {
+          "id": "edge_247",
+          "source": "MONDO:0007739",
+          "target": "MONDO:0001627",
+          "label": "biolink:related_to",
+          "score": 16.56
+        }
+      },
+      {
+        "data": {
+          "id": "edge_248",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0021100",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.53
+        }
+      },
+      {
+        "data": {
+          "id": "edge_249",
+          "source": "GO:0005499",
+          "target": "CHEBI:27300",
+          "label": "biolink:related_to",
+          "score": 19.71
+        }
+      },
+      {
+        "data": {
+          "id": "edge_250",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0021104",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.66
+        }
+      },
+      {
+        "data": {
+          "id": "edge_251",
+          "source": "MONDO:0002281",
+          "target": "MONDO:0002280",
+          "label": "biolink:subclass_of",
+          "score": 15.86
+        }
+      },
+      {
+        "data": {
+          "id": "edge_252",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0001529",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.45
+        }
+      },
+      {
+        "data": {
+          "id": "edge_253",
+          "source": "CHEBI:15940",
+          "target": "CHEBI:32544",
+          "label": "biolink:related_to",
+          "score": 10.71
+        }
+      },
+      {
+        "data": {
+          "id": "edge_254",
+          "source": "CHEBI:50694",
+          "target": "MONDO:0005299",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.62
+        }
+      },
+      {
+        "data": {
+          "id": "edge_255",
+          "source": "CHEBI:17154",
+          "target": "MONDO:0005098",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -12.07
+        }
+      },
+      {
+        "data": {
+          "id": "edge_256",
+          "source": "CHEBI:32544",
+          "target": "CHEBI:15940",
+          "label": "biolink:related_to",
+          "score": 18.48
+        }
+      },
+      {
+        "data": {
+          "id": "edge_257",
+          "source": "CHEBI:27300",
+          "target": "MONDO:0003615",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.21
+        }
+      },
+      {
+        "data": {
+          "id": "edge_258",
+          "source": "MONDO:0019977",
+          "target": "HP:0000726",
+          "label": "biolink:has_phenotype",
+          "score": 17.06
+        }
+      },
+      {
+        "data": {
+          "id": "edge_259",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0005299",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.54
+        }
+      },
+      {
+        "data": {
+          "id": "edge_260",
+          "source": "CHEBI:26895",
+          "target": "MONDO:0005093",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.5
+        }
+      },
+      {
+        "data": {
+          "id": "edge_261",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0005098",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.75
+        }
+      },
+      {
+        "data": {
+          "id": "edge_262",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0008170",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -12.72
+        }
+      },
+      {
+        "data": {
+          "id": "edge_263",
+          "source": "MONDO:0015140",
+          "target": "MONDO:0001627",
+          "label": "biolink:subclass_of",
+          "score": 18.72
+        }
+      },
+      {
+        "data": {
+          "id": "edge_264",
+          "source": "CHEBI:7735",
+          "target": "MONDO:0021095",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.72
+        }
+      },
+      {
+        "data": {
+          "id": "edge_265",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0005053",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.9
+        }
+      },
+      {
+        "data": {
+          "id": "edge_266",
+          "source": "CHEBI:16796",
+          "target": "MONDO:0005277",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.7
+        }
+      },
+      {
+        "data": {
+          "id": "edge_267",
+          "source": "RGD:68114",
+          "target": "MONDO:0003004",
+          "label": "biolink:model_of",
+          "score": 17.33
+        }
+      },
+      {
+        "data": {
+          "id": "edge_268",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0005129",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.84
+        }
+      },
+      {
+        "data": {
+          "id": "edge_269",
+          "source": "CHEBI:50694",
+          "target": "MONDO:0005311",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.58
+        }
+      },
+      {
+        "data": {
+          "id": "edge_270",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0005885",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.92
+        }
+      },
+      {
+        "data": {
+          "id": "edge_271",
+          "source": "MONDO:0018425",
+          "target": "MONDO:0005395",
+          "label": "biolink:subclass_of",
+          "score": 12.94
+        }
+      },
+      {
+        "data": {
+          "id": "edge_272",
+          "source": "MONDO:0006857",
+          "target": "MONDO:0002679",
+          "label": "biolink:subclass_of",
+          "score": 16.14
+        }
+      },
+      {
+        "data": {
+          "id": "edge_273",
+          "source": "CHEBI:26895",
+          "target": "MONDO:0006604",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -18.97
+        }
+      },
+      {
+        "data": {
+          "id": "edge_274",
+          "source": "MONDO:0007739",
+          "target": "MONDO:0005395",
+          "label": "biolink:subclass_of",
+          "score": -15.18
+        }
+      },
+      {
+        "data": {
+          "id": "edge_275",
+          "source": "CHEBI:140785",
+          "target": "CHEBI:23333",
+          "label": "biolink:subclass_of",
+          "score": 19.86
+        }
+      },
+      {
+        "data": {
+          "id": "edge_276",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0000837",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.79
+        }
+      },
+      {
+        "data": {
+          "id": "edge_277",
+          "source": "CHEBI:26195",
+          "target": "MONDO:0021187",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.8
+        }
+      },
+      {
+        "data": {
+          "id": "edge_278",
+          "source": "CHEBI:35475",
+          "target": "MONDO:0004972",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.41
+        }
+      },
+      {
+        "data": {
+          "id": "edge_279",
+          "source": "MONDO:0007739",
+          "target": "HP:0000726",
+          "label": "biolink:has_phenotype",
+          "score": 12.44
+        }
+      },
+      {
+        "data": {
+          "id": "edge_280",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0005180",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.96
+        }
+      },
+      {
+        "data": {
+          "id": "edge_281",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0024313",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.02
+        }
+      },
+      {
+        "data": {
+          "id": "edge_282",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0021100",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.56
+        }
+      },
+      {
+        "data": {
+          "id": "edge_283",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0006739",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.67
+        }
+      },
+      {
+        "data": {
+          "id": "edge_284",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0002277",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -12.9
+        }
+      },
+      {
+        "data": {
+          "id": "edge_285",
+          "source": "CHEBI:3749",
+          "target": "CHEBI:37958",
+          "label": "biolink:related_to",
+          "score": 11.68
+        }
+      },
+      {
+        "data": {
+          "id": "edge_286",
+          "source": "MONDO:0019977",
+          "target": "MONDO:0001627",
+          "label": "biolink:subclass_of",
+          "score": 16.54
+        }
+      },
+      {
+        "data": {
+          "id": "edge_287",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0001176",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.53
+        }
+      },
+      {
+        "data": {
+          "id": "edge_288",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0005395",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.22
+        }
+      },
+      {
+        "data": {
+          "id": "edge_289",
+          "source": "CHEBI:35620",
+          "target": "MONDO:0005068",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.4
+        }
+      },
+      {
+        "data": {
+          "id": "edge_290",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0008315",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.96
+        }
+      },
+      {
+        "data": {
+          "id": "edge_291",
+          "source": "CHEBI:17439",
+          "target": "MONDO:0008228",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.21
+        }
+      },
+      {
+        "data": {
+          "id": "edge_292",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0003939",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.96
+        }
+      },
+      {
+        "data": {
+          "id": "edge_293",
+          "source": "MONDO:0018425",
+          "target": "MONDO:0001627",
+          "label": "biolink:related_to",
+          "score": 15.78
+        }
+      },
+      {
+        "data": {
+          "id": "edge_294",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0009693",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -5.54
+        }
+      },
+      {
+        "data": {
+          "id": "edge_295",
+          "source": "CHEBI:3749",
+          "target": "CHEBI:35475",
+          "label": "biolink:related_to",
+          "score": 19.25
+        }
+      },
+      {
+        "data": {
+          "id": "edge_296",
+          "source": "CHEBI:7735",
+          "target": "MONDO:0045057",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.12
+        }
+      },
+      {
+        "data": {
+          "id": "edge_297",
+          "source": "MONDO:0005283",
+          "target": "MONDO:0005071",
+          "label": "biolink:subclass_of",
+          "score": 13.13
+        }
+      },
+      {
+        "data": {
+          "id": "edge_298",
+          "source": "MONDO:0005129",
+          "target": "MONDO:0001176",
+          "label": "biolink:subclass_of",
+          "score": 16.57
+        }
+      },
+      {
+        "data": {
+          "id": "edge_299",
+          "source": "MONDO:0008449",
+          "target": "MONDO:0002545",
+          "label": "biolink:subclass_of",
+          "score": 17.44
+        }
+      },
+      {
+        "data": {
+          "id": "edge_300",
+          "source": "CHEBI:15355",
+          "target": "MONDO:0005044",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.89
+        }
+      },
+      {
+        "data": {
+          "id": "edge_301",
+          "source": "CHEBI:27656",
+          "target": "MONDO:0021042",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.36
+        }
+      },
+      {
+        "data": {
+          "id": "edge_302",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0000960",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.66
+        }
+      },
+      {
+        "data": {
+          "id": "edge_303",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0016064",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.01
+        }
+      },
+      {
+        "data": {
+          "id": "edge_304",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0005264",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.29
+        }
+      },
+      {
+        "data": {
+          "id": "edge_305",
+          "source": "MONDO:0024633",
+          "target": "MONDO:0005240",
+          "label": "biolink:subclass_of",
+          "score": 13.65
+        }
+      },
+      {
+        "data": {
+          "id": "edge_306",
+          "source": "CHEBI:17439",
+          "target": "CHEBI:23333",
+          "label": "biolink:subclass_of",
+          "score": 19.21
+        }
+      },
+      {
+        "data": {
+          "id": "edge_307",
+          "source": "CHEBI:32544",
+          "target": "CHEBI:176839",
+          "label": "biolink:subclass_of",
+          "score": 15.91
+        }
+      },
+      {
+        "data": {
+          "id": "edge_308",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0005030",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.44
+        }
+      },
+      {
+        "data": {
+          "id": "edge_309",
+          "source": "CHEBI:15355",
+          "target": "CHEBI:35620",
+          "label": "biolink:related_to",
+          "score": 13.44
+        }
+      },
+      {
+        "data": {
+          "id": "edge_310",
+          "source": "MONDO:0004069",
+          "target": "MONDO:0019052",
+          "label": "biolink:subclass_of",
+          "score": 12.22
+        }
+      },
+      {
+        "data": {
+          "id": "edge_311",
+          "source": "CHEBI:26195",
+          "target": "MONDO:0005096",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.61
+        }
+      },
+      {
+        "data": {
+          "id": "edge_312",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0004995",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.64
+        }
+      },
+      {
+        "data": {
+          "id": "edge_313",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0005264",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.8
+        }
+      },
+      {
+        "data": {
+          "id": "edge_314",
+          "source": "CHEBI:50694",
+          "target": "MONDO:0004976",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.26
+        }
+      },
+      {
+        "data": {
+          "id": "edge_315",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0024644",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.36
+        }
+      },
+      {
+        "data": {
+          "id": "edge_316",
+          "source": "CHEBI:16796",
+          "target": "MONDO:0004976",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 13.89
+        }
+      },
+      {
+        "data": {
+          "id": "edge_317",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0005570",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.08
+        }
+      },
+      {
+        "data": {
+          "id": "edge_318",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0002277",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.48
+        }
+      },
+      {
+        "data": {
+          "id": "edge_319",
+          "source": "MONDO:0016987",
+          "target": "MONDO:0005395",
+          "label": "biolink:subclass_of",
+          "score": 17.63
+        }
+      },
+      {
+        "data": {
+          "id": "edge_320",
+          "source": "CHEBI:35475",
+          "target": "MONDO:0008315",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.5
+        }
+      },
+      {
+        "data": {
+          "id": "edge_321",
+          "source": "CHEBI:26195",
+          "target": "MONDO:0005298",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.98
+        }
+      },
+      {
+        "data": {
+          "id": "edge_322",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0005359",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.91
+        }
+      },
+      {
+        "data": {
+          "id": "edge_323",
+          "source": "CHEBI:15940",
+          "target": "CHEBI:176839",
+          "label": "biolink:subclass_of",
+          "score": 14.19
+        }
+      },
+      {
+        "data": {
+          "id": "edge_324",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0005300",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.37
+        }
+      },
+      {
+        "data": {
+          "id": "edge_325",
+          "source": "MONDO:0020689",
+          "target": "MONDO:0001627",
+          "label": "biolink:subclass_of",
+          "score": 13.88
+        }
+      },
+      {
+        "data": {
+          "id": "edge_326",
+          "source": "MONDO:0021187",
+          "target": "MONDO:0005066",
+          "label": "biolink:subclass_of",
+          "score": 18.35
+        }
+      },
+      {
+        "data": {
+          "id": "edge_327",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0005311",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 12.38
+        }
+      },
+      {
+        "data": {
+          "id": "edge_328",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0005277",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 19.56
+        }
+      },
+      {
+        "data": {
+          "id": "edge_329",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0004743",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 15.27
+        }
+      },
+      {
+        "data": {
+          "id": "edge_330",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0002909",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.48
+        }
+      },
+      {
+        "data": {
+          "id": "edge_331",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005087",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.18
+        }
+      },
+      {
+        "data": {
+          "id": "edge_332",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0005015",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.26
+        }
+      },
+      {
+        "data": {
+          "id": "edge_333",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0005178",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.33
+        }
+      },
+      {
+        "data": {
+          "id": "edge_334",
+          "source": "CHEBI:16796",
+          "target": "MONDO:0005347",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.28
+        }
+      },
+      {
+        "data": {
+          "id": "edge_335",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0002692",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.81
+        }
+      },
+      {
+        "data": {
+          "id": "edge_336",
+          "source": "CHEBI:27470",
+          "target": "MONDO:0005105",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.24
+        }
+      },
+      {
+        "data": {
+          "id": "edge_337",
+          "source": "CHEBI:15940",
+          "target": "MONDO:0005347",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.75
+        }
+      },
+      {
+        "data": {
+          "id": "edge_338",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0005590",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.7
+        }
+      },
+      {
+        "data": {
+          "id": "edge_339",
+          "source": "CHEBI:27300",
+          "target": "CHEBI:36853",
+          "label": "biolink:subclass_of",
+          "score": 14.6
+        }
+      },
+      {
+        "data": {
+          "id": "edge_340",
+          "source": "MONDO:0006032",
+          "target": "MONDO:0006026",
+          "label": "biolink:subclass_of",
+          "score": 11.25
+        }
+      },
+      {
+        "data": {
+          "id": "edge_341",
+          "source": "CHEBI:17154",
+          "target": "MONDO:0002177",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 14.25
+        }
+      },
+      {
+        "data": {
+          "id": "edge_342",
+          "source": "MONDO:0004648",
+          "target": "HP:0000726",
+          "label": "biolink:has_phenotype",
+          "score": 11.79
+        }
+      },
+      {
+        "data": {
+          "id": "edge_343",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0002177",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 11.05
+        }
+      },
+      {
+        "data": {
+          "id": "edge_344",
+          "source": "CHEBI:27656",
+          "target": "CHEBI:26878",
+          "label": "biolink:subclass_of",
+          "score": -19.41
+        }
+      },
+      {
+        "data": {
+          "id": "edge_345",
+          "source": "MONDO:0021085",
+          "target": "MONDO:0021223",
+          "label": "biolink:subclass_of",
+          "score": 16.97
+        }
+      },
+      {
+        "data": {
+          "id": "edge_346",
+          "source": "CHEBI:17154",
+          "target": "MONDO:0013209",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 18.31
+        }
+      },
+      {
+        "data": {
+          "id": "edge_347",
+          "source": "MONDO:0005393",
+          "target": "MONDO:0005066",
+          "label": "biolink:subclass_of",
+          "score": 19.1
+        }
+      },
+      {
+        "data": {
+          "id": "edge_348",
+          "source": "CHEBI:16110",
+          "target": "MONDO:0005395",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.93
+        }
+      },
+      {
+        "data": {
+          "id": "edge_349",
+          "source": "CHEBI:3962",
+          "target": "MONDO:0001913",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 16.04
+        }
+      },
+      {
+        "data": {
+          "id": "edge_350",
+          "source": "CHEBI:3766",
+          "target": "MONDO:0005395",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.69
+        }
+      },
+      {
+        "data": {
+          "id": "edge_351",
+          "source": "CHEBI:3962",
+          "target": "CHEBI:37958",
+          "label": "biolink:related_to",
+          "score": 11.9
+        }
+      },
+      {
+        "data": {
+          "id": "edge_352",
+          "source": "CHEBI:15365",
+          "target": "MONDO:0005347",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 17.68
+        }
+      },
+      {
+        "data": {
+          "id": "edge_353",
+          "source": "CHEBI:27881",
+          "target": "MONDO:0005395",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": 10.22
+        }
+      },
+      {
+        "data": {
+          "id": "edge_354",
+          "source": "CHEBI:15940",
+          "target": "CHEBI:35679",
+          "label": "biolink:related_to",
+          "score": 10.98
+        }
+      },
+      {
+        "data": {
+          "id": "edge_355",
+          "source": "CHEBI:45863",
+          "target": "MONDO:0005096",
+          "label": "biolink:treats_or_applied_or_studied_to_treat",
+          "score": -17.37
+        }
+      }
+    ]
+  },
+  "data": {
+    "title": "Alzheimer's LLM Subgraph",
+    "description": "Subgraph created from train.txt, test.txt, and valid.txt",
+    "tags": [
+      "alzheimers",
+      "subgraph",
+      "llm"
+    ]
+  }
+}

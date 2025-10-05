@@ -11,22 +11,21 @@ import {
   HStack,
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'preact/hooks'
-import { CounterCard } from './components/CounterCard'
-import { UserCard } from './components/UserCard'
-import { StatsCard } from './components/StatsCard'
 import { GraphView } from './components/GraphView'
-import { TriToggle } from './components/TriToggle'
 import { TableView } from './components/TableView'
 import { GraphData } from './types/GraphInterface'
 import graphDataJson from './data/alzheimers_llm/graph.json'
 import backboneDataJson from './data/alzheimers_llm/backbone_graph.json'
+import subgraphDataJson from './data/alzheimers_llm/subgraph.json'
 
 const graphData: GraphData = graphDataJson as GraphData
 const backboneData: GraphData = backboneDataJson as GraphData
+const subgraphData: GraphData = subgraphDataJson as GraphData
 
 export function App() {
   const { setColorMode } = useColorMode()
   const [highlightedEdges, setHighlightedEdges] = useState<string[]>([])
+  const [currentBackboneData, setCurrentBackboneData] = useState<GraphData>(backboneData)
 
   // Ensure dark mode is active
   useEffect(() => {
@@ -39,6 +38,10 @@ export function App() {
         ? prev.filter(id => id !== edgeId)
         : [...prev, edgeId]
     )
+  }
+
+  const importSubgraph = () => {
+    setCurrentBackboneData(subgraphData)
   }
 
   return (
@@ -84,6 +87,7 @@ export function App() {
               graphData={graphData}
               highlightedEdges={highlightedEdges}
               edgeLabel="label"
+              showNodeLabels={false}
             />
           </Box>
 
@@ -93,7 +97,7 @@ export function App() {
             <Heading size="md" color="teal.300" mb={4}>
               Edge Table View
             </Heading>
-            <TableView graphData={backboneData} edgeLabel="label" />
+            <TableView graphData={currentBackboneData} edgeLabel="label" />
           </Box>
 
           {/* Backbone Visualization */}
@@ -102,17 +106,25 @@ export function App() {
               Backbone Query Graph Visualization
             </Heading>
             <GraphView
-              graphData={backboneData}
+              graphData={currentBackboneData}
               highlightedEdges={[]}
               edgeLabel="label"
+              showNodeLabels={true}
             />
+            <Button
+              mt={4}
+              colorScheme="blue"
+              onClick={importSubgraph}
+            >
+              Import Subgraph
+            </Button>
           </Box>
 
           {/* Interactive Components Grid */}
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
+          {/* <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
             <CounterCard />
             <UserCard />
-          </SimpleGrid>
+          </SimpleGrid> */}
 
           {/* Footer */}
           <Box textAlign="center" pt={8} pb={4}>
